@@ -567,3 +567,40 @@ p { color: var(--color-text-secondary); }
   .hero__spot { min-height: 360px; }
 }
 
+
+
+/* Keep case studies inside the portfolio and within its editorial palette. */
+.modal-backdrop {
+  background: rgba(29, 33, 29, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.modal { padding: clamp(1rem, 4vw, 3rem); }
+.modal__panel {
+  position: relative;
+  max-width: 960px;
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  background: var(--color-surface);
+  box-shadow: 10px 10px 0 rgba(29, 33, 29, 0.14);
+}
+.modal__cover { background: var(--color-surface-raise); }
+.modal__cover-img { display: block; object-fit: cover; }
+.modal__cover-fallback { width: 100%; height: 100%; min-height: 180px; }
+.project-card__cover--fallback { display: grid; place-items: center; }
+.modal__body { padding: clamp(1.5rem, 5vw, 4rem); }
+.modal__close {
+  top: 1rem;
+  right: 1rem;
+  border-radius: 0;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+.modal__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+.modal__section-heading { color: var(--color-accent-lime); }
+.modal__text { color: var(--color-text-secondary); }
