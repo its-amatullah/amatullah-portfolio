@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/sections.css" />
   <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/refresh.css?v=20261117-full-project-images" />
+  <link rel="stylesheet" href="css/refresh.css?v=20261117-full-project-details" />
 
   <!-- Hero keyframe (inline so it's ready before any JS runs) -->
   <style>
@@ -484,6 +484,7 @@
       </button>
 
       <div id="modal-cover" class="modal__cover" aria-hidden="true"></div>
+      <div id="modal-gallery" class="modal__gallery" aria-label="Project images"></div>
 
       <div class="modal__body">
         <div class="modal__meta">
@@ -496,6 +497,11 @@
 
         <p style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:0.08em;margin-bottom:var(--space-2);">Tools used</p>
         <p id="modal-tools" style="font-size:var(--text-sm);color:var(--color-text-secondary);margin-bottom:var(--space-6);"></p>
+
+        <div class="modal__actions">
+          <a id="modal-case-link" class="btn btn-primary" target="_blank" rel="noopener">Read full case study ↗</a>
+          <div id="modal-live-links" class="modal__live-links" aria-label="Project links"></div>
+        </div>
 
         <p class="modal__section-heading">The Problem</p>
         <p id="modal-problem" class="modal__text"></p>
@@ -523,7 +529,7 @@
   </div>
 
   <!-- -- Scripts ----------------------------------------------- -->
-  <script defer src="js/portfolio.js?v=20261117-static-card-modal-fix2"></script>
+  <script defer src="js/portfolio.js?v=20261117-full-project-details"></script>
 
   <!-- Portrait tilt — mouse parallax, respects prefers-reduced-motion -->
   <script>
