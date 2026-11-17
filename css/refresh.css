@@ -608,3 +608,21 @@ p { color: var(--color-text-secondary); }
 
 /* The hero caption is redundant with the role badge and status line. */
 .hero__spot::after { content: none; }
+
+
+/* Show complete project artwork in cards and case-study overlays. */
+.project-card__cover { background: var(--color-surface-raise); }
+.project-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  mix-blend-mode: normal;
+}
+.project-card:hover .project-card__img { transform: none; }
+.modal__cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
