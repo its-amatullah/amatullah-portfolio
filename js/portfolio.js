@@ -93,7 +93,7 @@
       year: '2026',
       role: 'Designer & Builder',
       tools: ['Python', 'GitHub Pages', 'HTML/CSS'],
-      casePage: 'https://its-amatullah.github.io/Design-gallery/',
+      casePage: 'projects/design-gallery.html',
       problem: 'Design prototypes were scattered across tools and hard to share for developer review. A lightweight system was needed to register, version and publish HTML prototypes as live previews.',
       process: 'Conceptualised and built a Python-based workflow to generate a searchable, filterable gallery from a folder of HTML files. Published to GitHub Pages. Added search, sort, password protection, a prompt library, and an archive section.',
       outcome: 'A live, password-protected design gallery hosting 12+ prototypes — accessible to the whole team for review without any login or tool access required.',
@@ -196,6 +196,31 @@
       note: null,
     },
   ];
+
+  // Existing image sets and working project links from the detailed case-study pages.
+  const PROJECT_COVERS = {
+    'app-dashboard': 'assets/images/projects/app-dashboard/thumbnail.svg',
+    'shop-rebuild': 'assets/images/projects/shop-rebuild/thumbnail.svg',
+    'student-profile': 'assets/images/projects/student-profile/thumbnail.svg',
+    'design-gallery': 'assets/images/projects/design-gallery/thumbnail.svg',
+  };
+  const PROJECT_GALLERIES = {
+    'i-make': ['assets/images/projects/i-make/portfolio-page-05.jpg', 'assets/images/projects/i-make/portfolio-page-06.jpg', 'assets/images/projects/i-make/portfolio-page-07.jpg'],
+    'evolve': ['assets/images/projects/evolve/portfolio-page-08.jpg', 'assets/images/projects/evolve/portfolio-page-09.jpg', 'assets/images/projects/evolve/portfolio-page-10.jpg'],
+    'swargate': ['assets/images/projects/swargate/portfolio-page-11.jpg', 'assets/images/projects/swargate/portfolio-page-12.jpg', 'assets/images/projects/swargate/portfolio-page-13.jpg'],
+    'flo': ['assets/images/projects/flo/portfolio-page-14.jpg', 'assets/images/projects/flo/portfolio-page-15.jpg', 'assets/images/projects/flo/portfolio-page-16.jpg'],
+    'p-town': ['assets/images/projects/p-town/portfolio-page-17.jpg', 'assets/images/projects/p-town/portfolio-page-18.jpg', 'assets/images/projects/p-town/portfolio-page-19.jpg', 'assets/images/projects/p-town/portfolio-page-20.jpg'],
+    'funella': ['assets/images/projects/funella/portfolio-page-21.jpg', 'assets/images/projects/funella/portfolio-page-22.jpg', 'assets/images/projects/funella/portfolio-page-23.jpg', 'assets/images/projects/funella/portfolio-page-24.jpg'],
+  };
+  const PROJECT_LINKS = {
+    'app-dashboard': [{ label: 'Open interactive prototype', href: 'designs/app-dashboard/index.html' }],
+    'shop-rebuild': [
+      { label: 'View redesigned flow', href: 'designs/shop-rebuild/shop-rebuild.html' },
+      { label: 'Compare payment flow', href: 'designs/shop-rebuild/payment-flow.html' },
+    ],
+    'student-profile': [{ label: 'Open interactive prototype', href: 'designs/student-profile/index.html' }],
+    'design-gallery': [{ label: 'Visit live Design Gallery', href: 'https://amatullah-a.github.io/Design-gallery/' }],
+  };
 
   /* ──────────────────────────────────────────────────────────
      HERO ANIMATION
@@ -476,10 +501,11 @@
     // Cover
     var coverEl = document.getElementById('modal-cover');
     coverEl.innerHTML = '';
-    if (project.coverImage) {
+    var coverSource = project.coverImage || PROJECT_COVERS[project.id];
+    if (coverSource) {
       var img2 = document.createElement('img');
       img2.className = 'modal__cover-img';
-      img2.src    = project.coverImage;
+      img2.src    = coverSource;
       img2.alt    = project.title + ' cover image';
       img2.width  = 1200;
       img2.height = 525;
@@ -495,6 +521,42 @@
       var ph2 = document.createElement('div');
       ph2.style.cssText = 'width:100%;height:100%;background:' + project.coverGradient + ';';
       coverEl.appendChild(ph2);
+    }
+
+    // Add the detailed project page, prototype links, and complete image set.
+    var caseLink = document.getElementById('modal-case-link');
+    if (caseLink) {
+      caseLink.href = project.casePage || '#';
+      caseLink.hidden = !project.casePage;
+    }
+    var linksEl = document.getElementById('modal-live-links');
+    if (linksEl) {
+      linksEl.innerHTML = '';
+      (PROJECT_LINKS[project.id] || []).forEach(function (link) {
+        var anchor = document.createElement('a');
+        anchor.href = link.href;
+        anchor.target = '_blank';
+        anchor.rel = 'noopener';
+        anchor.textContent = link.label + ' ↗';
+        linksEl.appendChild(anchor);
+      });
+    }
+    var galleryEl = document.getElementById('modal-gallery');
+    if (galleryEl) {
+      galleryEl.innerHTML = '';
+      var images = PROJECT_GALLERIES[project.id] || [];
+      galleryEl.hidden = images.length === 0;
+      images.forEach(function (src, index) {
+        var figure = document.createElement('figure');
+        figure.className = 'modal__gallery-item';
+        var image = document.createElement('img');
+        image.src = src;
+        image.alt = project.title + ' — project visual ' + (index + 1);
+        image.loading = 'lazy';
+        image.addEventListener('error', function () { figure.remove(); }, { once: true });
+        figure.appendChild(image);
+        galleryEl.appendChild(figure);
+      });
     }
 
     // Note
