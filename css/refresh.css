@@ -364,14 +364,6 @@ p { color: var(--color-text-secondary); }
   background: #d9e0f4;
   clip-path: polygon(50% 0, 96% 13%, 100% 56%, 78% 93%, 33% 100%, 3% 72%, 0 25%);
   transform: rotate(4deg);
-  animation: portrait-field-drift 9s ease-in-out infinite;
-}
-@keyframes portrait-field-drift {
-  0%, 100% { background-color: #d9e0f4; transform: rotate(4deg) scale(1); }
-  50% { background-color: #d2daf1; transform: rotate(2.5deg) scale(1.015); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__spot::before { animation: none; }
 }
 .hero__portrait-tilt { z-index: 1; }
 .hero__spot::after {
@@ -575,126 +567,110 @@ p { color: var(--color-text-secondary); }
   .hero__spot { min-height: 360px; }
 }
 
-/* Portrait treatment: keep the art on black with a restrained coral pulse. */
-.hero__spot { background: #080808; }
-.hero__spot::before {
-  background: radial-gradient(ellipse at 50% 42%, rgba(230, 83, 50, 0.10), transparent 68%), #080808;
-  animation: portrait-field-pulse 7s ease-in-out infinite;
+
+
+/* Keep case studies inside the portfolio and within its editorial palette. */
+.modal-backdrop {
+  background: rgba(29, 33, 29, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
-@keyframes portrait-field-pulse {
-  0%, 100% { opacity: 0.92; transform: rotate(4deg) scale(1); }
-  50% { opacity: 1; transform: rotate(3deg) scale(1.012); }
+.modal { padding: clamp(1rem, 4vw, 3rem); }
+.modal__panel {
+  position: relative;
+  max-width: 960px;
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  background: var(--color-surface);
+  box-shadow: 10px 10px 0 rgba(29, 33, 29, 0.14);
 }
+.modal__cover { background: var(--color-surface-raise); }
+.modal__cover-img { display: block; object-fit: cover; }
+.modal__cover-fallback { width: 100%; height: 100%; min-height: 180px; }
+.project-card__cover--fallback { display: grid; place-items: center; }
+.modal__body { padding: clamp(1.5rem, 5vw, 4rem); }
+.modal__close {
+  top: 1rem;
+  right: 1rem;
+  border-radius: 0;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+.modal__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+.modal__section-heading { color: var(--color-accent-lime); }
+.modal__text { color: var(--color-text-secondary); }
+
+
+/* The hero caption is redundant with the role badge and status line. */
 .hero__spot::after { content: none; }
-.hero__spot-mascot {
-  mix-blend-mode: screen;
-  filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(2025%) hue-rotate(337deg) brightness(92%) contrast(88%);
-  animation: portrait-ink-pulse 7s ease-in-out infinite;
+
+
+/* Show complete project artwork in cards and case-study overlays. */
+.project-card__cover { background: var(--color-surface-raise); }
+.project-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  mix-blend-mode: normal;
 }
-@keyframes portrait-ink-pulse {
-  0%, 100% { opacity: 0.84; filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(2025%) hue-rotate(337deg) brightness(92%) contrast(88%) drop-shadow(0 0 10px rgba(230,83,50,0.08)); }
-  50% { opacity: 0.98; filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(2025%) hue-rotate(337deg) brightness(92%) contrast(88%) drop-shadow(0 0 18px rgba(230,83,50,0.18)); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__spot::before, .hero__spot-mascot { animation: none; }
-  .hero__spot-mascot { opacity: 0.92; }
+.project-card:hover .project-card__img { transform: none; }
+.modal__cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 
-/* Keep the portrait in its original palette; hover adds only a quiet color pulse. */
-.hero__spot-mascot,
-.hero__portrait-tilt:hover .hero__spot-mascot {
-  filter:
-    invert(1)
-    brightness(0.82)
-    sepia(0.18)
-    hue-rotate(310deg)
-    saturate(1.1)
-    contrast(1.15)
-    drop-shadow(0 2px 4px rgba(255,183,197,0.36))
-    drop-shadow(0 8px 20px rgba(255,120,160,0.18))
-    drop-shadow(0 24px 56px rgba(130,60,120,0.14));
-  mix-blend-mode: screen;
+/* Full case-study content and project links inside the project detail modal. */
+.modal__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin: 1.5rem 0 2rem;
 }
-.hero__portrait-tilt:hover .hero__spot-mascot {
-  animation: portrait-color-breathe 3.4s ease-in-out infinite;
+.modal__actions .btn { text-decoration: none; }
+.modal__live-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.2rem;
 }
-@keyframes portrait-color-breathe {
-  0%, 100% {
-    filter: invert(1) brightness(0.82) sepia(0.18) hue-rotate(310deg) saturate(1.1) contrast(1.15)
-      drop-shadow(0 2px 4px rgba(255,183,197,0.36))
-      drop-shadow(0 8px 20px rgba(255,120,160,0.18))
-      drop-shadow(0 24px 56px rgba(130,60,120,0.14));
-    transform: translateZ(0) scale(1);
-  }
-  50% {
-    filter: invert(1) brightness(0.84) sepia(0.18) hue-rotate(310deg) saturate(1.18) contrast(1.15)
-      drop-shadow(0 2px 4px rgba(255,183,197,0.36))
-      drop-shadow(0 8px 20px rgba(255,120,160,0.18))
-      drop-shadow(0 24px 56px rgba(130,60,120,0.14));
-    transform: translateZ(0) scale(1.012);
-  }
+.modal__live-links a {
+  color: var(--color-accent-violet);
+  font: 0.72rem var(--font-mono);
+  letter-spacing: 0.03em;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
-@media (prefers-reduced-motion: reduce) {
-  .hero__portrait-tilt:hover .hero__spot-mascot { animation: none; }
+.modal__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0 clamp(1rem, 4vw, 2.5rem) clamp(1.5rem, 3vw, 2rem);
 }
-
-
-/* Black line-art portrait: hover movement changes shape subtly, never its color. */
-.hero__spot-mascot,
-.hero__portrait-tilt:hover .hero__spot-mascot {
-  filter: none;
-  mix-blend-mode: multiply;
-  animation: none;
+.modal__gallery[hidden] { display: none; }
+.modal__gallery-item {
+  min-width: 0;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-raise);
 }
-.hero__portrait-tilt:hover .hero__spot-mascot {
-  animation: portrait-black-breathe 3.6s ease-in-out infinite;
-  transform-origin: center bottom;
+.modal__gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: contain;
+  object-position: center;
 }
-@keyframes portrait-black-breathe {
-  0%, 100% { transform: translateZ(0) scale(1); }
-  50% { transform: translateZ(0) scale(1.012); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__portrait-tilt:hover .hero__spot-mascot { animation: none; }
-}
-
-
-/* Restore the original softly tinted portrait artwork. */
-.hero__spot-mascot,
-.hero__portrait-tilt:hover .hero__spot-mascot {
-  filter:
-    invert(1)
-    brightness(0.82)
-    sepia(0.18)
-    hue-rotate(310deg)
-    saturate(1.1)
-    contrast(1.15)
-    drop-shadow(0 2px 4px rgba(255,183,197,0.36))
-    drop-shadow(0 8px 20px rgba(255,120,160,0.18))
-    drop-shadow(0 24px 56px rgba(130,60,120,0.14));
-  mix-blend-mode: screen;
-  animation: none;
-}
-.hero__portrait-tilt:hover .hero__spot-mascot {
-  animation: portrait-color-breathe 3.6s ease-in-out infinite;
-}
-@keyframes portrait-color-breathe {
-  0%, 100% {
-    filter: invert(1) brightness(0.82) sepia(0.18) hue-rotate(310deg) saturate(1.1) contrast(1.15)
-      drop-shadow(0 2px 4px rgba(255,183,197,0.36))
-      drop-shadow(0 8px 20px rgba(255,120,160,0.18))
-      drop-shadow(0 24px 56px rgba(130,60,120,0.14));
-    transform: translateZ(0) scale(1);
-  }
-  50% {
-    filter: invert(1) brightness(0.84) sepia(0.18) hue-rotate(310deg) saturate(1.18) contrast(1.15)
-      drop-shadow(0 2px 4px rgba(255,183,197,0.36))
-      drop-shadow(0 8px 20px rgba(255,120,160,0.18))
-      drop-shadow(0 24px 56px rgba(130,60,120,0.14));
-    transform: translateZ(0) scale(1.012);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__portrait-tilt:hover .hero__spot-mascot { animation: none; }
+@media (max-width: 640px) {
+  .modal__gallery { grid-template-columns: 1fr; }
+  .modal__actions { align-items: flex-start; flex-direction: column; }
 }
