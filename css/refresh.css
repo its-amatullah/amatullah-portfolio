@@ -575,3 +575,27 @@ p { color: var(--color-text-secondary); }
   .hero__spot { min-height: 360px; }
 }
 
+/* Portrait treatment: keep the art on black with a restrained coral pulse. */
+.hero__spot { background: #080808; }
+.hero__spot::before {
+  background: radial-gradient(ellipse at 50% 42%, rgba(230, 83, 50, 0.10), transparent 68%), #080808;
+  animation: portrait-field-pulse 7s ease-in-out infinite;
+}
+@keyframes portrait-field-pulse {
+  0%, 100% { opacity: 0.92; transform: rotate(4deg) scale(1); }
+  50% { opacity: 1; transform: rotate(3deg) scale(1.012); }
+}
+.hero__spot::after { content: none; }
+.hero__spot-mascot {
+  mix-blend-mode: screen;
+  filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(2025%) hue-rotate(337deg) brightness(92%) contrast(88%);
+  animation: portrait-ink-pulse 7s ease-in-out infinite;
+}
+@keyframes portrait-ink-pulse {
+  0%, 100% { opacity: 0.84; filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(2025%) hue-rotate(337deg) brightness(92%) contrast(88%) drop-shadow(0 0 10px rgba(230,83,50,0.08)); }
+  50% { opacity: 0.98; filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(2025%) hue-rotate(337deg) brightness(92%) contrast(88%) drop-shadow(0 0 18px rgba(230,83,50,0.18)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__spot::before, .hero__spot-mascot { animation: none; }
+  .hero__spot-mascot { opacity: 0.92; }
+}
