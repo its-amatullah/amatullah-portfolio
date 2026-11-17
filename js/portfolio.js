@@ -552,6 +552,23 @@
   function initProjects() {
     renderFilterBar();
     renderProjects();
+
+    // Static project cards should open their case studies in this portfolio.
+    var grid = document.getElementById('project-grid');
+    if (grid) {
+      grid.addEventListener('click', function (e) {
+        var card = e.target.closest('.project-card');
+        if (!card) return;
+        openModal(card.dataset.id, card);
+      });
+      grid.addEventListener('keydown', function (e) {
+        var card = e.target.closest('.project-card');
+        if (!card || (e.key !== 'Enter' && e.key !== ' ')) return;
+        e.preventDefault();
+        openModal(card.dataset.id, card);
+      });
+    }
+
     // Modal close handlers still needed for professional projects that use it
     var backdrop = document.getElementById('modal-backdrop');
     var modal    = document.getElementById('modal');
