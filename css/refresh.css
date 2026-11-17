@@ -604,3 +604,7 @@ p { color: var(--color-text-secondary); }
 }
 .modal__section-heading { color: var(--color-accent-lime); }
 .modal__text { color: var(--color-text-secondary); }
+
+
+/* The hero caption is redundant with the role badge and status line. */
+.hero__spot::after { content: none; }
