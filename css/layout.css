@@ -1,0 +1,107 @@
+﻿/* ============================================================
+   LAYOUT — Container, grid, section wrappers
+   ============================================================ */
+
+/* ── Container ───────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-px);
+}
+
+/* ── Section wrapper ─────────────────────────────────────────── */
+.section {
+  padding-block: var(--section-py);
+  position: relative;
+}
+
+/* ── Section header ──────────────────────────────────────────── */
+.section-header {
+  margin-bottom: var(--space-16);
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-lime);
+  margin-bottom: var(--space-6);
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background-color: var(--color-accent-lime);
+}
+
+.section-title {
+  font-size: var(--text-5xl);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+/* ── Oversized decorative section number ─────────────────────── */
+.section-number {
+  position: absolute;
+  top: var(--space-12);
+  right: var(--container-px);
+  font-family: var(--font-mono);
+  font-size: clamp(5rem, 12vw, 10rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-text-primary);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+
+/* ── Grid utilities ──────────────────────────────────────────── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Flex utilities ──────────────────────────────────────────── */
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-col { display: flex; flex-direction: column; }
+.gap-2 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+/* ── Visibility ──────────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}

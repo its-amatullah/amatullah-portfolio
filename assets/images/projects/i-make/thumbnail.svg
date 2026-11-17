@@ -1,0 +1,70 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#0A1A0C"/>
+  <!-- Playful background dots -->
+  <circle cx="120" cy="80"  r="60" fill="#16A34A" opacity="0.08"/>
+  <circle cx="680" cy="380" r="80" fill="#16A34A" opacity="0.06"/>
+  <circle cx="720" cy="90"  r="40" fill="#F59E0B" opacity="0.07"/>
+  <circle cx="80"  cy="380" r="50" fill="#F59E0B" opacity="0.06"/>
+
+  <!-- Phone frame left -->
+  <rect x="80" y="40" width="180" height="360" rx="22" fill="#121A14" stroke="#1E3022" stroke-width="2"/>
+  <rect x="80" y="40" width="180" height="360" rx="22" fill="none" stroke="#2E5030" stroke-width="1" opacity="0.5"/>
+  <!-- notch -->
+  <rect x="148" y="48" width="44" height="8" rx="4" fill="#1E3022"/>
+  <!-- screen -->
+  <rect x="92" y="66" width="156" height="310" rx="10" fill="#0D1810"/>
+  <!-- app grid on phone -->
+  <rect x="104" y="82" width="132" height="30" rx="5" fill="#16A34A" opacity="0.3"/>
+  <rect x="110" y="88" width="80" height="8" rx="2" fill="#16A34A" opacity="0.9"/>
+  <rect x="110" y="100" width="50" height="5" rx="2" fill="#8A8478"/>
+  <!-- shape cards -->
+  <rect x="104" y="122" width="60" height="60" rx="8" fill="#1E3022" stroke="#2E5030" stroke-width="1"/>
+  <circle cx="134" cy="152" r="18" fill="#16A34A" opacity="0.5"/>
+  <circle cx="134" cy="152" r="10" fill="#16A34A"/>
+  <rect x="172" y="122" width="60" height="60" rx="8" fill="#1E3022" stroke="#2E5030" stroke-width="1"/>
+  <rect x="184" y="134" width="36" height="36" rx="4" fill="#F59E0B" opacity="0.6"/>
+  <rect x="190" y="140" width="24" height="24" rx="2" fill="#F59E0B"/>
+  <rect x="104" y="190" width="60" height="60" rx="8" fill="#1E3022" stroke="#2E5030" stroke-width="1"/>
+  <path d="M134 206 L150 232 L118 232 Z" fill="#EC4899" opacity="0.8"/>
+  <rect x="172" y="190" width="60" height="60" rx="8" fill="#1E3022" stroke="#2E5030" stroke-width="1"/>
+  <path d="M194 210 L202 220 L202 240 L194 250 L186 240 L186 220 Z" fill="#8B5CF6" opacity="0.8"/>
+  <!-- Bottom nav -->
+  <rect x="92" y="336" width="156" height="40" rx="6" fill="#1E3022"/>
+  <rect x="110" y="348" width="24" height="16" rx="3" fill="#16A34A" opacity="0.5"/>
+  <rect x="152" y="348" width="24" height="16" rx="3" fill="#2E5030"/>
+  <rect x="194" y="348" width="24" height="16" rx="3" fill="#2E5030"/>
+
+  <!-- Tablet frame right -->
+  <rect x="320" y="20" width="400" height="410" rx="16" fill="#121A14" stroke="#1E3022" stroke-width="2"/>
+  <!-- home button -->
+  <circle cx="520" cy="414" r="12" fill="#1E3022" stroke="#2E5030" stroke-width="1"/>
+  <!-- tablet screen -->
+  <rect x="334" y="34" width="372" height="366" rx="8" fill="#0D1810"/>
+  <!-- Header -->
+  <rect x="348" y="46" width="344" height="36" rx="6" fill="#16A34A" opacity="0.2"/>
+  <rect x="360" y="58" width="120" height="10" rx="3" fill="#16A34A" opacity="0.9"/>
+  <rect x="626" y="54" width="54" height="20" rx="5" fill="#16A34A"/>
+  <rect x="634" y="59" width="38" height="10" rx="2" fill="#0A1A0C"/>
+  <!-- Main lesson area -->
+  <rect x="348" y="92" width="344" height="200" rx="8" fill="#1E3022" stroke="#2E5030" stroke-width="1"/>
+  <!-- Large shape display -->
+  <rect x="360" y="104" width="80" height="8" rx="2" fill="#16A34A" opacity="0.7"/>
+  <circle cx="520" cy="192" r="68" fill="#16A34A" opacity="0.12"/>
+  <circle cx="520" cy="192" r="48" fill="#16A34A" opacity="0.2"/>
+  <circle cx="520" cy="192" r="32" fill="#16A34A" opacity="0.7"/>
+  <rect x="496" y="186" width="48" height="12" rx="3" fill="#0A1A0C" opacity="0.8"/>
+  <rect x="502" y="188" width="36" height="8" rx="2" fill="#EDE8DF" opacity="0.9"/>
+  <!-- Colour swatches -->
+  <rect x="348" y="302" width="344" height="52" rx="8" fill="#1a2c1c" stroke="#2E5030" stroke-width="1"/>
+  <rect x="360" y="314" width="40" height="28" rx="6" fill="#16A34A"/>
+  <rect x="408" y="314" width="40" height="28" rx="6" fill="#F59E0B"/>
+  <rect x="456" y="314" width="40" height="28" rx="6" fill="#EC4899"/>
+  <rect x="504" y="314" width="40" height="28" rx="6" fill="#8B5CF6"/>
+  <rect x="552" y="314" width="40" height="28" rx="6" fill="#3B82F6"/>
+  <rect x="600" y="314" width="40" height="28" rx="6" fill="#EF4444"/>
+  <!-- Progress bar -->
+  <rect x="348" y="362" width="344" height="28" rx="6" fill="#1E3022" stroke="#2E5030" stroke-width="1"/>
+  <rect x="348" y="362" width="230" height="28" rx="6" fill="#16A34A" opacity="0.4"/>
+  <rect x="360" y="370" width="60" height="8" rx="2" fill="#16A34A" opacity="0.8"/>
+  <rect x="638" y="370" width="40" height="8" rx="2" fill="#8A8478"/>
+</svg>

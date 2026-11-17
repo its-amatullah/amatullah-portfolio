@@ -1,0 +1,108 @@
+<svg width="320" height="360" viewBox="0 0 320 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cute small robot mascot holding a digital pen">
+  <title>Designer robot mascot — a rounded robot with a friendly face holding a digital pen</title>
+
+  <defs>
+    <!-- Body: soft lavender → deep purple -->
+    <linearGradient id="botBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"   stop-color="#D4C5FF"/>
+      <stop offset="0.5" stop-color="#A78BFA"/>
+      <stop offset="1"   stop-color="#7C3AED"/>
+    </linearGradient>
+    <!-- Top-left sheen for softness -->
+    <radialGradient id="botSheen" cx="0.3" cy="0.18" r="0.55">
+      <stop offset="0"   stop-color="#FFFFFF" stop-opacity="0.42"/>
+      <stop offset="0.6" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Face screen -->
+    <linearGradient id="botScreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#241a3e"/>
+      <stop offset="1" stop-color="#160f2e"/>
+    </linearGradient>
+    <!-- Soft purple halo glow -->
+    <radialGradient id="botGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"   stop-color="#A78BFA" stop-opacity="0.40"/>
+      <stop offset="1"   stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Digital pen barrel -->
+    <linearGradient id="botPen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F4EFE7"/>
+      <stop offset="1" stop-color="#C7BFD0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Soft purple halo behind the robot -->
+  <circle cx="160" cy="178" r="124" fill="url(#botGlow)"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="160" cy="300" rx="92" ry="15" fill="#7C3AED" opacity="0.18"/>
+
+  <!-- Feet (drawn before body so the body overlaps their tops) -->
+  <rect x="100" y="284" width="42" height="18" rx="9" fill="#5B21B6"/>
+  <rect x="178" y="284" width="42" height="18" rx="9" fill="#5B21B6"/>
+
+  <!-- Body: rounded capsule -->
+  <rect x="74" y="98" width="172" height="192" rx="46" fill="url(#botBody)"/>
+  <rect x="74" y="98" width="172" height="192" rx="46" fill="url(#botSheen)"/>
+
+  <!-- Antenna -->
+  <line x1="160" y1="98" x2="160" y2="62" stroke="#7C3AED" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="160" cy="54" r="13" fill="#C084FC" opacity="0.25"/>
+  <circle cx="160" cy="54" r="8" fill="#C084FC"/>
+  <circle cx="157" cy="51" r="2.4" fill="#FFFFFF" opacity="0.8"/>
+
+  <!-- Face screen / visor -->
+  <rect x="96" y="120" width="128" height="70" rx="22" fill="url(#botScreen)" stroke="rgba(167,139,250,0.35)" stroke-width="1.5"/>
+
+  <!-- Eyes -->
+  <circle cx="132" cy="150" r="12" fill="#EDE8DF"/>
+  <circle cx="188" cy="150" r="12" fill="#EDE8DF"/>
+  <!-- Pupils -->
+  <circle cx="134" cy="152" r="5.5" fill="#1B1726"/>
+  <circle cx="186" cy="152" r="5.5" fill="#1B1726"/>
+  <!-- Catchlights -->
+  <circle cx="136" cy="147" r="3" fill="#FFFFFF"/>
+  <circle cx="188" cy="147" r="3" fill="#FFFFFF"/>
+  <circle cx="129" cy="156" r="1.6" fill="#FFFFFF" opacity="0.7"/>
+  <circle cx="181" cy="156" r="1.6" fill="#FFFFFF" opacity="0.7"/>
+
+  <!-- Smile (digital, soft glowing) -->
+  <path d="M 144 167 Q 160 180 176 167" stroke="#C084FC" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+
+  <!-- Cheeks -->
+  <ellipse cx="106" cy="176" rx="9" ry="6" fill="#F9A8D4" opacity="0.45"/>
+  <ellipse cx="214" cy="176" rx="9" ry="6" fill="#F9A8D4" opacity="0.45"/>
+
+  <!-- Chest panel -->
+  <rect x="126" y="204" width="68" height="22" rx="8" fill="#160f2e" fill-opacity="0.45" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+  <circle cx="140" cy="215" r="7" fill="#A78BFA" opacity="0.3"/>
+  <circle cx="140" cy="215" r="4" fill="#A78BFA"/>
+  <rect x="152" y="211" width="34" height="3" rx="1.5" fill="rgba(237,232,223,0.4)"/>
+  <rect x="152" y="218" width="22" height="3" rx="1.5" fill="rgba(237,232,223,0.22)"/>
+
+  <!-- Left arm (resting) -->
+  <rect x="54" y="190" width="22" height="14" rx="7" fill="#8B5CF6"/>
+  <circle cx="56" cy="197" r="8" fill="#BFA8FF"/>
+
+  <!-- Digital pen (held to the right) -->
+  <g>
+    <!-- cap -->
+    <rect x="255" y="104" width="14" height="7" rx="3.5" fill="#8B5CF6"/>
+    <!-- barrel -->
+    <rect x="255" y="111" width="14" height="86" rx="7" fill="url(#botPen)"/>
+    <!-- clip -->
+    <rect x="255" y="128" width="3" height="20" rx="1.5" fill="#A78BFA"/>
+    <!-- nib collar -->
+    <rect x="257.4" y="197" width="9.2" height="10" rx="2" fill="#A78BFA"/>
+    <!-- nib tip -->
+    <path d="M 262 207 L 266 222 L 258 222 Z" fill="#EDE8DF"/>
+    <!-- glowing digital tip -->
+    <circle cx="262" cy="225" r="6" fill="#A78BFA" opacity="0.45"/>
+    <circle cx="262" cy="225" r="2.6" fill="#C084FC"/>
+    <!-- top dot -->
+    <circle cx="262" cy="101" r="2.4" fill="#C084FC"/>
+  </g>
+
+  <!-- Right arm + hand gripping the pen (drawn on top of the barrel) -->
+  <rect x="244" y="143" width="22" height="14" rx="7" fill="#8B5CF6"/>
+  <circle cx="262" cy="150" r="8.5" fill="#BFA8FF"/>
+</svg>

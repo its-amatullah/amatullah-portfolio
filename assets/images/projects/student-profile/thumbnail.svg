@@ -1,0 +1,90 @@
+﻿<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#07101E"/>
+  <!-- Ambient glow -->
+  <ellipse cx="600" cy="200" rx="260" ry="180" fill="#7C3AED" opacity="0.07"/>
+
+  <!-- Master list panel -->
+  <rect x="20" y="20" width="220" height="410" rx="10" fill="#0D1826" stroke="#162236" stroke-width="1"/>
+  <rect x="20" y="20" width="220" height="44" rx="10" fill="#112035"/>
+  <rect x="36" y="34" width="90" height="10" rx="3" fill="#EDE8DF" opacity="0.8"/>
+  <!-- Search bar -->
+  <rect x="36" y="72" width="188" height="26" rx="6" fill="#07101E" stroke="#162236" stroke-width="1"/>
+  <rect x="48" y="80" width="10" height="10" rx="2" fill="#545148"/>
+  <rect x="64" y="82" width="70" height="6" rx="2" fill="#545148"/>
+
+  <!-- List rows -->
+  <!-- Active row -->
+  <rect x="20" y="104" width="220" height="44" fill="#1A2F4A"/>
+  <rect x="20" y="104" width="4" height="44" fill="#A78BFA"/>
+  <circle cx="46" cy="126" r="12" fill="#1E3A5A"/>
+  <rect x="38" y="121" width="16" height="10" rx="3" fill="#A78BFA" opacity="0.5"/>
+  <rect x="64" y="118" width="80" height="8" rx="2" fill="#EDE8DF" opacity="0.9"/>
+  <rect x="64" y="130" width="55" height="6" rx="2" fill="#8A8478"/>
+
+  <!-- Other rows -->
+  <rect x="36" y="158" width="12" height="12" rx="3" fill="#162236"/>
+  <circle cx="42" cy="164" r="6" fill="#162236"/>
+  <rect x="56" y="160" width="80" height="7" rx="2" fill="#8A8478" opacity="0.7"/>
+  <rect x="56" y="171" width="55" height="5" rx="2" fill="#545148"/>
+
+  <rect x="36" y="184" width="12" height="12" rx="3" fill="#162236"/>
+  <rect x="56" y="186" width="70" height="7" rx="2" fill="#8A8478" opacity="0.5"/>
+  <rect x="56" y="197" width="45" height="5" rx="2" fill="#545148"/>
+
+  <rect x="36" y="208" width="12" height="12" rx="3" fill="#162236"/>
+  <rect x="56" y="210" width="90" height="7" rx="2" fill="#8A8478" opacity="0.4"/>
+  <rect x="56" y="221" width="60" height="5" rx="2" fill="#545148"/>
+
+  <rect x="36" y="232" width="12" height="12" rx="3" fill="#162236"/>
+  <rect x="56" y="234" width="75" height="7" rx="2" fill="#8A8478" opacity="0.3"/>
+
+  <rect x="36" y="256" width="12" height="12" rx="3" fill="#162236"/>
+  <rect x="56" y="258" width="85" height="7" rx="2" fill="#8A8478" opacity="0.25"/>
+
+  <!-- Detail panel -->
+  <rect x="256" y="20" width="524" height="410" rx="10" fill="#0D1826" stroke="#162236" stroke-width="1"/>
+
+  <!-- Panel header -->
+  <rect x="256" y="20" width="524" height="52" rx="10" fill="#112035"/>
+  <rect x="276" y="32" width="140" height="12" rx="3" fill="#EDE8DF" opacity="0.9"/>
+  <rect x="680" y="30" width="84" height="30" rx="6" fill="#A78BFA"/>
+  <rect x="694" y="39" width="56" height="10" rx="2" fill="#07101E"/>
+
+  <!-- Section: Identity -->
+  <rect x="276" y="88" width="484" height="88" rx="8" fill="#0A1420" stroke="#162236" stroke-width="1"/>
+  <rect x="292" y="98" width="100" height="8" rx="2" fill="#A78BFA" opacity="0.8"/>
+  <line x1="292" y1="112" x2="744" y2="112" stroke="#162236" stroke-width="1"/>
+  <rect x="292" y="120" width="220" height="22" rx="5" fill="#07101E" stroke="#162236" stroke-width="1"/>
+  <rect x="300" y="127" width="100" height="8" rx="2" fill="#EDE8DF" opacity="0.6"/>
+  <rect x="524" y="120" width="220" height="22" rx="5" fill="#07101E" stroke="#A78BFA" stroke-width="1" opacity="0.6"/>
+  <rect x="532" y="127" width="130" height="8" rx="2" fill="#EDE8DF" opacity="0.8"/>
+  <circle cx="736" cy="131" r="5" fill="#A78BFA"/>
+
+  <!-- Section: Academic Info -->
+  <rect x="276" y="186" width="484" height="88" rx="8" fill="#0A1420" stroke="#162236" stroke-width="1"/>
+  <rect x="292" y="196" width="110" height="8" rx="2" fill="#8A8478"/>
+  <line x1="292" y1="210" x2="744" y2="210" stroke="#162236" stroke-width="1"/>
+  <rect x="292" y="218" width="220" height="22" rx="5" fill="#07101E" stroke="#162236" stroke-width="1"/>
+  <rect x="300" y="225" width="90" height="8" rx="2" fill="#EDE8DF" opacity="0.5"/>
+  <rect x="524" y="218" width="220" height="22" rx="5" fill="#07101E" stroke="#162236" stroke-width="1"/>
+  <rect x="532" y="225" width="80" height="8" rx="2" fill="#EDE8DF" opacity="0.5"/>
+  <rect x="292" y="246" width="220" height="22" rx="5" fill="#07101E" stroke="#162236" stroke-width="1"/>
+  <rect x="300" y="253" width="70" height="8" rx="2" fill="#EDE8DF" opacity="0.5"/>
+
+  <!-- Section: Primary Contact -->
+  <rect x="276" y="284" width="484" height="88" rx="8" fill="#0A1420" stroke="#162236" stroke-width="1"/>
+  <rect x="292" y="294" width="120" height="8" rx="2" fill="#A78BFA" opacity="0.5"/>
+  <line x1="292" y1="308" x2="744" y2="308" stroke="#162236" stroke-width="1"/>
+  <rect x="292" y="316" width="220" height="22" rx="5" fill="#07101E" stroke="#162236" stroke-width="1"/>
+  <rect x="300" y="323" width="140" height="8" rx="2" fill="#EDE8DF" opacity="0.6"/>
+  <rect x="524" y="316" width="220" height="22" rx="5" fill="#07101E" stroke="#162236" stroke-width="1"/>
+  <rect x="532" y="323" width="110" height="8" rx="2" fill="#EDE8DF" opacity="0.6"/>
+  <rect x="292" y="344" width="220" height="22" rx="5" fill="#07101E" stroke="#162236" stroke-width="1"/>
+  <rect x="300" y="351" width="90" height="8" rx="2" fill="#EDE8DF" opacity="0.5"/>
+
+  <!-- Section: Secondary Contact — greyed -->
+  <rect x="276" y="382" width="484" height="38" rx="8" fill="#0A1420" stroke="#162236" stroke-width="1" opacity="0.6"/>
+  <rect x="292" y="394" width="130" height="8" rx="2" fill="#545148"/>
+  <rect x="692" y="390" width="20" height="20" rx="4" fill="#162236"/>
+  <rect x="698" y="396" width="8" height="8" rx="2" fill="#545148"/>
+</svg>

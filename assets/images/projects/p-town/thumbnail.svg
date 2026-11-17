@@ -1,0 +1,83 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#06100A"/>
+  <!-- Board background -->
+  <rect x="40" y="20" width="720" height="410" rx="16" fill="#0C1A10" stroke="#1A3020" stroke-width="2"/>
+  <!-- Board title -->
+  <rect x="60" y="34" width="150" height="22" rx="6" fill="#16A34A" opacity="0.3"/>
+  <rect x="68" y="40" width="134" height="10" rx="3" fill="#16A34A" opacity="0.9"/>
+  <rect x="560" y="34" width="200" height="22" rx="6" fill="#1A3020"/>
+  <rect x="572" y="40" width="130" height="10" rx="3" fill="#16A34A" opacity="0.4"/>
+
+  <!-- Board path track -->
+  <!-- Outer track squares - top row -->
+  <rect x="60" y="66" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="122" y="66" width="56" height="56" rx="4" fill="#112218" stroke="#16A34A" stroke-width="1.5"/>
+  <rect x="184" y="66" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="246" y="66" width="56" height="56" rx="4" fill="#1A3020" stroke="#1A3020" stroke-width="1"/>
+  <rect x="308" y="66" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="370" y="66" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="432" y="66" width="56" height="56" rx="4" fill="#1A3020" stroke="#1A3020" stroke-width="1"/>
+  <rect x="494" y="66" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="556" y="66" width="56" height="56" rx="4" fill="#112218" stroke="#F59E0B" stroke-width="1.5"/>
+  <rect x="618" y="66" width="62" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <!-- Right column -->
+  <rect x="618" y="128" width="62" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="618" y="190" width="62" height="56" rx="4" fill="#1A3020" stroke="#1A3020" stroke-width="1"/>
+  <rect x="618" y="252" width="62" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="618" y="314" width="62" height="56" rx="4" fill="#112218" stroke="#EC4899" stroke-width="1.5"/>
+  <!-- Bottom row (right to left) -->
+  <rect x="556" y="314" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="494" y="314" width="56" height="56" rx="4" fill="#1A3020" stroke="#1A3020" stroke-width="1"/>
+  <rect x="432" y="314" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="370" y="314" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="308" y="314" width="56" height="56" rx="4" fill="#1A3020" stroke="#1A3020" stroke-width="1"/>
+  <rect x="246" y="314" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="184" y="314" width="56" height="56" rx="4" fill="#112218" stroke="#F59E0B" stroke-width="1.5"/>
+  <rect x="122" y="314" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <!-- Left column -->
+  <rect x="60" y="314" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="60" y="252" width="56" height="56" rx="4" fill="#112218" stroke="#16A34A" stroke-width="1.5"/>
+  <rect x="60" y="190" width="56" height="56" rx="4" fill="#1A3020" stroke="#1A3020" stroke-width="1"/>
+  <rect x="60" y="128" width="56" height="56" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+
+  <!-- Inner board / map area -->
+  <rect x="122" y="128" width="490" height="180" rx="8" fill="#0A1A0C" stroke="#1A3020" stroke-width="1"/>
+  <!-- Pune map outline representation -->
+  <path d="M180 200 Q220 160 280 180 Q340 200 380 190 Q420 180 460 200 Q500 220 540 200 Q570 185 580 220" stroke="#16A34A" stroke-width="2" fill="none" opacity="0.4"/>
+  <circle cx="280" cy="195" r="8" fill="#16A34A" opacity="0.3"/>
+  <circle cx="280" cy="195" r="4" fill="#16A34A"/>
+  <circle cx="400" cy="210" r="8" fill="#F59E0B" opacity="0.3"/>
+  <circle cx="400" cy="210" r="4" fill="#F59E0B"/>
+  <circle cx="540" cy="202" r="8" fill="#EC4899" opacity="0.3"/>
+  <circle cx="540" cy="202" r="4" fill="#EC4899"/>
+  <rect x="250" y="240" width="80" height="22" rx="4" fill="#16A34A" opacity="0.2" stroke="#16A34A" stroke-width="1"/>
+  <rect x="258" y="248" width="64" height="8" rx="2" fill="#16A34A" opacity="0.8"/>
+  <rect x="370" y="240" width="80" height="22" rx="4" fill="#F59E0B" opacity="0.2" stroke="#F59E0B" stroke-width="1"/>
+  <rect x="378" y="248" width="64" height="8" rx="2" fill="#F59E0B" opacity="0.8"/>
+  <rect x="490" y="240" width="80" height="22" rx="4" fill="#EC4899" opacity="0.2" stroke="#EC4899" stroke-width="1"/>
+  <rect x="498" y="248" width="64" height="8" rx="2" fill="#EC4899" opacity="0.8"/>
+
+  <!-- Player tokens on board -->
+  <circle cx="150" cy="94" r="14" fill="#16A34A"/>
+  <rect x="143" y="89" width="14" height="10" rx="3" fill="#06100A" opacity="0.6"/>
+  <circle cx="586" cy="94" r="14" fill="#F59E0B"/>
+  <rect x="579" y="89" width="14" height="10" rx="3" fill="#06100A" opacity="0.6"/>
+  <circle cx="646" cy="336" r="14" fill="#EC4899"/>
+  <rect x="639" y="331" width="14" height="10" rx="3" fill="#06100A" opacity="0.6"/>
+
+  <!-- Dice in corner -->
+  <rect x="666" y="250" width="44" height="44" rx="8" fill="#16A34A" opacity="0.2" stroke="#16A34A" stroke-width="1.5"/>
+  <circle cx="676" cy="260" r="3" fill="#16A34A"/>
+  <circle cx="700" cy="260" r="3" fill="#16A34A"/>
+  <circle cx="688" cy="272" r="3" fill="#16A34A"/>
+  <circle cx="676" cy="284" r="3" fill="#16A34A"/>
+  <circle cx="700" cy="284" r="3" fill="#16A34A"/>
+
+  <!-- Card stack -->
+  <rect x="666" y="130" width="44" height="60" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="670" y="134" width="44" height="60" rx="4" fill="#112218" stroke="#1A3020" stroke-width="1"/>
+  <rect x="674" y="138" width="44" height="60" rx="4" fill="#1a3822" stroke="#16A34A" stroke-width="1"/>
+  <rect x="680" y="150" width="32" height="6" rx="2" fill="#16A34A" opacity="0.7"/>
+  <rect x="680" y="162" width="22" height="5" rx="2" fill="#16A34A" opacity="0.4"/>
+  <rect x="680" y="174" width="28" height="5" rx="2" fill="#16A34A" opacity="0.3"/>
+</svg>

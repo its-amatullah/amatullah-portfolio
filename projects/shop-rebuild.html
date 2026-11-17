@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shop Rebuild — redesigning a complex payment module from a fragmented form into a clear, structured multi-step flow." />
+  <title>Shop Rebuild · Amatullah Andamanwala</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Fragment+Mono&family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/sections.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/case-study.css" />
+  <style>
+    .cs-preview-frame {
+      width: 100%;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--color-surface);
+      margin-top: var(--space-8);
+    }
+    .cs-preview-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-5);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-surface-raise);
+    }
+    .cs-preview-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-border); }
+    .cs-preview-url { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted); letter-spacing: 0.04em; }
+    .cs-preview-frame iframe { width: 100%; height: 680px; border: none; display: block; }
+    .cs-preview-open { margin-left: auto; font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-lime); text-decoration: none; transition: opacity var(--dur-fast); }
+    .cs-preview-open:hover { opacity: 0.7; }
+    .cs-version-tabs { display: flex; gap: var(--space-2); margin-bottom: var(--space-6); }
+    .cs-version-tab { padding: var(--space-2) var(--space-5); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--color-border); border-radius: var(--radius-full); color: var(--color-text-muted); cursor: pointer; background: transparent; transition: all var(--dur-fast); }
+    .cs-version-tab.is-active { background: var(--color-accent-lime); border-color: var(--color-accent-lime); color: #F8E8E9; }
+    @media (max-width: 768px) { .cs-preview-frame iframe { height: 420px; } }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <nav id="main-nav" class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="../index.html" class="nav__logo">AA<span>.</span></a>
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html#work"    class="nav__link">Work</a></li>
+        <li><a href="../index.html#about"   class="nav__link">About</a></li>
+        <li><a href="../index.html#process" class="nav__link">Process</a></li>
+      </ul>
+      <a href="mailto:amatullah1605@gmail.com" class="btn btn-ghost nav__cta">Say Hello</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="cs-hero">
+      <div class="container">
+        <a href="../index.html#work" class="cs-hero__back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          All Work
+        </a>
+        <p class="cs-hero__label">Professional · SaaS Form Redesign</p>
+        <h1 class="cs-hero__title">Shop Rebuild</h1>
+        <p class="cs-hero__tagline">Redesigning a complex multi-step payment creation flow — cleaner structure, better grouping, and a clear before-and-after comparison.</p>
+        <div class="cs-hero__meta">
+          <div class="cs-hero__meta-item">
+            <span class="cs-hero__meta-label">Year</span>
+            <span class="cs-hero__meta-value">2026</span>
+          </div>
+          <div class="cs-hero__meta-item">
+            <span class="cs-hero__meta-label">Role</span>
+            <span class="cs-hero__meta-value">UI/UX Designer</span>
+          </div>
+          <div class="cs-hero__meta-item">
+            <span class="cs-hero__meta-label">Tools</span>
+            <span class="cs-hero__meta-value">Figma · HTML/CSS</span>
+          </div>
+          <div class="cs-hero__meta-item">
+            <span class="cs-hero__meta-label">Type</span>
+            <span class="cs-hero__meta-value">Web Application — Form UX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="cs-body">
+
+        <aside class="cs-sidebar" aria-label="Page sections">
+          <a href="#overview"  class="cs-sidebar__link is-active">Overview</a>
+          <a href="#problem"   class="cs-sidebar__link">The Problem</a>
+          <a href="#v1"        class="cs-sidebar__link">Original (V1)</a>
+          <a href="#v2"        class="cs-sidebar__link">Redesign (V2)</a>
+        </aside>
+
+        <div class="cs-content">
+
+          <section id="overview" class="cs-section reveal">
+            <p class="cs-section__label">Overview</p>
+            <h2 class="cs-section__heading">Before &amp; after</h2>
+            <p class="cs-section__text">
+              This project involved redesigning a payment item creation flow that had accumulated complexity over time. The original flow had grown difficult to navigate — too many fields visible simultaneously, inconsistent field grouping, and unclear step progression for administrators setting up payments.
+            </p>
+            <p class="cs-section__text">
+              The redesign produced a cleaner stepped layout, better separation of user-facing and internal information, and improved labelling throughout. Both versions exist as functional HTML prototypes — shown below for direct comparison.
+            </p>
+          </section>
+
+          <section id="problem" class="cs-section reveal">
+            <p class="cs-section__label">The Problem</p>
+            <h2 class="cs-section__heading">Complexity without clarity</h2>
+            <p class="cs-section__text">
+              The original form presented all configuration options on a single long page — payment type, pricing, order limits, variants, recipient settings, consent options, and a review step — with no clear visual hierarchy between steps and no distinction between what administrators configure internally versus what users see.
+            </p>
+            <div class="cs-scope" style="margin-top: var(--space-6);">
+              <span class="cs-scope__item">Payment information</span>
+              <span class="cs-scope__item">Payment type selection</span>
+              <span class="cs-scope__item">Pricing &amp; account codes</span>
+              <span class="cs-scope__item">Order limits</span>
+              <span class="cs-scope__item">Attachments</span>
+              <span class="cs-scope__item">Recipients &amp; access</span>
+              <span class="cs-scope__item">Consent &amp; notifications</span>
+              <span class="cs-scope__item">Review step</span>
+            </div>
+          </section>
+
+          <section id="v1" class="cs-section reveal">
+            <p class="cs-section__label">Original — V1</p>
+            <h2 class="cs-section__heading">The starting point</h2>
+            <p class="cs-section__text">
+              The original design. Browse through the full creation flow to understand the structure and complexity before the redesign.
+            </p>
+            <div class="cs-preview-frame">
+              <div class="cs-preview-bar">
+                <span class="cs-preview-dot"></span>
+                <span class="cs-preview-dot"></span>
+                <span class="cs-preview-dot"></span>
+                <span class="cs-preview-url">Shop — Original (V1)</span>
+                <a href="../designs/shop-rebuild/shop-rebuild.html" target="_blank" class="cs-preview-open" aria-label="Open V1 prototype in new tab">Open ?</a>
+              </div>
+              <iframe src="../designs/shop-rebuild/shop-rebuild.html"
+                      title="Shop rebuild original prototype V1"
+                      loading="lazy"
+                      sandbox="allow-scripts allow-same-origin"></iframe>
+            </div>
+          </section>
+
+          <section id="v2" class="cs-section reveal">
+            <p class="cs-section__label">Redesign — V2</p>
+            <h2 class="cs-section__heading">The redesign</h2>
+            <p class="cs-section__text">
+              The redesigned flow. Key changes: clearer step labels, better field grouping, separation of internal (school-use) and user-facing information, improved hierarchy within pricing, and a parent app preview panel showing what users actually see.
+            </p>
+            <div class="cs-preview-frame">
+              <div class="cs-preview-bar">
+                <span class="cs-preview-dot"></span>
+                <span class="cs-preview-dot"></span>
+                <span class="cs-preview-dot"></span>
+                <span class="cs-preview-url">Shop — Redesign (V2)</span>
+                <a href="../designs/shop-rebuild/payment-flow.html" target="_blank" class="cs-preview-open" aria-label="Open V2 prototype in new tab">Open ?</a>
+              </div>
+              <iframe src="../designs/shop-rebuild/payment-flow.html"
+                      title="Shop rebuild redesign prototype V2"
+                      loading="lazy"
+                      sandbox="allow-scripts allow-same-origin"></iframe>
+            </div>
+
+            <div class="cs-note" style="margin-top: var(--space-8);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="flex-shrink:0;color:var(--color-text-muted)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <p>Professional project — client details anonymised. Prototypes use placeholder data only.</p>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+    <section class="cs-next">
+      <div class="container">
+        <p class="cs-next__label">Next Project</p>
+        <a href="student-profile.html" class="cs-next__link">
+          Student Profile
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <span class="footer__brand">Amatullah Andamanwala</span>
+      <p class="footer__meta">Designed &amp; built by Amatullah · &copy; <span class="js-year"></span></p>
+      <nav class="footer__social" aria-label="Social links">
+        <a href="mailto:amatullah1605@gmail.com" class="footer__social-link" aria-label="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script defer src="../js/case-study.js"></script>
+</body>
+</html>
