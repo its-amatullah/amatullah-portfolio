@@ -681,3 +681,10 @@ p { color: var(--color-text-secondary); }
   background: transparent;
   mix-blend-mode: normal;
 }
+
+
+/* Keep the portrait static on hover. */
+.hero__portrait-tilt:hover .hero__spot-mascot {
+  animation: none;
+  transform: none;
+}
