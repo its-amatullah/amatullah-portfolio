@@ -674,3 +674,10 @@ p { color: var(--color-text-secondary); }
   .modal__gallery { grid-template-columns: 1fr; }
   .modal__actions { align-items: flex-start; flex-direction: column; }
 }
+
+
+/* Keep the transparent portrait asset free of a blended rectangular backdrop. */
+.hero__spot-mascot {
+  background: transparent;
+  mix-blend-mode: normal;
+}
