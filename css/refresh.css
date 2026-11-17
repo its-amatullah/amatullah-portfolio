@@ -364,6 +364,14 @@ p { color: var(--color-text-secondary); }
   background: #d9e0f4;
   clip-path: polygon(50% 0, 96% 13%, 100% 56%, 78% 93%, 33% 100%, 3% 72%, 0 25%);
   transform: rotate(4deg);
+  animation: portrait-field-drift 9s ease-in-out infinite;
+}
+@keyframes portrait-field-drift {
+  0%, 100% { background-color: #d9e0f4; transform: rotate(4deg) scale(1); }
+  50% { background-color: #d2daf1; transform: rotate(2.5deg) scale(1.015); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__spot::before { animation: none; }
 }
 .hero__portrait-tilt { z-index: 1; }
 .hero__spot::after {
@@ -567,110 +575,3 @@ p { color: var(--color-text-secondary); }
   .hero__spot { min-height: 360px; }
 }
 
-
-
-/* Keep case studies inside the portfolio and within its editorial palette. */
-.modal-backdrop {
-  background: rgba(29, 33, 29, 0.72);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-.modal { padding: clamp(1rem, 4vw, 3rem); }
-.modal__panel {
-  position: relative;
-  max-width: 960px;
-  border: 1px solid var(--color-border);
-  border-radius: 0;
-  background: var(--color-surface);
-  box-shadow: 10px 10px 0 rgba(29, 33, 29, 0.14);
-}
-.modal__cover { background: var(--color-surface-raise); }
-.modal__cover-img { display: block; object-fit: cover; }
-.modal__cover-fallback { width: 100%; height: 100%; min-height: 180px; }
-.project-card__cover--fallback { display: grid; place-items: center; }
-.modal__body { padding: clamp(1.5rem, 5vw, 4rem); }
-.modal__close {
-  top: 1rem;
-  right: 1rem;
-  border-radius: 0;
-  background: var(--color-surface);
-  color: var(--color-text-primary);
-}
-.modal__title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 400;
-  letter-spacing: -0.035em;
-}
-.modal__section-heading { color: var(--color-accent-lime); }
-.modal__text { color: var(--color-text-secondary); }
-
-
-/* The hero caption is redundant with the role badge and status line. */
-.hero__spot::after { content: none; }
-
-
-/* Show complete project artwork in cards and case-study overlays. */
-.project-card__cover { background: var(--color-surface-raise); }
-.project-card__img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  mix-blend-mode: normal;
-}
-.project-card:hover .project-card__img { transform: none; }
-.modal__cover-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
-
-
-/* Full case-study content and project links inside the project detail modal. */
-.modal__actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.9rem;
-  margin: 1.5rem 0 2rem;
-}
-.modal__actions .btn { text-decoration: none; }
-.modal__live-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem 1.2rem;
-}
-.modal__live-links a {
-  color: var(--color-accent-violet);
-  font: 0.72rem var(--font-mono);
-  letter-spacing: 0.03em;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-.modal__gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  padding: 0 clamp(1rem, 4vw, 2.5rem) clamp(1.5rem, 3vw, 2rem);
-}
-.modal__gallery[hidden] { display: none; }
-.modal__gallery-item {
-  min-width: 0;
-  margin: 0;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface-raise);
-}
-.modal__gallery-item img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 480px;
-  object-fit: contain;
-  object-position: center;
-}
-@media (max-width: 640px) {
-  .modal__gallery { grid-template-columns: 1fr; }
-  .modal__actions { align-items: flex-start; flex-direction: column; }
-}
