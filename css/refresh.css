@@ -302,7 +302,7 @@ p { color: var(--color-text-secondary); }
 .hero__role-dot { background: var(--color-accent-lime); border-radius: 0; transform: rotate(45deg); }
 .hero__name {
   font-family: var(--font-heading);
-  font-size: clamp(4rem, 8vw, 7.8rem);
+  font-size: clamp(3.4rem, 5.8vw, 4.8rem);
   font-weight: 800;
   line-height: 0.82;
   letter-spacing: -0.085em;
@@ -525,7 +525,7 @@ p { color: var(--color-text-secondary); }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .hero__name { font-size: clamp(4rem, 8vw, 6.2rem); }
+  .hero__name { font-size: clamp(3.4rem, 5.8vw, 4.8rem); }
   .hero__spot { min-height: 360px; }
 }
 
