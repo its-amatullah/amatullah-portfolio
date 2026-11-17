@@ -638,3 +638,23 @@ p { color: var(--color-text-secondary); }
 @media (prefers-reduced-motion: reduce) {
   .hero__portrait-tilt:hover .hero__spot-mascot { animation: none; }
 }
+
+
+/* Black line-art portrait: hover movement changes shape subtly, never its color. */
+.hero__spot-mascot,
+.hero__portrait-tilt:hover .hero__spot-mascot {
+  filter: none;
+  mix-blend-mode: multiply;
+  animation: none;
+}
+.hero__portrait-tilt:hover .hero__spot-mascot {
+  animation: portrait-black-breathe 3.6s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+@keyframes portrait-black-breathe {
+  0%, 100% { transform: translateZ(0) scale(1); }
+  50% { transform: translateZ(0) scale(1.012); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__portrait-tilt:hover .hero__spot-mascot { animation: none; }
+}
