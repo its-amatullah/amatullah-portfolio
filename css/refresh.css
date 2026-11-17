@@ -658,3 +658,43 @@ p { color: var(--color-text-secondary); }
 @media (prefers-reduced-motion: reduce) {
   .hero__portrait-tilt:hover .hero__spot-mascot { animation: none; }
 }
+
+
+/* Restore the original softly tinted portrait artwork. */
+.hero__spot-mascot,
+.hero__portrait-tilt:hover .hero__spot-mascot {
+  filter:
+    invert(1)
+    brightness(0.82)
+    sepia(0.18)
+    hue-rotate(310deg)
+    saturate(1.1)
+    contrast(1.15)
+    drop-shadow(0 2px 4px rgba(255,183,197,0.36))
+    drop-shadow(0 8px 20px rgba(255,120,160,0.18))
+    drop-shadow(0 24px 56px rgba(130,60,120,0.14));
+  mix-blend-mode: screen;
+  animation: none;
+}
+.hero__portrait-tilt:hover .hero__spot-mascot {
+  animation: portrait-color-breathe 3.6s ease-in-out infinite;
+}
+@keyframes portrait-color-breathe {
+  0%, 100% {
+    filter: invert(1) brightness(0.82) sepia(0.18) hue-rotate(310deg) saturate(1.1) contrast(1.15)
+      drop-shadow(0 2px 4px rgba(255,183,197,0.36))
+      drop-shadow(0 8px 20px rgba(255,120,160,0.18))
+      drop-shadow(0 24px 56px rgba(130,60,120,0.14));
+    transform: translateZ(0) scale(1);
+  }
+  50% {
+    filter: invert(1) brightness(0.84) sepia(0.18) hue-rotate(310deg) saturate(1.18) contrast(1.15)
+      drop-shadow(0 2px 4px rgba(255,183,197,0.36))
+      drop-shadow(0 8px 20px rgba(255,120,160,0.18))
+      drop-shadow(0 24px 56px rgba(130,60,120,0.14));
+    transform: translateZ(0) scale(1.012);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__portrait-tilt:hover .hero__spot-mascot { animation: none; }
+}
