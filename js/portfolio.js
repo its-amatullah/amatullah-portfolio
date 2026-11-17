@@ -366,6 +366,11 @@
       img.loading     = 'lazy';
       img.width       = 800;
       img.height      = 450;
+      img.addEventListener('error', function () {
+        cover.style.background = project.coverGradient;
+        cover.classList.add('project-card__cover--fallback');
+        img.remove();
+      }, { once: true });
       cover.appendChild(img);
     } else {
       var ph = document.createElement('div');
@@ -384,7 +389,7 @@
     overlay.setAttribute('aria-hidden', 'true');
     var cta = document.createElement('span');
     cta.className = 'project-card__cta';
-    cta.innerHTML = (project.casePage ? 'View Case Study' : 'View Details') + ' <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+    cta.innerHTML = (project.casePage ? 'View Details') + ' <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
     overlay.appendChild(cta);
     cover.appendChild(overlay);
 
@@ -419,20 +424,12 @@
     card.appendChild(body);
 
     card.addEventListener('click', function () {
-      if (project.casePage) {
-        window.location.href = project.casePage;
-      } else {
-        openModal(project.id, card);
-      }
+      openModal(project.id, card);
     });
     card.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        if (project.casePage) {
-          window.location.href = project.casePage;
-        } else {
-          openModal(project.id, card);
-        }
+        openModal(project.id, card);
       }
     });
 
@@ -486,6 +483,13 @@
       img2.alt    = project.title + ' cover image';
       img2.width  = 1200;
       img2.height = 525;
+      img2.addEventListener('error', function () {
+        var fallback = document.createElement('div');
+        fallback.className = 'modal__cover-fallback';
+        fallback.style.background = project.coverGradient;
+        coverEl.innerHTML = '';
+        coverEl.appendChild(fallback);
+      }, { once: true });
       coverEl.appendChild(img2);
     } else {
       var ph2 = document.createElement('div');
