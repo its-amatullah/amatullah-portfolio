@@ -524,7 +524,7 @@
         previewLink.className = 'locker-interior__preview';
         previewLink.href = preview.href;
         previewLink.textContent = preview.label + ' ↗';
-        if (/^https?:\\/\\//i.test(preview.href)) {
+        if (preview.href.indexOf('http://') === 0 || preview.href.indexOf('https://') === 0) {
           previewLink.target = '_blank';
           previewLink.rel = 'noopener';
         }
