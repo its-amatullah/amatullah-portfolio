@@ -1561,17 +1561,19 @@
 #home .hero__role {
   display:flex;
   align-items:center;
-  gap:.5rem;
-  margin:0;
-  padding:0;
+  gap:.65rem;
+  width:fit-content;
+  margin:.45rem 0 0;
+  padding:0 0 .75rem;
   border:0;
+  border-bottom:2px solid var(--color-accent);
   color:var(--color-accent);
   background:transparent;
-  font:700 .65rem var(--font-mono);
-  letter-spacing:.09em;
+  font:700 clamp(.98rem,1.45vw,1.3rem)/1.15 var(--font-mono);
+  letter-spacing:.035em;
   text-transform:uppercase;
 }
-#home .hero__role-dot { width:.42rem; height:.42rem; background:var(--color-accent); box-shadow:none; }
+#home .hero__role-dot { width:.58rem; height:.58rem; flex:0 0 auto; background:var(--color-accent); box-shadow:none; }
 #home .hero__quote {
   margin:1.25rem 0 0;
   padding:1rem 0 0;
@@ -2014,17 +2016,10 @@
   }
   #home .hero__intro-label { grid-column:1/-1; }
   #home .hero__intro-hello { max-width:none; margin:.75rem 0 .3rem; font-size:clamp(1.7rem,7vw,2.3rem); }
-  #home .hero__role { align-self:end; margin:0 0 .6rem; font-size:.57rem; }
+  #home .hero__role { align-self:end; margin:.45rem 0 .3rem; font-size:clamp(.78rem,2.1vw,.95rem); }
   #home .hero__quote { grid-column:1/-1; margin:.4rem 0 0; padding:.7rem 0 0; font-size:.86rem; }
   #home .hero__what { grid-column:1/-1; margin-top:.75rem; padding-top:.65rem; }
   #home .hero__what p { margin-top:.3rem; font-size:.72rem; }
-  #home .hero__info {
-    grid-column:1/-1;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    margin:.75rem 0;
-  }
-  #home .hero__info li { grid-template-columns:1fr; gap:.12rem; padding:.5rem .35rem; }
-  #home .hero__info-value { font-size:.68rem; }
   #home .hero__actions { grid-column:1/-1; gap:.5rem; }
   #home .hero__actions .btn { min-height:2.9rem; padding-inline:.85rem; font-size:.66rem; }
   #home .hero__cue { margin-top:.8rem; }
