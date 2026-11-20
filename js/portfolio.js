@@ -589,10 +589,12 @@
 
     window.requestAnimationFrame(function () {
       panel.classList.add('is-visible');
-      panel.scrollIntoView({
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-        block: 'nearest'
-      });
+      window.setTimeout(function () {
+        panel.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+          block: 'nearest'
+        });
+      }, 220);
     });
   }
 
