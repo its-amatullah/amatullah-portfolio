@@ -1105,3 +1105,12 @@ body {
 @media (max-width:767px) {
   .hero__name { max-width:none; font-size:clamp(3.1rem,14vw,5.1rem); }
 }
+
+
+/* Narrow-screen hero must stack after the desktop split override above. */
+@media (max-width: 767px) {
+  .hero__split { grid-template-columns:minmax(0,1fr); width:100%; }
+  .hero__intro { width:100%; min-width:0; }
+  .hero__name { max-width:100%; font-size:clamp(3.1rem,14vw,5.1rem); }
+  .hero__spot { width:min(82%,340px); max-width:340px; }
+}
