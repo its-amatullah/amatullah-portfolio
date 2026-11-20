@@ -1477,6 +1477,9 @@
   min-height:300px;
   margin:0;
   overflow:visible;
+  opacity:1;
+  transform:none;
+  transition:none;
 }
 #home .hero__spot::before {
   content:"";
