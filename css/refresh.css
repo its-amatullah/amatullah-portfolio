@@ -1274,3 +1274,29 @@ body::before { opacity:.027; }
   mix-blend-mode: screen;
   opacity: .92;
 }
+
+
+/* Keep the horizontal project gallery compact enough to preview at a glance. */
+.project-card {
+  flex-basis: clamp(280px, 42vw, 520px);
+}
+.project-card__cover,
+.project-card:first-child .project-card__cover,
+.project-card:nth-child(4) .project-card__cover {
+  aspect-ratio: 16 / 10;
+}
+.project-card__body {
+  min-height: 168px;
+  padding: .95rem clamp(.9rem, 1.8vw, 1.35rem) 1.05rem;
+}
+.project-card__meta { margin-bottom: .65rem; }
+.project-card__title { font-size: clamp(1.45rem, 2.35vw, 2.1rem); }
+.project-card__desc { margin-top: .45rem; line-height: 1.45; }
+.project-card__body::after { padding-top: .8rem; }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .project-card { flex-basis: 58vw; }
+}
+@media (max-width: 767px) {
+  .project-card { flex-basis: 78vw; }
+  .project-card__body { min-height: 158px; }
+}
