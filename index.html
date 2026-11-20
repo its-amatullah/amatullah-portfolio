@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/sections.css?v=20261120-editorial-cover-grid-4" />
+  <link rel="stylesheet" href="css/sections.css?v=20261120-project-carousel" />
   <link rel="stylesheet" href="css/animations.css" />
 
   <!-- Hero keyframe (inline so it's ready before any JS runs) -->
@@ -229,19 +229,20 @@
         </div>
 
         <div class="gallery-tools">
-          <p class="gallery-hint">Swipe, drag or scroll to see all 10 projects <span aria-hidden="true">→</span></p>
-          <div class="gallery-controls" aria-label="Project gallery controls">
-            <button type="button" class="gallery-control" data-gallery-prev aria-label="Previous projects">
+          <p class="gallery-hint">Browse the work, one story at a time <span aria-hidden="true">✳</span></p>
+          <output class="gallery-count" data-gallery-count aria-live="polite" aria-atomic="true">01 / 10</output>
+          <div class="gallery-controls" aria-label="Project carousel controls">
+            <button type="button" class="gallery-control" data-gallery-prev aria-label="Previous project">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg>
             </button>
-            <button type="button" class="gallery-control" data-gallery-next aria-label="Next projects">
+            <button type="button" class="gallery-control" data-gallery-next aria-label="Next project">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
             </button>
           </div>
         </div>
 
         <!-- Existing project cards become a keyboard and touch friendly sliding gallery. -->
-        <div id="project-grid" class="project-grid stagger-group" role="region" aria-roledescription="carousel" aria-label="Project gallery">
+        <div id="project-grid" class="project-grid stagger-group" role="region" tabindex="0" aria-roledescription="carousel" aria-label="Project gallery">
 
           <!-- App Activity Dashboard -->
           <article class="project-card reveal" tabindex="0" role="button" aria-label="View case study: App Activity Dashboard" data-category="professional" data-id="app-dashboard">
@@ -574,7 +575,7 @@
   </div>
 
   <!-- -- Scripts ----------------------------------------------- -->
-  <script defer src="js/portfolio.js?v=20261120-spotlight-gallery"></script>
+  <script defer src="js/portfolio.js?v=20261120-project-carousel"></script>
 
   <!-- Portrait tilt — mouse parallax, respects prefers-reduced-motion -->
   <script>
