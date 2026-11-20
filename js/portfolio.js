@@ -419,171 +419,173 @@
   function renderProjects() {
     var grid = document.getElementById('project-grid');
     if (!grid) return;
+    var categories = [
+      { id: 'professional', label: 'Professional', number: '01', points: [[10,58],[34,26],[61,68],[88,38]], edges: [[0,1],[1,2],[2,3],[0,2]] },
+      { id: 'academic', label: 'Academic', number: '02', points: [[9,40],[31,73],[57,28],[85,61]], edges: [[0,1],[1,2],[2,3],[0,2]] },
+      { id: 'creative', label: 'Creative', number: '03', points: [[23,35],[73,66]], edges: [[0,1]] }
+    ];
 
-    Array.prototype.slice.call(grid.querySelectorAll('.project-card')).forEach(function (card, index) {
-      var project = PROJECTS.find(function (item) { return item.id === card.dataset.id; });
-      if (!project) return;
+    grid.className = 'project-constellations';
+    grid.setAttribute('role', 'list');
+    grid.setAttribute('aria-label', 'Project constellations');
+    grid.replaceChildren();
 
-      var number = String(index + 1).padStart(2, '0');
-      var category = project.category.charAt(0).toUpperCase() + project.category.slice(1);
-      card.className = 'project-card locker reveal';
-      card.dataset.category = project.category;
-      card.dataset.id = project.id;
-      card.dataset.hidden = 'false';
-      card.removeAttribute('tabindex');
-      card.removeAttribute('aria-label');
-      card.setAttribute('role', 'listitem');
+    categories.forEach(function (group) {
+      var section = document.createElement('section');
+      section.className = 'constellation';
+      section.dataset.category = group.id;
+      section.setAttribute('aria-label', group.label + ' projects');
 
-      var door = document.createElement('button');
-      door.type = 'button';
-      door.className = 'locker-door';
-      door.setAttribute('aria-expanded', 'false');
-      door.setAttribute('aria-controls', 'locker-detail-' + project.id);
-      door.setAttribute('aria-label', 'Open locker ' + number + ': ' + project.title);
+      var heading = document.createElement('div');
+      heading.className = 'constellation__heading';
+      heading.innerHTML = '<span class="constellation__number">' + group.number + '</span><h4>' + group.label + '</h4><span class="constellation__count"></span>';
+      section.appendChild(heading);
 
-      var face = document.createElement('span');
-      face.className = 'locker-door__face';
+      var map = document.createElement('div');
+      map.className = 'constellation__map';
+      map.setAttribute('role', 'list');
+      map.setAttribute('aria-label', group.label + ' constellation');
 
-      var plate = document.createElement('span');
-      plate.className = 'locker-door__plate';
-      plate.textContent = number;
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'constellation__lines');
+      svg.setAttribute('viewBox', '0 0 100 100');
+      svg.setAttribute('preserveAspectRatio', 'none');
+      svg.setAttribute('aria-hidden', 'true');
 
-      var label = document.createElement('span');
-      label.className = 'locker-door__category';
-      label.textContent = category;
+      group.edges.forEach(function (edge) {
+        var a = group.points[edge[0]], b = group.points[edge[1]];
+        var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', a[0]); line.setAttribute('y1', a[1]);
+        line.setAttribute('x2', b[0]); line.setAttribute('y2', b[1]);
+        svg.appendChild(line);
+      });
+      map.appendChild(svg);
 
-      var title = document.createElement('span');
-      title.className = 'locker-door__title';
-      title.textContent = project.title;
+      var projects = PROJECTS.filter(function (project) { return project.category === group.id; });
+      projects.forEach(function (project, index) {
+        var point = group.points[index % group.points.length];
+        var star = document.createElement('button');
+        star.type = 'button';
+        star.className = 'project-star';
+        star.style.setProperty('--star-x', point[0] + '%');
+        star.style.setProperty('--star-y', point[1] + '%');
+        star.style.setProperty('--twinkle-delay', ((index % 4) * -0.8) + 's');
+        star.dataset.category = project.category;
+        star.dataset.id = project.id;
+        star.setAttribute('role', 'listitem');
+        star.setAttribute('aria-label', 'Open project details for ' + project.title);
+        star.setAttribute('aria-expanded', 'false');
 
-      var sticker = document.createElement('span');
-      sticker.className = 'locker-door__sticker';
-      sticker.textContent = 'PROJECT';
+        var glow = document.createElement('span');
+        glow.className = 'project-star__core';
+        glow.setAttribute('aria-hidden', 'true');
+        var preview = document.createElement('span');
+        preview.className = 'project-star__label';
+        var title = document.createElement('strong');
+        title.textContent = project.title;
+        var hint = document.createElement('small');
+        hint.textContent = 'Preview project';
+        preview.appendChild(title);
+        preview.appendChild(hint);
+        star.appendChild(glow);
+        star.appendChild(preview);
+        map.appendChild(star);
+      });
 
-      var handle = document.createElement('span');
-      handle.className = 'locker-door__handle';
-      handle.setAttribute('aria-hidden', 'true');
-
-      var vents = document.createElement('span');
-      vents.className = 'locker-door__vents';
-      vents.setAttribute('aria-hidden', 'true');
-
-      var cue = document.createElement('span');
-      cue.className = 'locker-door__cue';
-      cue.textContent = 'Open locker ->';
-
-      face.appendChild(plate);
-      face.appendChild(label);
-      face.appendChild(title);
-      face.appendChild(sticker);
-      face.appendChild(handle);
-      face.appendChild(vents);
-      face.appendChild(cue);
-      door.appendChild(face);
-
-      var interior = document.createElement('div');
-      interior.className = 'locker-interior';
-      interior.id = 'locker-detail-' + project.id;
-      interior.setAttribute('aria-hidden', 'true');
-      interior.inert = true;
-
-      var top = document.createElement('div');
-      top.className = 'locker-interior__top';
-      var categoryTag = document.createElement('span');
-      categoryTag.textContent = category;
-      var year = document.createElement('span');
-      year.textContent = project.year;
-      top.appendChild(categoryTag);
-      top.appendChild(year);
-
-      var thumbnailFrame = document.createElement('div');
-      thumbnailFrame.className = 'locker-interior__thumbnail';
-      var thumbnail = document.createElement('img');
-      thumbnail.src = project.coverImage || PROJECT_COVERS[project.id] || (PROJECT_GALLERIES[project.id] && PROJECT_GALLERIES[project.id][0]) || '';
-      thumbnail.alt = project.title + ' project thumbnail';
-      thumbnail.loading = 'lazy';
-      thumbnail.decoding = 'async';
-      if (thumbnail.src) {
-        thumbnailFrame.appendChild(thumbnail);
-      } else {
-        thumbnailFrame.classList.add('locker-interior__thumbnail--empty');
-        thumbnailFrame.setAttribute('aria-label', project.title + ' thumbnail unavailable');
-      }
-
-      var detailTitle = document.createElement('h3');
-      detailTitle.className = 'locker-interior__title';
-      detailTitle.textContent = project.title;
-
-      var desc = document.createElement('p');
-      desc.className = 'locker-interior__desc';
-      desc.textContent = project.shortDesc;
-
-      var details = document.createElement('p');
-      details.className = 'locker-interior__details';
-      details.textContent = project.role + '  /  ' + project.tools.join('  /  ');
-
-      var actions = document.createElement('div');
-      actions.className = 'locker-interior__actions';
-      var projectLinks = PROJECT_LINKS[project.id] || [];
-      var primaryLink = document.createElement('a');
-      primaryLink.className = 'locker-interior__primary';
-      primaryLink.href = projectLinks.length ? projectLinks[0].href : project.casePage;
-      primaryLink.textContent = projectLinks.length
-        ? (projectLinks[0].ctaLabel || 'Explore Full Prototype ->')
-        : 'Explore Case Study ->';
-      if (projectLinks.length && (primaryLink.href.indexOf('http://') === 0 || primaryLink.href.indexOf('https://') === 0)) {
-        primaryLink.target = '_blank';
-        primaryLink.rel = 'noopener';
-      }
-      actions.appendChild(primaryLink);
-
-      if (projectLinks.length) {
-        var caseLink = document.createElement('a');
-        caseLink.className = 'locker-interior__link';
-        caseLink.href = project.casePage;
-        caseLink.textContent = 'View Case Study';
-        actions.appendChild(caseLink);
-
-        projectLinks.slice(1).forEach(function (preview) {
-          var previewLink = document.createElement('a');
-          previewLink.className = 'locker-interior__preview';
-          previewLink.href = preview.href;
-          previewLink.textContent = preview.label;
-          if (preview.href.indexOf('http://') === 0 || preview.href.indexOf('https://') === 0) {
-            previewLink.target = '_blank';
-            previewLink.rel = 'noopener';
-          }
-          actions.appendChild(previewLink);
-        });
-      }
-
-      var close = document.createElement('button');
-      close.type = 'button';
-      close.className = 'locker-interior__close';
-      close.textContent = 'Close';
-      close.setAttribute('aria-label', 'Close locker ' + number);
-      actions.appendChild(close);
-
-      interior.appendChild(top);
-      interior.appendChild(thumbnailFrame);
-      interior.appendChild(detailTitle);
-      interior.appendChild(desc);
-      interior.appendChild(details);
-      interior.appendChild(actions);
-      card.replaceChildren(interior, door);
+      var count = document.createElement('span');
+      count.className = 'constellation__count';
+      count.textContent = String(projects.length).padStart(2, '0') + ' PROJECTS';
+      heading.replaceChild(count, heading.lastChild);
+      section.appendChild(map);
+      grid.appendChild(section);
     });
 
+    var detail = document.createElement('article');
+    detail.className = 'project-detail';
+    detail.id = 'project-detail';
+    detail.setAttribute('aria-live', 'polite');
+    detail.setAttribute('aria-hidden', 'true');
+    grid.appendChild(detail);
     refreshLockerCount();
   }
 
   function refreshLockerCount() {
     var count = document.querySelector('[data-project-count]');
-    var visible = Array.prototype.slice.call(document.querySelectorAll('#project-grid .project-card')).filter(function (card) {
-      return card.dataset.hidden !== 'true';
+    var visible = Array.prototype.slice.call(document.querySelectorAll('#project-grid .project-star')).filter(function (star) {
+      return star.dataset.hidden !== 'true';
     });
-    if (count) count.textContent = String(visible.length).padStart(2, '0') + (visible.length === 1 ? ' locker' : ' lockers');
+    if (count) count.textContent = String(visible.length).padStart(2, '0') + (visible.length === 1 ? ' project' : ' projects');
   }
 
+  function showProjectDetail(project, trigger) {
+    var panel = document.getElementById('project-detail');
+    if (!panel || !project) return;
+    document.querySelectorAll('.project-star[aria-expanded="true"]').forEach(function (star) {
+      star.setAttribute('aria-expanded', 'false');
+    });
+    trigger.setAttribute('aria-expanded', 'true');
+    panel.classList.remove('is-visible');
+    panel.setAttribute('aria-hidden', 'false');
+    panel.replaceChildren();
+
+    var image = document.createElement('img');
+    image.className = 'project-detail__image';
+    image.src = project.coverImage || PROJECT_COVERS[project.id] || (PROJECT_GALLERIES[project.id] && PROJECT_GALLERIES[project.id][0]) || '';
+    image.alt = project.title + ' project preview';
+    image.loading = 'lazy';
+
+    var copy = document.createElement('div');
+    copy.className = 'project-detail__copy';
+    var meta = document.createElement('p');
+    meta.className = 'project-detail__meta';
+    meta.textContent = project.category + ' / ' + project.year + ' / ' + project.role;
+    var title = document.createElement('h4');
+    title.textContent = project.title;
+    var desc = document.createElement('p');
+    desc.className = 'project-detail__description';
+    desc.textContent = project.shortDesc;
+    var tools = document.createElement('p');
+    tools.className = 'project-detail__tools';
+    tools.textContent = 'Tools: ' + project.tools.join(' / ');
+
+    var actions = document.createElement('div');
+    actions.className = 'project-detail__actions';
+    var caseLink = document.createElement('a');
+    caseLink.className = 'project-detail__case';
+    caseLink.href = project.casePage;
+    caseLink.textContent = 'View Case Study ->';
+    actions.appendChild(caseLink);
+
+    var projectLinks = PROJECT_LINKS[project.id] || [];
+    projectLinks.forEach(function (item, index) {
+      var link = document.createElement('a');
+      link.className = index === 0 ? 'project-detail__prototype' : 'project-detail__extra';
+      link.href = item.href;
+      link.textContent = item.ctaLabel || item.label;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      actions.appendChild(link);
+    });
+
+    var close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'project-detail__close';
+    close.textContent = 'Close';
+    close.setAttribute('aria-label', 'Close ' + project.title + ' details');
+
+    copy.appendChild(meta);
+    copy.appendChild(title);
+    copy.appendChild(desc);
+    copy.appendChild(tools);
+    copy.appendChild(actions);
+    panel.appendChild(image);
+    panel.appendChild(copy);
+    panel.appendChild(close);
+
+    window.requestAnimationFrame(function () {
+      panel.classList.add('is-visible');
+    });
+  }
 
   function createCard(project) {
     var card = document.createElement('article');
@@ -680,12 +682,19 @@
     document.querySelectorAll('.filter-btn').forEach(function (btn) {
       btn.classList.toggle('is-active', btn.dataset.filter === filterId);
     });
-    document.querySelectorAll('#project-grid .project-card').forEach(function (card) {
-      var match = filterId === 'all' || card.dataset.category === filterId;
-      card.dataset.hidden = match ? 'false' : 'true';
-      card.style.display = match ? '' : 'none';
-      if (!match && card.classList.contains('is-open')) setLockerOpen(card, false, false);
+    document.querySelectorAll('#project-grid .constellation').forEach(function (group) {
+      var match = filterId === 'all' || group.dataset.category === filterId;
+      group.hidden = !match;
+      group.querySelectorAll('.project-star').forEach(function (star) {
+        star.dataset.hidden = match ? 'false' : 'true';
+        star.setAttribute('aria-expanded', 'false');
+      });
     });
+    var panel = document.getElementById('project-detail');
+    if (panel) {
+      panel.classList.remove('is-visible');
+      panel.setAttribute('aria-hidden', 'true');
+    }
     refreshLockerCount();
   }
 
@@ -848,37 +857,34 @@
     if (!grid) return;
 
     grid.addEventListener('click', function (e) {
-      var close = e.target.closest('.locker-interior__close');
-      var door = e.target.closest('.locker-door');
+      var close = e.target.closest('.project-detail__close');
       if (close) {
-        setLockerOpen(close.closest('.project-card'), false, true);
+        var panel = close.closest('.project-detail');
+        panel.classList.remove('is-visible');
+        panel.setAttribute('aria-hidden', 'true');
+        grid.querySelectorAll('.project-star[aria-expanded="true"]').forEach(function (star) {
+          star.setAttribute('aria-expanded', 'false');
+          star.focus({ preventScroll: true });
+        });
         return;
       }
-      if (!door) return;
-      var card = door.closest('.project-card');
-      var shouldOpen = door.getAttribute('aria-expanded') !== 'true';
-      grid.querySelectorAll('.project-card.is-open').forEach(function (openCard) {
-        if (openCard !== card) setLockerOpen(openCard, false, false);
-      });
-      setLockerOpen(card, shouldOpen, true);
+
+      var star = e.target.closest('.project-star');
+      if (star) {
+        var project = PROJECTS.find(function (item) { return item.id === star.dataset.id; });
+        showProjectDetail(project, star);
+      }
     });
 
     grid.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
-      var openCard = grid.querySelector('.project-card.is-open');
-      if (openCard) {
-        e.preventDefault();
-        setLockerOpen(openCard, false, true);
+      var panel = document.getElementById('project-detail');
+      if (panel && panel.classList.contains('is-visible')) {
+        panel.classList.remove('is-visible');
+        panel.setAttribute('aria-hidden', 'true');
+        var star = grid.querySelector('.project-star[aria-expanded="true"]');
+        if (star) { star.setAttribute('aria-expanded', 'false'); star.focus({ preventScroll: true }); }
       }
-    });
-
-    var backdrop = document.getElementById('modal-backdrop');
-    var modal = document.getElementById('modal');
-    var closeBtn = document.getElementById('modal-close');
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (backdrop) backdrop.addEventListener('click', closeModal);
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) closeModal();
     });
   }
 
