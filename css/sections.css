@@ -1795,32 +1795,64 @@
   letter-spacing:.08em;
   text-transform:uppercase;
 }
+.locker-interior__thumbnail {
+  flex:0 0 auto;
+  width:100%;
+  height:clamp(3.4rem,5.5vw,4.25rem);
+  margin:.55rem 0 .1rem;
+  overflow:hidden;
+  border:1px solid rgba(41,36,46,.12);
+  background:#EAE3EF;
+}
+.locker-interior__thumbnail img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+}
+.locker-interior__thumbnail--empty { display:grid; place-items:center; }
+.locker-interior__thumbnail--empty::after {
+  content:"PROJECT PREVIEW";
+  color:var(--color-text-muted);
+  font:.48rem var(--font-mono);
+  letter-spacing:.1em;
+}
 .locker-interior__title {
-  max-width:15ch;
-  margin:1.1rem 0 .25rem;
+  max-width:100%;
+  margin:.45rem 0 .15rem;
   color:var(--color-text-primary);
   font:600 clamp(1rem,1.3vw,1.25rem)/1.04 var(--font-heading);
   letter-spacing:-.045em;
   overflow-wrap:anywhere;
 }
 .locker-interior__desc {
-  margin:.4rem 0;
+  display:-webkit-box;
+  margin:.25rem 0;
+  overflow:hidden;
   color:var(--color-text-secondary);
-  font-size:.72rem;
-  line-height:1.5;
+  font-size:.68rem;
+  line-height:1.4;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
 }
-.locker-interior__role {
+.locker-interior__details {
+  display:-webkit-box;
+  width:100%;
   margin:auto 0 0;
-  padding-top:.4rem;
+  padding-top:.25rem;
+  overflow:hidden;
   color:var(--color-text-muted);
-  font:.58rem/1.5 var(--font-mono);
+  font:.5rem/1.35 var(--font-mono);
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:1;
 }
 .locker-interior__actions {
   display:flex;
   align-items:center;
   flex-wrap:wrap;
-  gap:.45rem .8rem;
-  margin-top:.75rem;
+  gap:.32rem .55rem;
+  margin-top:.45rem;
 }
 .locker-interior__link {
   color:var(--color-accent);
@@ -1829,6 +1861,12 @@
   text-decoration:none;
 }
 .locker-interior__link:hover { text-decoration:underline; text-underline-offset:3px; }
+.locker-interior__preview {
+  color:var(--color-text-primary);
+  font:600 .54rem/1.25 var(--font-mono);
+  text-decoration:none;
+}
+.locker-interior__preview:hover { color:var(--color-accent); text-decoration:underline; text-underline-offset:3px; }
 .locker-interior__close {
   padding:0;
   border:0;
@@ -2011,23 +2049,25 @@
   .locker-door__sticker { right:.5rem; bottom:2.7rem; width:2rem; height:2rem; font-size:.36rem; }
   .locker-door__cue { font-size:.43rem; }
   .locker-interior { padding:.75rem; }
-  .locker-interior__title { margin:.75rem 0 .15rem; font-size:.96rem; }
-  .locker-interior__desc { font-size:.65rem; }
-  .locker-interior__role { font-size:.52rem; }
-  .locker-interior__actions { gap:.45rem; margin-top:.5rem; }
-  .locker-interior__link { font-size:.55rem; }
-  .locker-interior__close { font-size:.5rem; }
+  .locker-interior__thumbnail { height:3.25rem; margin:.4rem 0 .1rem; }
+  .locker-interior__title { margin:.35rem 0 .12rem; font-size:.9rem; }
+  .locker-interior__desc { margin:.2rem 0; font-size:.6rem; line-height:1.35; }
+  .locker-interior__details { font-size:.46rem; }
+  .locker-interior__actions { gap:.3rem .45rem; margin-top:.35rem; }
+  .locker-interior__link,.locker-interior__preview { font-size:.49rem; }
+  .locker-interior__close { font-size:.46rem; }
 }
 @media (max-width:560px) {
   .project-grid.locker-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem; }
   .locker-grid .project-card { min-height:clamp(248px,68vw,300px); }
   .locker-door__title { font-size:clamp(1.05rem,5.2vw,1.45rem); }
   .locker-interior { padding:.9rem; }
-  .locker-interior__title { font-size:1.12rem; }
-  .locker-interior__desc { font-size:.73rem; }
-  .locker-interior__role { font-size:.57rem; }
-  .locker-interior__link { font-size:.61rem; }
-  .locker-interior__close { font-size:.55rem; }
+  .locker-interior__thumbnail { height:3.5rem; }
+  .locker-interior__title { font-size:1rem; }
+  .locker-interior__desc { font-size:.68rem; }
+  .locker-interior__details { font-size:.49rem; }
+  .locker-interior__link,.locker-interior__preview { font-size:.54rem; }
+  .locker-interior__close { font-size:.5rem; }
 }
 @media (max-width:360px) {
   .project-grid.locker-grid { grid-template-columns:1fr; }
