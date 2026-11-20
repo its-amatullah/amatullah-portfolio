@@ -1114,3 +1114,7 @@ body {
   .hero__name { max-width:100%; font-size:clamp(3.1rem,14vw,5.1rem); }
   .hero__spot { width:min(82%,340px); max-width:340px; }
 }
+
+@media (max-width: 767px) {
+  .hero__name { font-size:clamp(2.4rem,12vw,4.8rem); }
+}
