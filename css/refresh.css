@@ -1569,3 +1569,200 @@ p { color:#514653; }
 
 
 @media (max-width:767px) { .hero__shell { padding:1.5rem var(--container-px) 4rem; } }
+
+
+/* ── Lighter Soft Lilac + Cherry palette ─────────────────── */
+:root {
+  --color-bg:#F7F4F8;
+  --color-surface:#FAF8F5;
+  --color-surface-raise:#EAE3EF;
+  --color-border:#D8C9DF;
+  --color-accent-lime:#A83250;
+  --color-accent-lime-dim:rgba(168,50,80,.10);
+  --color-accent-violet:#D8C9DF;
+  --color-accent-violet-dim:rgba(216,201,223,.22);
+  --color-text-primary:#29242E;
+  --color-text-secondary:#514653;
+  --color-text-muted:#766D79;
+  --section-py:clamp(5rem,10vw,8rem);
+}
+html,body { background:#F7F4F8; color:#29242E; }
+body { background-image:repeating-linear-gradient(0deg,transparent 0,transparent 35px,rgba(81,70,83,.018) 36px); }
+h1,h2,h3,h4,h5,h6 { color:#29242E; }
+p { color:#514653; }
+::selection { color:#FAF8F5; background:#A83250; }
+:focus-visible { outline-color:#A83250; }
+
+/* Light masthead and spacious lilac hero; restore the original black line art. */
+.nav__inner,.nav.is-scrolled .nav__inner {
+  color:#29242E;
+  background:rgba(247,244,248,.96);
+  border-color:rgba(41,36,46,.16);
+}
+.nav__logo,.nav__link { color:#29242E; }
+.nav__logo span { color:#A83250; }
+.nav__link:hover { color:#A83250; background:transparent; }
+.nav__link.is-active { color:#FAF8F5; background:#A83250; }
+.nav__cta { color:#29242E; border-color:rgba(41,36,46,.28); }
+.nav__cta:hover { color:#A83250; border-color:#A83250; }
+.hamburger { border-color:#29242E; }
+.hamburger__bar { background:#29242E; }
+.mobile-menu { background:#F7F4F8; }
+.mobile-menu__link { color:#29242E; }
+.mobile-menu__link:hover { color:#A83250; }
+
+.hero {
+  color:#29242E;
+  background:#F7F4F8;
+}
+.hero h1,.hero__name { color:#29242E; }
+.hero__grid-lines {
+  opacity:.44;
+  background-image:linear-gradient(rgba(81,70,83,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(81,70,83,.035) 1px,transparent 1px);
+}
+.hero__status { color:#514653; border-color:rgba(168,50,80,.22); }
+.hero__status-dot,.hero__role-dot { background:#A83250; box-shadow:none; }
+.hero__loc,.hero__cue { color:#766D79; }
+.hero__role {
+  color:#29242E;
+  border-color:#D8C9DF;
+  border-left-color:#A83250;
+  background:#EAE3EF;
+  box-shadow:none;
+}
+.hero__quote { color:#514653; border-left-color:#A83250; }
+.hero__name-line:nth-child(2) .hero__word { color:#29242E; }
+.hero__period { color:#A83250; }
+.hero__spot::before { background:#D8C9DF; border-color:rgba(81,70,83,.12); }
+.hero__spot-mascot,.about__photo {
+  filter:none;
+  mix-blend-mode:multiply;
+  opacity:1;
+}
+.hero__spotlight-art img { border-color:rgba(168,50,80,.42); box-shadow:0 22px 65px rgba(41,36,46,.16); }
+.hero__info,.hero__info li { border-color:rgba(41,36,46,.16); }
+.hero__info-label { color:#766D79; }
+.hero__info-value { color:#29242E; }
+.hero__actions .btn-primary,.btn-primary {
+  color:#FAF8F5;
+  background:#A83250;
+  border-color:#A83250;
+}
+.hero__actions .btn-primary:hover,.btn-primary:hover,.btn-primary:focus-visible {
+  color:#FAF8F5;
+  background:#872640;
+  border-color:#872640;
+  box-shadow:0 8px 24px rgba(168,50,80,.16);
+}
+.hero__actions .btn-ghost,.btn-ghost {
+  color:#29242E;
+  border-color:#BDAFC4;
+  background:transparent;
+}
+.hero__actions .btn-ghost:hover,.btn-ghost:hover { color:#A83250; border-color:#A83250; }
+
+/* Muted lilac work spread and warm-white project cards. */
+.work { color:#29242E; background:#EAE3EF; background-image:none; }
+.work h2,.work h3,.work .section-title { color:#29242E; }
+.work p,.work .work__intro { color:#514653; }
+.section-label,.work .section-label { color:#A83250; }
+.section-label::before { background:#A83250; }
+.section-number { color:#514653; opacity:.06; }
+.filter-bar { border-color:#D8C9DF; }
+.filter-btn { color:#514653; border-color:#D8C9DF; background:transparent; }
+.filter-btn:hover { color:#A83250; border-color:#A83250; }
+.filter-btn.is-active { color:#FAF8F5; background:#A83250; border-color:#A83250; }
+.gallery-hint { color:#766D79; }
+.gallery-hint span { color:#A83250; }
+.gallery-control { color:#29242E; border-color:#BDAFC4; background:transparent; }
+.gallery-control:hover { color:#FAF8F5; background:#A83250; border-color:#A83250; }
+.project-grid { scrollbar-color:#A83250 #D8C9DF; }
+.project-card {
+  color:#29242E;
+  background:#FAF8F5;
+  border-color:#D8C9DF;
+  box-shadow:0 8px 22px rgba(41,36,46,.055);
+}
+.project-card:hover,.project-card:focus-visible {
+  border-color:#A83250;
+  box-shadow:0 14px 32px rgba(41,36,46,.12);
+}
+.project-card__cover { background:#D8C9DF; border-color:#D8C9DF; }
+.project-card__img { mix-blend-mode:normal; }
+.project-card__meta .tag { color:#A83250; border-color:rgba(168,50,80,.32); }
+.project-card__meta .tag--academic,.project-card__meta .tag--creative { color:#514653; border-color:#D8C9DF; }
+.project-card__title { color:#29242E; }
+.project-card__desc { color:#514653; }
+.project-card__body::after { color:#A83250; }
+.gallery-progress { background:#D8C9DF; }
+.gallery-progress__fill { background:#A83250; }
+
+/* A plum About spread with the illustration on a light field. */
+#about {
+  color:#FAF8F5;
+  background:#29242E;
+}
+#about h2,#about h3,#about .section-title { color:#FAF8F5; }
+#about p,#about .about__bio p { color:#D8C9DF; }
+#about .section-label { color:#E3A5B2; }
+#about .section-label::before { background:#E3A5B2; }
+#about .section-number { color:#D8C9DF; opacity:.08; }
+.about__bio-pull { color:#FAF8F5; border-left-color:#A83250; }
+.about__skills-heading { color:#FAF8F5; }
+.about__skills .tag {
+  color:#D8C9DF;
+  border-color:rgba(216,201,223,.25);
+  background:transparent;
+}
+.about__skills .tag:hover { color:#FAF8F5; border-color:#E3A5B2; }
+.about__exp-item { border-color:rgba(216,201,223,.22); }
+.about__exp-item::before { background:#E3A5B2; box-shadow:0 0 0 4px rgba(227,165,178,.12); }
+.about__exp-item:hover { border-left-color:#E3A5B2; }
+.about__exp-role { color:#FAF8F5; }
+.about__exp-period { color:#E3A5B2; }
+.about__exp-company { color:#BBAFC1; }
+.about__photo-frame,.about__photo-wrap {
+  background:#FAF8F5;
+  border-color:#D8C9DF;
+}
+.about__photo { filter:none; mix-blend-mode:multiply; }
+
+/* Light process notes followed by a deep-plum contact finish. */
+#process { color:#29242E; background:#F7F4F8; }
+#process h2,#process h3,#process .section-title { color:#29242E; }
+#process p,#process .process-step__desc { color:#514653; }
+#process .section-label { color:#A83250; }
+.process__steps { border-color:rgba(81,70,83,.2); }
+.process-step { border-color:rgba(81,70,83,.2); }
+.process-step:hover { border-color:#A83250; }
+.process-step__number { color:#A83250; }
+.process-step__title { color:#29242E; }
+
+#contact,.contact { color:#FAF8F5; background:#29242E; border-color:rgba(216,201,223,.2); }
+#contact h2,#contact .contact__title { color:#FAF8F5; }
+#contact .section-label { color:#E3A5B2; }
+#contact .section-label::before { background:#E3A5B2; }
+#contact .contact__title span { color:#E3A5B2; }
+#contact p,#contact .contact__copy { color:#D8C9DF; }
+.contact__email { color:#FAF8F5; text-decoration-color:#A83250; }
+.contact__email span { color:#E3A5B2; }
+.contact__links a { color:#D8C9DF; }
+.contact__links a:hover { color:#E3A5B2; }
+.footer { color:#D8C9DF; background:#29242E; border-color:rgba(216,201,223,.2); }
+.footer p,.footer__meta,.footer__social-link { color:#D8C9DF; }
+.footer__social-link:hover { color:#E3A5B2; }
+
+.modal-backdrop { background:rgba(24,19,27,.72); }
+.modal__panel { color:#29242E; background:#FAF8F5; border-color:#D8C9DF; }
+.modal__panel h2,.modal__panel h3 { color:#29242E; }
+.modal__panel p { color:#514653; }
+.modal__close { color:#29242E; border-color:#D8C9DF; }
+
+@media (max-width:767px) {
+  .hero { background:#F7F4F8; }
+  .hero__spot::before { background:#D8C9DF; }
+  .work { background:#EAE3EF; }
+  #about { background:#29242E; }
+  #process { background:#F7F4F8; }
+  #contact { background:#29242E; }
+}
