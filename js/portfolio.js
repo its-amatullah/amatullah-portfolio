@@ -214,18 +214,23 @@
   };
   const PROJECT_LINKS = {
     'app-dashboard': [{
-      label: 'Live App Activity Dashboard',
+      label: 'App Activity Dashboard',
+      ctaLabel: 'Explore Full Prototype ->',
       href: 'https://amatullah-a.github.io/Design-gallery/designs/App%20activity%20dashboard/v11-uniqueschools.html',
     }],
     'shop-rebuild': [
-      { label: 'Original flow (V1)', href: 'https://amatullah-a.github.io/Design-gallery/designs/Shop%20rebuild/shop-rebuild.html' },
-      { label: 'Redesigned flow (V2)', href: 'https://amatullah-a.github.io/Design-gallery/designs/Shop%20rebuild/shop-payment-flow%282%29.html' },
+      { label: 'Original Flow (V1)', ctaLabel: 'Explore Redesigned Flow (V2) ->', href: 'https://amatullah-a.github.io/Design-gallery/designs/Shop%20rebuild/shop-payment-flow%282%29.html' },
+      { label: 'Original Flow (V1)', href: 'https://amatullah-a.github.io/Design-gallery/designs/Shop%20rebuild/shop-rebuild.html' },
     ],
     'student-profile': [
-      { label: 'Main Student Profile', href: 'https://amatullah-a.github.io/Design-gallery/designs/Student%20Profile/SFCmain.html' },
-      { label: 'Forms view', href: 'https://amatullah-a.github.io/Design-gallery/designs/Student%20Profile/SFC%20forms%20.html' },
+      { label: 'Main Student Profile', ctaLabel: 'Explore Main Prototype ->', href: 'https://amatullah-a.github.io/Design-gallery/designs/Student%20Profile/SFCmain.html' },
+      { label: 'Forms View', href: 'https://amatullah-a.github.io/Design-gallery/designs/Student%20Profile/SFC%20forms%20.html' },
     ],
-    'design-gallery': [{ label: 'Visit live Design Gallery', href: 'https://amatullah-a.github.io/Design-gallery/' }],
+    'design-gallery': [{
+      label: 'Visit live Design Gallery',
+      ctaLabel: 'Explore Full Gallery ->',
+      href: 'https://amatullah-a.github.io/Design-gallery/',
+    }],
   };
 
   /* ──────────────────────────────────────────────────────────
@@ -519,23 +524,38 @@
 
       var actions = document.createElement('div');
       actions.className = 'locker-interior__actions';
-      var caseLink = document.createElement('a');
-      caseLink.className = 'locker-interior__link';
-      caseLink.href = project.casePage;
-      caseLink.textContent = 'View Case Study ->';
-      actions.appendChild(caseLink);
+      var projectLinks = PROJECT_LINKS[project.id] || [];
+      var primaryLink = document.createElement('a');
+      primaryLink.className = 'locker-interior__primary';
+      primaryLink.href = projectLinks.length ? projectLinks[0].href : project.casePage;
+      primaryLink.textContent = projectLinks.length
+        ? (projectLinks[0].ctaLabel || 'Explore Full Prototype ->')
+        : 'Explore Case Study ->';
+      if (projectLinks.length && (primaryLink.href.indexOf('http://') === 0 || primaryLink.href.indexOf('https://') === 0)) {
+        primaryLink.target = '_blank';
+        primaryLink.rel = 'noopener';
+      }
+      actions.appendChild(primaryLink);
 
-      (PROJECT_LINKS[project.id] || []).forEach(function (preview, previewIndex) {
-        var previewLink = document.createElement('a');
-        previewLink.className = 'locker-interior__preview';
-        previewLink.href = preview.href;
-        previewLink.textContent = preview.label + ' ->';
-        if (preview.href.indexOf('http://') === 0 || preview.href.indexOf('https://') === 0) {
-          previewLink.target = '_blank';
-          previewLink.rel = 'noopener';
-        }
-        actions.appendChild(previewLink);
-      });
+      if (projectLinks.length) {
+        var caseLink = document.createElement('a');
+        caseLink.className = 'locker-interior__link';
+        caseLink.href = project.casePage;
+        caseLink.textContent = 'View Case Study';
+        actions.appendChild(caseLink);
+
+        projectLinks.slice(1).forEach(function (preview) {
+          var previewLink = document.createElement('a');
+          previewLink.className = 'locker-interior__preview';
+          previewLink.href = preview.href;
+          previewLink.textContent = preview.label;
+          if (preview.href.indexOf('http://') === 0 || preview.href.indexOf('https://') === 0) {
+            previewLink.target = '_blank';
+            previewLink.rel = 'noopener';
+          }
+          actions.appendChild(previewLink);
+        });
+      }
 
       var close = document.createElement('button');
       close.type = 'button';
