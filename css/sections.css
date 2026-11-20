@@ -1758,7 +1758,7 @@
   border-radius:var(--radius-sm);
   background:var(--color-surface);
   box-shadow:0 22px 58px rgba(41,36,46,.12);
-  transform:translate3d(calc(-50% + var(--carousel-x,0px)),var(--carousel-lift,0px),0) scale(var(--carousel-scale,.84));
+  transform:translate3d(calc(-50% + var(--carousel-x,0px)),var(--carousel-lift,0px),0) scale(var(--carousel-scale,.84)) !important;
   transform-origin:center center;
   opacity:0;
   z-index:0;
