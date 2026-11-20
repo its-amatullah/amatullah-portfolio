@@ -500,111 +500,140 @@
     return card;
   }
 
+  var projectCarouselController = null;
+
   function setFilter(filterId) {
     document.querySelectorAll('.filter-btn').forEach(function (btn) {
       btn.classList.toggle('is-active', btn.dataset.filter === filterId);
     });
     document.querySelectorAll('.project-card').forEach(function (card) {
       var match = filterId === 'all' || card.dataset.category === filterId;
-      if (match) {
-        card.dataset.hidden = 'false';
-        card.style.display = '';
-      } else {
-        card.dataset.hidden = 'true';
-        card.style.display = 'none';
-      }
+      card.dataset.hidden = match ? 'false' : 'true';
+      card.style.display = match ? '' : 'none';
     });
 
-    var grid = document.getElementById('project-grid');
-    if (grid) grid.scrollTo({ left: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-    updateGalleryProgress();
+    if (projectCarouselController) projectCarouselController.refresh(true);
+    else updateGalleryProgress();
   }
 
-  function updateGalleryProgress() {
-    var grid = document.getElementById('project-grid');
+  function updateGalleryProgress(index, total) {
     var progress = document.querySelector('.gallery-progress');
-    if (!grid || !progress) return;
-    var maxScroll = grid.scrollWidth - grid.clientWidth;
-    var amount = maxScroll > 0 ? Math.min(1, Math.max(0, grid.scrollLeft / maxScroll)) : 1;
+    var counter = document.querySelector('[data-gallery-count]');
+    if (!progress) return;
+
+    var amount = total > 1 ? index / (total - 1) : 1;
     progress.style.setProperty('--gallery-progress', amount);
     progress.setAttribute('aria-valuenow', String(Math.round(amount * 100)));
+    if (counter) {
+      counter.value = String(index + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+      counter.textContent = counter.value;
+    }
   }
 
   function initProjectGallery(grid) {
     var previous = document.querySelector('[data-gallery-prev]');
     var next = document.querySelector('[data-gallery-next]');
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var index = 0;
+    var suppressClick = false;
+    var pointerStart = null;
 
-    function scrollGallery(direction) {
-      var firstCard = grid.querySelector('.project-card:not([style*="display: none"])');
-      if (!firstCard) return;
-      var gap = parseFloat(window.getComputedStyle(grid).columnGap) || 24;
-      var step = firstCard.getBoundingClientRect().width + gap;
-      grid.scrollBy({ left: direction * step, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    function cards() {
+      return Array.prototype.slice.call(grid.querySelectorAll('.project-card')).filter(function (card) {
+        return card.dataset.hidden !== 'true' && card.style.display !== 'none';
+      });
     }
 
-    if (previous) previous.addEventListener('click', function () { scrollGallery(-1); });
-    if (next) next.addEventListener('click', function () { scrollGallery(1); });
+    function render() {
+      var items = cards();
+      if (!items.length) {
+        grid.dataset.empty = 'true';
+        updateGalleryProgress(0, 0);
+        return;
+      }
+      grid.dataset.empty = 'false';
+      index = ((index % items.length) + items.length) % items.length;
+      var step = grid.clientWidth * (window.innerWidth <= 767 ? 0.76 : 0.56);
 
-    var progressFrame = 0;
-    grid.addEventListener('scroll', function () {
-      if (progressFrame) return;
-      progressFrame = window.requestAnimationFrame(function () {
-        progressFrame = 0;
-        updateGalleryProgress();
+      items.forEach(function (card, itemIndex) {
+        var offset = itemIndex - index;
+        if (offset > items.length / 2) offset -= items.length;
+        if (offset < -items.length / 2) offset += items.length;
+
+        var state = offset === 0 ? 'active' : (offset === -1 ? 'previous' : (offset === 1 ? 'next' : 'distant'));
+        card.dataset.carouselState = state;
+        card.style.setProperty('--carousel-x', (offset * step) + 'px');
+        card.style.setProperty('--carousel-scale', offset === 0 ? '1' : '.84');
+        card.setAttribute('aria-hidden', offset === 0 ? 'false' : 'true');
+        card.setAttribute('aria-roledescription', 'slide');
+        card.setAttribute('aria-label', 'Slide ' + (itemIndex + 1) + ' of ' + items.length + ': View case study: ' + card.querySelector('.project-card__title').textContent.trim());
+        card.tabIndex = offset === 0 ? 0 : -1;
       });
-    }, { passive: true });
-    window.addEventListener('resize', updateGalleryProgress, { passive: true });
+
+      updateGalleryProgress(index, items.length);
+    }
+
+    function goTo(nextIndex, moveFocus) {
+      var items = cards();
+      if (!items.length) return;
+      index = ((nextIndex % items.length) + items.length) % items.length;
+      render();
+      if (moveFocus) items[index].focus({ preventScroll: true });
+    }
+
+    function move(direction, moveFocus) {
+      goTo(index + direction, moveFocus);
+    }
+
+    if (previous) previous.addEventListener('click', function () { move(-1, false); });
+    if (next) next.addEventListener('click', function () { move(1, false); });
 
     grid.addEventListener('keydown', function (e) {
       if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-      var current = document.activeElement.closest('.project-card');
-      if (!current) return;
-      var cards = Array.prototype.slice.call(grid.querySelectorAll('.project-card')).filter(function (card) {
-        return card.dataset.hidden !== 'true';
-      });
-      var index = cards.indexOf(current);
-      var target = cards[index + (e.key === 'ArrowRight' ? 1 : -1)];
-      if (target) {
-        e.preventDefault();
-        target.focus();
-        target.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduceMotion.matches ? 'auto' : 'smooth' });
-      }
+      if (e.target !== grid && !e.target.closest('.project-card')) return;
+      e.preventDefault();
+      move(e.key === 'ArrowRight' ? 1 : -1, true);
     });
 
-    var drag = null;
-    var suppressClick = false;
-    grid.addEventListener('dragstart', function (e) { e.preventDefault(); });
     grid.addEventListener('pointerdown', function (e) {
-      if (e.pointerType !== 'mouse' || !e.isPrimary || e.button !== 0 || e.target.closest('a, button')) return;
-      drag = { pointerId: e.pointerId, x: e.clientX, scrollLeft: grid.scrollLeft, moved: false };
+      if (!e.isPrimary || (e.pointerType === 'mouse' && e.button !== 0) || e.target.closest('a, button')) return;
+      pointerStart = { id: e.pointerId, x: e.clientX, y: e.clientY };
       grid.classList.add('is-dragging');
     });
-    document.addEventListener('pointermove', function (e) {
-      if (!drag || e.pointerId !== drag.pointerId) return;
-      var delta = e.clientX - drag.x;
-      if (!drag.moved && Math.abs(delta) < 5) return;
-      drag.moved = true;
-      grid.scrollLeft = drag.scrollLeft - delta;
-    });
-    function endDrag(e) {
-      if (!drag || (e && e.pointerId !== drag.pointerId)) return;
-      if (drag.moved) {
+    grid.addEventListener('pointerup', function (e) {
+      if (!pointerStart || e.pointerId !== pointerStart.id) return;
+      var dx = e.clientX - pointerStart.x;
+      var dy = e.clientY - pointerStart.y;
+      if (Math.abs(dx) > 42 && Math.abs(dx) > Math.abs(dy) * 1.15) {
+        move(dx < 0 ? 1 : -1, false);
         suppressClick = true;
         window.setTimeout(function () { suppressClick = false; }, 350);
       }
-      drag = null;
+      pointerStart = null;
       grid.classList.remove('is-dragging');
-    }
-    document.addEventListener('pointerup', endDrag);
-    document.addEventListener('pointercancel', endDrag);
+    });
+    grid.addEventListener('pointercancel', function () {
+      pointerStart = null;
+      grid.classList.remove('is-dragging');
+    });
+    grid.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
-    window.requestAnimationFrame(updateGalleryProgress);
+    window.addEventListener('resize', render, { passive: true });
+    window.requestAnimationFrame(render);
     return {
       consumeClick: function () {
         if (!suppressClick) return false;
         suppressClick = false;
         return true;
+      },
+      goToCard: function (card, moveFocus) {
+        var items = cards();
+        var targetIndex = items.indexOf(card);
+        if (targetIndex >= 0) goTo(targetIndex, moveFocus);
+      },
+      refresh: function (reset) {
+        if (reset) index = 0;
+        render();
       },
     };
   }
@@ -750,6 +779,7 @@
     // Keep every existing project card connected to its original case-study modal.
     var grid = document.getElementById('project-grid');
     var gallery = grid ? initProjectGallery(grid) : null;
+    projectCarouselController = gallery;
     if (grid) {
       grid.addEventListener('click', function (e) {
         if (gallery && gallery.consumeClick()) {
@@ -759,6 +789,10 @@
         }
         var card = e.target.closest('.project-card');
         if (!card) return;
+        if (card.dataset.carouselState !== 'active') {
+          if (gallery) gallery.goToCard(card, false);
+          return;
+        }
         openModal(card.dataset.id, card);
       });
       grid.addEventListener('keydown', function (e) {
