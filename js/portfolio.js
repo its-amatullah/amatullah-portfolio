@@ -96,7 +96,7 @@
       casePage: 'projects/design-gallery.html',
       problem: 'Design prototypes were scattered across tools and hard to share for developer review. A lightweight system was needed to register, version and publish HTML prototypes as live previews.',
       process: 'Conceptualised and built a Python-based workflow to generate a searchable, filterable gallery from a folder of HTML files. Published to GitHub Pages. Added search, sort, password protection, a prompt library, and an archive section.',
-      outcome: 'A live, password-protected design gallery hosting 12+ prototypes — accessible to the whole team for review without any login or tool access required.',
+      outcome: 'A live design gallery hosting 12+ prototype projects, making previews easy to browse and share.',
       note: null,
     },
     {
@@ -213,12 +213,18 @@
     'funella': ['assets/images/projects/funella/portfolio-page-21.jpg', 'assets/images/projects/funella/portfolio-page-22.jpg', 'assets/images/projects/funella/portfolio-page-23.jpg', 'assets/images/projects/funella/portfolio-page-24.jpg'],
   };
   const PROJECT_LINKS = {
-    'app-dashboard': [{ label: 'Open interactive prototype', href: 'designs/app-dashboard/index.html' }],
+    'app-dashboard': [{
+      label: 'Live App Activity Dashboard',
+      href: 'https://amatullah-a.github.io/Design-gallery/designs/App%20activity%20dashboard/v11-uniqueschools.html',
+    }],
     'shop-rebuild': [
-      { label: 'Original flow (V1)', href: 'designs/shop-rebuild/shop-rebuild.html' },
-      { label: 'Redesigned flow (V2)', href: 'designs/shop-rebuild/payment-flow.html' },
+      { label: 'Original flow (V1)', href: 'https://amatullah-a.github.io/Design-gallery/designs/Shop%20rebuild/shop-rebuild.html' },
+      { label: 'Redesigned flow (V2)', href: 'https://amatullah-a.github.io/Design-gallery/designs/Shop%20rebuild/shop-payment-flow%282%29.html' },
     ],
-    'student-profile': [{ label: 'Open Student Profile prototype', href: 'designs/student-profile/forms.html' }],
+    'student-profile': [
+      { label: 'Main Student Profile', href: 'https://amatullah-a.github.io/Design-gallery/designs/Student%20Profile/SFCmain.html' },
+      { label: 'Forms view', href: 'https://amatullah-a.github.io/Design-gallery/designs/Student%20Profile/SFC%20forms%20.html' },
+    ],
     'design-gallery': [{ label: 'Visit live Design Gallery', href: 'https://amatullah-a.github.io/Design-gallery/' }],
   };
 
