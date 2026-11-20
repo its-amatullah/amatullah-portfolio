@@ -1265,3 +1265,12 @@ body::before { opacity:.027; }
   .process-step { transition:none !important; }
   .process-step:hover { padding-left:0; }
 }
+
+
+/* Keep the portrait line art strictly monochrome white. */
+.hero__spot-mascot,
+.about__photo {
+  filter: brightness(0) invert(1);
+  mix-blend-mode: screen;
+  opacity: .92;
+}
