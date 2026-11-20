@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/sections.css?v=20261120-soft-lilac" />
+  <link rel="stylesheet" href="css/sections.css?v=20261120-editorial-cover-grid" />
   <link rel="stylesheet" href="css/animations.css" />
 
   <!-- Hero keyframe (inline so it's ready before any JS runs) -->
@@ -100,21 +100,10 @@
         <span class="hero__orb hero__orb--violet"></span>
         <span class="hero__orb hero__orb--lime"></span>
         <span class="hero__grid-lines"></span>
-        <!-- Abstract painterly shapes -->
         <svg class="hero__shapes" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
-          <!-- Large soft blush wash -->
-          <ellipse cx="320" cy="200" rx="420" ry="340" fill="rgba(255,183,197,0.13)"/>
-          <!-- Organic blob top-right -->
-          <path d="M 1100 -60 C 1260 20 1380 120 1340 280 C 1300 440 1160 460 1060 380 C 960 300 920 140 980 60 C 1020 0 1060 -100 1100 -60 Z" fill="rgba(255,192,203,0.11)"/>
-          <!-- Loose arc stroke -->
-          <path d="M 60 520 Q 260 380 500 460 Q 740 540 900 420" stroke="rgba(255,182,193,0.18)" stroke-width="1.5" fill="none"/>
-          <!-- Small floating circle -->
-          <circle cx="1240" cy="680" r="80" fill="rgba(255,183,197,0.09)"/>
-          <circle cx="1300" cy="640" r="40" fill="rgba(255,183,197,0.06)"/>
-          <!-- Thin diagonal line accent -->
-          <line x1="720" y1="30" x2="860" y2="180" stroke="rgba(255,182,193,0.12)" stroke-width="1"/>
-          <!-- Loose ink-style squiggle bottom left -->
-          <path d="M 0 820 Q 80 760 160 800 Q 240 840 320 790 Q 400 740 460 780" stroke="rgba(255,182,193,0.15)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <circle cx="1270" cy="140" r="190" fill="#EAE3EF"/>
+          <path d="M 1050 95 Q 1210 5 1375 95" stroke="#A83250" stroke-width="1"/>
+          <circle cx="1270" cy="140" r="202" stroke="#D8C9DF" stroke-width="1"/>
         </svg>
       </div>
 
@@ -126,7 +115,6 @@
       </div>
 
       <div class="container hero__shell">
-        <!-- Status row -->
         <div class="hero__bar">
           <span class="hero__status">
             <span class="hero__status-dot" aria-hidden="true"></span>
@@ -138,19 +126,73 @@
           </span>
         </div>
 
-        <!-- Bento split -->
         <div class="hero__split">
-          <!-- Identity -->
-          <div class="hero__intro">
-            <span class="hero__role">
+          <aside class="hero__side" aria-label="Portfolio links">
+            <span class="hero__side-index">AA / 01</span>
+            <nav class="hero__index-nav" aria-label="Section index">
+              <a href="#work"><span>01</span> Work</a>
+              <a href="#about"><span>02</span> About</a>
+              <a href="#process"><span>03</span> Process</a>
+              <a href="#contact"><span>04</span> Contact</a>
+            </nav>
+            <div class="hero__side-social">
+              <a href="mailto:amatullah1605@gmail.com">Email ↗</a>
+              <a href="https://www.linkedin.com/in/amatullah-andamanwala-58b680268" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            </div>
+            <span class="hero__side-note">Independent designer<br>Based in Pune, India</span>
+          </aside>
+
+          <div class="hero__center">
+            <div class="hero__hello">
+              <span class="hero__center-kicker">A curious practice in digital craft</span>
+              <span class="hero__hello-word" aria-hidden="true">HELLO</span>
+              <span class="hero__hello-number">EST. 2024&nbsp; / &nbsp;PORTFOLIO</span>
+            </div>
+
+            <div class="hero__spot" id="hero-portrait-wrap">
+              <span class="hero__portrait-caption" aria-hidden="true">FIG. 01 — AMATULLAH</span>
+              <span class="hero__portrait-mark" aria-hidden="true">✳</span>
+              <div class="hero__portrait-tilt" id="hero-portrait-tilt">
+                <div class="hero__portrait-glow" aria-hidden="true"></div>
+                <img
+                  src="assets/images/portrait.png"
+                  alt="Black line-art illustration of Amatullah Andamanwala"
+                  class="hero__spot-mascot"
+                  id="hero-portrait-img"
+                  width="480"
+                  height="520"
+                  fetchpriority="high"
+                />
+              </div>
+            </div>
+
+            <h1 class="hero__name">AMATULLAH<span class="hero__period">.</span></h1>
+            <div class="hero__center-foot">
+              <span>Designing with intention</span>
+              <span>01 — 04</span>
+            </div>
+          </div>
+
+          <aside class="hero__intro" aria-label="About Amatullah">
+            <span class="hero__intro-label">The designer</span>
+            <p class="hero__intro-hello">Hi, I’m Amatullah.</p>
+            <p class="hero__role">
               <span class="hero__role-dot" aria-hidden="true"></span>
               UI/UX Designer
-            </span>
-            <h1 class="hero__name">
-              <span class="hero__name-line"><span class="hero__word">Hi, I'm</span></span>
-              <span class="hero__name-line"><span class="hero__word">Amatullah<span class="hero__period">.</span></span></span>
-            </h1>
+            </p>
             <p class="hero__quote">I design experiences that feel considered, curious, and quietly delightful.</p>
+
+            <div class="hero__what">
+              <span class="hero__info-label">What I do</span>
+              <p>Research-led product design, thoughtful interfaces, and digital experiences made for people.</p>
+            </div>
+
+            <ul class="hero__info" role="list">
+              <li><span class="hero__info-label">Focus</span><span class="hero__info-value">UI / UX Design</span></li>
+              <li><span class="hero__info-label">Approach</span><span class="hero__info-value">Research-led</span></li>
+              <li><span class="hero__info-label">Tools</span><span class="hero__info-value">Figma — Miro — XD</span></li>
+            </ul>
+
             <div class="hero__actions">
               <a href="#work" class="btn btn-primary">
                 View Work
@@ -158,33 +200,9 @@
               </a>
               <a href="cv/Amatullah_Andamanwala_CV_Latest.pdf" download class="btn btn-ghost" aria-label="Download Amatullah's resume as PDF">Download Resume</a>
             </div>
-          </div>
-
-          <!-- Portrait — 3D tilt card -->
-          <div class="hero__spot" id="hero-portrait-wrap">
-            <div class="hero__portrait-tilt" id="hero-portrait-tilt">
-              <!-- Light layer behind — blurred duplicate for depth -->
-              <div class="hero__portrait-glow" aria-hidden="true"></div>
-              <img
-                src="assets/images/portrait.png"
-                alt="Illustration of Amatullah Andamanwala"
-                class="hero__spot-mascot"
-                id="hero-portrait-img"
-              />
-            </div>
-            
-          </div>
+          </aside>
         </div>
 
-        <!-- Info strip -->
-        <ul class="hero__info" role="list">
-          <li><span class="hero__info-label">Focus</span><span class="hero__info-value">UI / UX Design</span></li>
-          <li><span class="hero__info-label">Based in</span><span class="hero__info-value">Pune, India</span></li>
-          <li><span class="hero__info-label">Approach</span><span class="hero__info-value">Research-led</span></li>
-          <li><span class="hero__info-label">Tools</span><span class="hero__info-value">Figma — Miro — XD</span></li>
-        </ul>
-
-        <!-- Scroll cue -->
         <a href="#work" class="hero__cue" aria-label="Scroll to work section">
           <span>Scroll to explore</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
