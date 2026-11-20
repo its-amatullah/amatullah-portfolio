@@ -2193,3 +2193,14 @@ p { color:#514653; }
   .project-card,.project-card__img,.process-step,.filter-btn,.gallery-control { transition:none !important; }
   .process-step:hover { padding-left:0; }
 }
+
+
+/* Final composition adjustments from live desktop review. */
+#about .section-title { max-width:18ch; font-size:clamp(3.1rem,6.1vw,5.5rem); }
+#process .process__steps { display:flex; flex-direction:column; }
+#process .process-step--wide { grid-column:auto; }
+.hero__spot-mascot { max-width:450px; max-height:510px; transform:translateY(-.75rem); }
+@media (max-width:767px) {
+  #about .section-title { max-width:none; font-size:clamp(2.8rem,11vw,4.1rem); }
+  .hero__spot-mascot { max-width:360px; max-height:none; transform:none; }
+}
