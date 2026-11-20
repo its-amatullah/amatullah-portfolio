@@ -452,8 +452,10 @@
     var compactWrap = document.querySelector('.compact-projects-wrap');
     var featuredCards = document.querySelectorAll('#featured-projects .project-card:not([data-hidden="true"])');
     var compactCards = document.querySelectorAll('#project-grid .project-card:not([data-hidden="true"])');
+    var count = document.querySelector('[data-project-count]');
     if (featuredWrap) featuredWrap.hidden = featuredCards.length === 0;
     if (compactWrap) compactWrap.hidden = compactCards.length === 0;
+    if (count) count.textContent = String(compactCards.length).padStart(2, '0') + (compactCards.length === 1 ? ' project' : ' projects');
   }
 
   function createCard(project) {
