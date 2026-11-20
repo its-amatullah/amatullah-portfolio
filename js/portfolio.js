@@ -219,7 +219,7 @@
       href: 'https://amatullah-a.github.io/Design-gallery/designs/App%20activity%20dashboard/v11-uniqueschools.html',
     }],
     'shop-rebuild': [
-      { label: 'Original Flow (V1)', ctaLabel: 'Explore Redesigned Flow (V2) ->', href: 'https://amatullah-a.github.io/Design-gallery/designs/Shop%20rebuild/shop-payment-flow%282%29.html' },
+      { label: 'Redesigned Flow (V2)', ctaLabel: 'Explore Redesigned Flow (V2) ->', href: 'https://amatullah-a.github.io/Design-gallery/designs/Shop%20rebuild/shop-payment-flow%282%29.html' },
       { label: 'Original Flow (V1)', href: 'https://amatullah-a.github.io/Design-gallery/designs/Shop%20rebuild/shop-rebuild.html' },
     ],
     'student-profile': [
