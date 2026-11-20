@@ -1566,3 +1566,6 @@ p { color:#514653; }
 @media (prefers-reduced-motion:reduce) {
   .project-card,.project-card__img,.gallery-control,.filter-btn { transition:none !important; }
 }
+
+
+@media (max-width:767px) { .hero__shell { padding:1.5rem var(--container-px) 4rem; } }
