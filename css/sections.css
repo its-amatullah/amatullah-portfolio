@@ -1406,9 +1406,7 @@
 #home .hero__side-index,
 #home .hero__side-note,
 #home .hero__index-nav a span,
-#home .hero__center-kicker,
 #home .hero__hello-number,
-#home .hero__portrait-caption,
 #home .hero__center-foot,
 #home .hero__intro-label,
 #home .hero__info-label {
@@ -1457,7 +1455,6 @@
   gap:.5rem;
   border-bottom:1px solid rgba(41,36,46,.2);
 }
-#home .hero__center-kicker { justify-self:start; padding-bottom:.55rem; color:var(--color-accent); text-align:left; }
 #home .hero__hello-word {
   display:block;
   color:var(--color-text-primary);
@@ -1518,25 +1515,28 @@
   opacity:1;
 }
 #home .hero__portrait-glow { display:none; }
-#home .hero__portrait-caption {
-  position:absolute;
-  z-index:2;
-  top:15%;
-  left:0;
-  color:var(--color-accent);
-  font-size:.52rem;
-  writing-mode:vertical-rl;
-}
 #home .hero__name {
   position:relative;
   z-index:2;
+  display:grid;
+  justify-items:center;
   width:100%;
   max-width:none;
   margin:-.05em 0 0;
+  text-align:center;
+}
+#home .hero__name-intro {
+  display:block;
+  margin-bottom:.3rem;
+  color:var(--color-accent);
+  font:italic 400 clamp(1.25rem,2.2vw,2rem)/1 Georgia,"Times New Roman",serif;
+  letter-spacing:-.02em;
+}
+#home .hero__name-full {
+  display:block;
   color:var(--color-text-primary);
-  font:400 clamp(3.6rem,7.25vw,7.2rem)/.78 Georgia,"Times New Roman",serif;
-  letter-spacing:-.075em;
-  white-space:nowrap;
+  font:400 clamp(2.8rem,5.3vw,5.1rem)/.84 Georgia,"Times New Roman",serif;
+  letter-spacing:-.07em;
 }
 #home .hero__period { color:var(--color-accent); }
 #home .hero__center-foot { display:flex; justify-content:space-between; padding-top:.8rem; color:var(--color-text-muted); font-size:.52rem; }
@@ -1880,7 +1880,7 @@
   #home .hero__side-social a { font-size:.68rem; }
   #home .hero__center { grid-area:cover; grid-template-rows:auto minmax(340px,1fr) auto auto; min-height:620px; }
   #home .hero__hello-word { font-size:clamp(4.4rem,10vw,6.5rem); }
-  #home .hero__name { font-size:clamp(3rem,6.3vw,4.6rem); }
+  #home .hero__name-full { font-size:clamp(2.6rem,5vw,4rem); }
   #home .hero__intro { grid-area:intro; padding-left:.9rem; }
   #home .hero__intro-hello { font-size:clamp(1.65rem,3vw,2.1rem); }
   #home .hero__actions { gap:.4rem; }
@@ -1944,15 +1944,15 @@
     border-bottom:1px solid rgba(41,36,46,.24);
   }
   #home .hero__hello { grid-template-columns:1fr auto; }
-  #home .hero__center-kicker { max-width:19ch; font-size:.48rem; }
   #home .hero__hello-word { font-size:clamp(4.35rem,19vw,6.6rem); }
   #home .hero__hello-number { font-size:.46rem; }
   #home .hero__spot { width:100%; min-height:0; margin:0; }
   #home .hero__spot::before { inset:8% 17% 7%; }
   #home .hero__spot-mascot { height:100%; max-height:min(74vw,370px); }
-  #home .hero__portrait-caption { left:2%; top:14%; font-size:.46rem; }
   #home .hero__portrait-mark { right:7%; bottom:15%; }
-  #home .hero__name { margin:.05em 0 0; font-size:clamp(2.55rem,12.4vw,4.15rem); letter-spacing:-.07em; }
+  #home .hero__name { margin:.05em 0 0; }
+  #home .hero__name-intro { margin-bottom:.2rem; font-size:1.25rem; }
+  #home .hero__name-full { font-size:clamp(2.4rem,10vw,3.6rem); letter-spacing:-.065em; }
   #home .hero__center-foot { padding-top:.6rem; font-size:.46rem; }
   #home .hero__intro {
     grid-area:intro;
@@ -2001,9 +2001,8 @@
 }
 @media (max-width:380px) {
   #home .hero__loc { font-size:.49rem; }
-  #home .hero__center-kicker { max-width:14ch; }
   #home .hero__hello-word { font-size:clamp(3.8rem,18vw,4.6rem); }
-  #home .hero__name { font-size:clamp(2.35rem,11.7vw,2.8rem); }
+  #home .hero__name-full { font-size:clamp(2.2rem,10.8vw,2.8rem); }
   #home .hero__actions .btn { padding-inline:.68rem; font-size:.61rem; }
   #home .hero__index-nav { gap:.35rem .55rem; }
   #home .hero__index-nav a { font-size:.59rem; }
