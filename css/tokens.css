@@ -12,10 +12,10 @@
   --color-surface-raise:   #252420;
   --color-border:          #2C2B27;
 
-  --color-accent-lime:     #A78BFA;
-  --color-accent-lime-dim: rgba(167, 139, 250, 0.12);
-  --color-accent-violet:   #C084FC;
-  --color-accent-violet-dim: rgba(192, 132, 252, 0.15);
+  --color-accent:     #A78BFA;
+  --color-accent-dim: rgba(168,50,80,.09);
+  --color-accent-soft:   #C084FC;
+  --color-accent-soft-dim: rgba(216,201,223,.24);
 
   --color-text-primary:    #EDE8DF;
   --color-text-secondary:  #8A8478;
@@ -24,10 +24,10 @@
   --color-error:           #FF6B6B;
 
   /* ── Typography — families ───────────────────────────────── */
-  --font-heading: 'Syne', 'DM Sans', sans-serif;
-  --font-body:    'Inter', system-ui, sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
   --font-serif:   'DM Serif Display', 'Georgia', serif;
-  --font-mono:    'Fragment Mono', 'Space Mono', monospace;
+  --font-mono: 'Space Mono', monospace;
 
   /* ── Typography — scale ──────────────────────────────────── */
   --text-2xs:  0.625rem;   /*  10px */
@@ -66,17 +66,17 @@
   --container-px:  clamp(1.25rem, 5vw, 4rem);
 
   /* ── Border radius ───────────────────────────────────────── */
-  --radius-sm:   3px;
-  --radius-md:   6px;
-  --radius-lg:   12px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
   --radius-full: 9999px;
 
   /* ── Shadows ─────────────────────────────────────────────── */
-  --shadow-sm:     0 1px 3px rgba(0,0,0,0.5);
-  --shadow-md:     0 4px 16px rgba(0,0,0,0.55);
-  --shadow-lg:     0 12px 48px rgba(0,0,0,0.65);
-  --shadow-lime:   0 0 28px rgba(167,139,250,0.14);
-  --shadow-violet: 0 0 40px rgba(167,139,250,0.18);
+  --shadow-sm: 0 2px 8px rgba(41,36,46,.06);
+  --shadow-md: 0 8px 24px rgba(41,36,46,.08);
+  --shadow-lg: 0 18px 50px rgba(41,36,46,.12);
+  --shadow-accent: 0 8px 24px rgba(168,50,80,.14);
+  --shadow-soft: 0 0 32px rgba(216,201,223,.28);
 
   /* ── Motion ──────────────────────────────────────────────── */
   --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
