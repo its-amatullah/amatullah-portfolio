@@ -1708,6 +1708,8 @@
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:clamp(1rem,2vw,1.6rem);
 }
+.compact-project-grid .project-card { grid-column:auto !important; }
+.compact-project-grid .project-card__cover { aspect-ratio:16/10 !important; }
 .project-card {
   position:relative;
   display:flex;
