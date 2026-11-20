@@ -1319,3 +1319,27 @@ body::before { opacity:.027; }
   .project-card { flex-basis:78vw; }
   .project-card__body { min-height:158px; }
 }
+
+
+/* Let the work gallery enter the viewport sooner and show more projects at once. */
+.work { padding-top:clamp(3.5rem,7vw,6rem); }
+@media (min-width:768px) {
+  .work .section-header { margin-bottom:1.1rem; }
+  .work__intro { margin-bottom:1.2rem; }
+}
+.gallery-tools { margin-block:.7rem; }
+.project-card { flex-basis:clamp(270px,34vw,420px); }
+.project-card__cover,
+.project-card:first-child .project-card__cover,
+.project-card:nth-child(4) .project-card__cover { aspect-ratio:1.72 / 1; }
+.project-card__body { min-height:150px; padding:.8rem clamp(.8rem,1.5vw,1.1rem) .9rem; }
+.project-card__meta { margin-bottom:.5rem; }
+.project-card__title { font-size:clamp(1.35rem,2vw,1.8rem); }
+.project-card__desc { font-size:.88rem; }
+.project-card__body::after { padding-top:.65rem; }
+@media (min-width:768px) and (max-width:1023px) { .project-card { flex-basis:48vw; } }
+@media (max-width:767px) {
+  .work { padding-top:4.5rem; }
+  .project-card { flex-basis:78vw; }
+  .project-card__body { min-height:145px; }
+}
