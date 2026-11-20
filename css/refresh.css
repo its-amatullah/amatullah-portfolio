@@ -1080,3 +1080,28 @@ body {
   .project-grid { scroll-behavior:auto; }
   .project-card, .project-card__img, .gallery-control, .filter-btn, .contact__email span { transition:none !important; }
 }
+
+
+/* Final desktop alignment and dark masthead correction. */
+.nav, .nav.is-scrolled { background:transparent; }
+.nav__inner, .nav.is-scrolled .nav__inner {
+  background:rgba(25,25,25,.9);
+  border-color:rgba(244,241,233,.18);
+}
+.nav__logo { color:var(--color-text-primary); }
+.nav__link { color:var(--color-text-secondary); }
+.nav__link.is-active { color:#191919; background:var(--color-accent-lime); }
+.hero__split {
+  grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);
+  gap:clamp(1.5rem,4vw,4rem);
+  align-items:center;
+}
+.hero__name {
+  width:auto;
+  max-width:100%;
+  font-size:clamp(3.75rem,6.6vw,6.4rem);
+  line-height:.9;
+}
+@media (max-width:767px) {
+  .hero__name { max-width:none; font-size:clamp(3.1rem,14vw,5.1rem); }
+}
