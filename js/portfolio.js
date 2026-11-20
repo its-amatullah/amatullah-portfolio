@@ -485,6 +485,20 @@
       top.appendChild(categoryTag);
       top.appendChild(year);
 
+      var thumbnailFrame = document.createElement('div');
+      thumbnailFrame.className = 'locker-interior__thumbnail';
+      var thumbnail = document.createElement('img');
+      thumbnail.src = project.coverImage || PROJECT_COVERS[project.id] || (PROJECT_GALLERIES[project.id] && PROJECT_GALLERIES[project.id][0]) || '';
+      thumbnail.alt = project.title + ' project thumbnail';
+      thumbnail.loading = 'lazy';
+      thumbnail.decoding = 'async';
+      if (thumbnail.src) {
+        thumbnailFrame.appendChild(thumbnail);
+      } else {
+        thumbnailFrame.classList.add('locker-interior__thumbnail--empty');
+        thumbnailFrame.setAttribute('aria-label', project.title + ' thumbnail unavailable');
+      }
+
       var detailTitle = document.createElement('h3');
       detailTitle.className = 'locker-interior__title';
       detailTitle.textContent = project.title;
@@ -493,9 +507,9 @@
       desc.className = 'locker-interior__desc';
       desc.textContent = project.shortDesc;
 
-      var role = document.createElement('p');
-      role.className = 'locker-interior__role';
-      role.textContent = 'Role · ' + project.role;
+      var details = document.createElement('p');
+      details.className = 'locker-interior__details';
+      details.textContent = project.role + ' · ' + project.tools.join(' · ');
 
       var actions = document.createElement('div');
       actions.className = 'locker-interior__actions';
@@ -503,18 +517,32 @@
       caseLink.className = 'locker-interior__link';
       caseLink.href = project.casePage;
       caseLink.textContent = 'View Case Study ↗';
+      actions.appendChild(caseLink);
+
+      (PROJECT_LINKS[project.id] || []).forEach(function (preview, previewIndex) {
+        var previewLink = document.createElement('a');
+        previewLink.className = 'locker-interior__preview';
+        previewLink.href = preview.href;
+        previewLink.textContent = preview.label + ' ↗';
+        if (/^https?:\\/\\//i.test(preview.href)) {
+          previewLink.target = '_blank';
+          previewLink.rel = 'noopener';
+        }
+        actions.appendChild(previewLink);
+      });
+
       var close = document.createElement('button');
       close.type = 'button';
       close.className = 'locker-interior__close';
-      close.textContent = 'Close door';
+      close.textContent = 'Close';
       close.setAttribute('aria-label', 'Close locker ' + number);
-      actions.appendChild(caseLink);
       actions.appendChild(close);
 
       interior.appendChild(top);
+      interior.appendChild(thumbnailFrame);
       interior.appendChild(detailTitle);
       interior.appendChild(desc);
-      interior.appendChild(role);
+      interior.appendChild(details);
       interior.appendChild(actions);
       card.replaceChildren(interior, door);
     });
