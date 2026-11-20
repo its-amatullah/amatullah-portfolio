@@ -215,10 +215,10 @@
   const PROJECT_LINKS = {
     'app-dashboard': [{ label: 'Open interactive prototype', href: 'designs/app-dashboard/index.html' }],
     'shop-rebuild': [
-      { label: 'View redesigned flow', href: 'designs/shop-rebuild/shop-rebuild.html' },
-      { label: 'Compare payment flow', href: 'designs/shop-rebuild/payment-flow.html' },
+      { label: 'Original flow (V1)', href: 'designs/shop-rebuild/shop-rebuild.html' },
+      { label: 'Redesigned flow (V2)', href: 'designs/shop-rebuild/payment-flow.html' },
     ],
-    'student-profile': [{ label: 'Open interactive prototype', href: 'designs/student-profile/index.html' }],
+    'student-profile': [{ label: 'Open Student Profile prototype', href: 'designs/student-profile/forms.html' }],
     'design-gallery': [{ label: 'Visit live Design Gallery', href: 'https://amatullah-a.github.io/Design-gallery/' }],
   };
 
