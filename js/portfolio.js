@@ -406,7 +406,54 @@
   }
 
   function renderProjects() {
-    // Cards are already in HTML — nothing to render
+    var featured = document.getElementById('featured-projects');
+    var compact = document.getElementById('project-grid');
+    if (!featured || !compact) return;
+
+    var featuredIds = ['app-dashboard', 'shop-rebuild', 'student-profile'];
+    var projectById = {};
+    PROJECTS.forEach(function (project) { projectById[project.id] = project; });
+
+    Array.prototype.slice.call(compact.querySelectorAll('.project-card')).forEach(function (card) {
+      var project = projectById[card.dataset.id];
+      if (!project) return;
+      var isFeatured = featuredIds.indexOf(project.id) !== -1;
+      card.classList.toggle('project-card--featured', isFeatured);
+      card.dataset.featured = isFeatured ? 'true' : 'false';
+      card.setAttribute('aria-label', 'View case study: ' + project.title);
+
+      var body = card.querySelector('.project-card__body');
+      var meta = card.querySelector('.project-card__meta');
+      if (body && !body.querySelector('.project-card__role')) {
+        var role = document.createElement('p');
+        role.className = 'project-card__role';
+        var label = document.createElement('span');
+        label.textContent = 'Role';
+        role.appendChild(label);
+        role.appendChild(document.createTextNode(' ' + project.role));
+        if (meta) meta.insertAdjacentElement('afterend', role);
+        else body.insertBefore(role, body.firstChild);
+      }
+      if (body && !body.querySelector('.project-card__action')) {
+        var action = document.createElement('span');
+        action.className = 'project-card__action';
+        action.innerHTML = 'View Case Study <span aria-hidden="true">↗</span>';
+        body.appendChild(action);
+      }
+
+      if (isFeatured) featured.appendChild(card);
+    });
+
+    refreshShowcaseVisibility();
+  }
+
+  function refreshShowcaseVisibility() {
+    var featuredWrap = document.querySelector('.featured-projects-wrap');
+    var compactWrap = document.querySelector('.compact-projects-wrap');
+    var featuredCards = document.querySelectorAll('#featured-projects .project-card:not([data-hidden="true"])');
+    var compactCards = document.querySelectorAll('#project-grid .project-card:not([data-hidden="true"])');
+    if (featuredWrap) featuredWrap.hidden = featuredCards.length === 0;
+    if (compactWrap) compactWrap.hidden = compactCards.length === 0;
   }
 
   function createCard(project) {
@@ -500,8 +547,6 @@
     return card;
   }
 
-  var projectCarouselController = null;
-
   function setFilter(filterId) {
     document.querySelectorAll('.filter-btn').forEach(function (btn) {
       btn.classList.toggle('is-active', btn.dataset.filter === filterId);
@@ -511,131 +556,7 @@
       card.dataset.hidden = match ? 'false' : 'true';
       card.style.display = match ? '' : 'none';
     });
-
-    if (projectCarouselController) projectCarouselController.refresh(true);
-    else updateGalleryProgress();
-  }
-
-  function updateGalleryProgress(index, total) {
-    var progress = document.querySelector('.gallery-progress');
-    var counter = document.querySelector('[data-gallery-count]');
-    if (!progress) return;
-
-    var amount = total > 1 ? index / (total - 1) : 1;
-    progress.style.setProperty('--gallery-progress', amount);
-    progress.setAttribute('aria-valuenow', String(Math.round(amount * 100)));
-    if (counter) {
-      counter.value = String(index + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
-      counter.textContent = counter.value;
-    }
-  }
-
-  function initProjectGallery(grid) {
-    var previous = document.querySelector('[data-gallery-prev]');
-    var next = document.querySelector('[data-gallery-next]');
-    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var index = 0;
-    var suppressClick = false;
-    var pointerStart = null;
-
-    function cards() {
-      return Array.prototype.slice.call(grid.querySelectorAll('.project-card')).filter(function (card) {
-        return card.dataset.hidden !== 'true' && card.style.display !== 'none';
-      });
-    }
-
-    function render() {
-      var items = cards();
-      if (!items.length) {
-        grid.dataset.empty = 'true';
-        updateGalleryProgress(0, 0);
-        return;
-      }
-      grid.dataset.empty = 'false';
-      index = ((index % items.length) + items.length) % items.length;
-      var step = grid.clientWidth * (window.innerWidth <= 767 ? 0.76 : 0.56);
-
-      items.forEach(function (card, itemIndex) {
-        var offset = itemIndex - index;
-        if (offset > items.length / 2) offset -= items.length;
-        if (offset < -items.length / 2) offset += items.length;
-
-        var state = offset === 0 ? 'active' : (offset === -1 ? 'previous' : (offset === 1 ? 'next' : 'distant'));
-        card.dataset.carouselState = state;
-        card.style.setProperty('--carousel-x', (offset * step) + 'px');
-        card.style.setProperty('--carousel-scale', offset === 0 ? '1' : '.84');
-        card.setAttribute('aria-hidden', offset === 0 ? 'false' : 'true');
-        card.setAttribute('aria-roledescription', 'slide');
-        card.setAttribute('aria-label', 'Slide ' + (itemIndex + 1) + ' of ' + items.length + ': View case study: ' + card.querySelector('.project-card__title').textContent.trim());
-        card.tabIndex = offset === 0 ? 0 : -1;
-      });
-
-      updateGalleryProgress(index, items.length);
-    }
-
-    function goTo(nextIndex, moveFocus) {
-      var items = cards();
-      if (!items.length) return;
-      index = ((nextIndex % items.length) + items.length) % items.length;
-      render();
-      if (moveFocus) items[index].focus({ preventScroll: true });
-    }
-
-    function move(direction, moveFocus) {
-      goTo(index + direction, moveFocus);
-    }
-
-    if (previous) previous.addEventListener('click', function () { move(-1, false); });
-    if (next) next.addEventListener('click', function () { move(1, false); });
-
-    grid.addEventListener('keydown', function (e) {
-      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-      if (e.target !== grid && !e.target.closest('.project-card')) return;
-      e.preventDefault();
-      move(e.key === 'ArrowRight' ? 1 : -1, true);
-    });
-
-    grid.addEventListener('pointerdown', function (e) {
-      if (!e.isPrimary || (e.pointerType === 'mouse' && e.button !== 0) || e.target.closest('a, button')) return;
-      pointerStart = { id: e.pointerId, x: e.clientX, y: e.clientY };
-      grid.classList.add('is-dragging');
-    });
-    grid.addEventListener('pointerup', function (e) {
-      if (!pointerStart || e.pointerId !== pointerStart.id) return;
-      var dx = e.clientX - pointerStart.x;
-      var dy = e.clientY - pointerStart.y;
-      if (Math.abs(dx) > 42 && Math.abs(dx) > Math.abs(dy) * 1.15) {
-        move(dx < 0 ? 1 : -1, false);
-        suppressClick = true;
-        window.setTimeout(function () { suppressClick = false; }, 350);
-      }
-      pointerStart = null;
-      grid.classList.remove('is-dragging');
-    });
-    grid.addEventListener('pointercancel', function () {
-      pointerStart = null;
-      grid.classList.remove('is-dragging');
-    });
-    grid.addEventListener('dragstart', function (e) { e.preventDefault(); });
-
-    window.addEventListener('resize', render, { passive: true });
-    window.requestAnimationFrame(render);
-    return {
-      consumeClick: function () {
-        if (!suppressClick) return false;
-        suppressClick = false;
-        return true;
-      },
-      goToCard: function (card, moveFocus) {
-        var items = cards();
-        var targetIndex = items.indexOf(card);
-        if (targetIndex >= 0) goTo(targetIndex, moveFocus);
-      },
-      refresh: function (reset) {
-        if (reset) index = 0;
-        render();
-      },
-    };
+    refreshShowcaseVisibility();
   }
 
   function openModal(projectId, triggerEl) {
@@ -776,39 +697,25 @@
     renderFilterBar();
     renderProjects();
 
-    // Keep every existing project card connected to its original case-study modal.
-    var grid = document.getElementById('project-grid');
-    var gallery = grid ? initProjectGallery(grid) : null;
-    projectCarouselController = gallery;
-    if (grid) {
-      grid.addEventListener('click', function (e) {
-        if (gallery && gallery.consumeClick()) {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          return;
-        }
+    var work = document.getElementById('work');
+    var backdrop = document.getElementById('modal-backdrop');
+    var modal = document.getElementById('modal');
+    var closeBtn = document.getElementById('modal-close');
+
+    if (work) {
+      work.addEventListener('click', function (e) {
         var card = e.target.closest('.project-card');
-        if (!card) return;
-        if (card.dataset.carouselState !== 'active') {
-          if (gallery) gallery.goToCard(card, false);
-          return;
-        }
-        openModal(card.dataset.id, card);
+        if (card && work.contains(card)) openModal(card.dataset.id, card);
       });
-      grid.addEventListener('keydown', function (e) {
+      work.addEventListener('keydown', function (e) {
         var card = e.target.closest('.project-card');
-        if (!card || (e.key !== 'Enter' && e.key !== ' ')) return;
+        if (!card || !work.contains(card) || (e.key !== 'Enter' && e.key !== ' ')) return;
         e.preventDefault();
         openModal(card.dataset.id, card);
       });
     }
-
-    // Modal close handlers still needed for professional projects that use it
-    var backdrop = document.getElementById('modal-backdrop');
-    var modal    = document.getElementById('modal');
-    var closeBtn = document.getElementById('modal-close');
-    if (closeBtn)  closeBtn.addEventListener('click', closeModal);
-    if (backdrop)  backdrop.addEventListener('click', closeModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) closeModal();
     });
