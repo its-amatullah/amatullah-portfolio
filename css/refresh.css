@@ -2204,3 +2204,29 @@ p { color:#514653; }
   #about .section-title { max-width:none; font-size:clamp(2.8rem,11vw,4.1rem); }
   .hero__spot-mascot { max-width:360px; max-height:none; transform:none; }
 }
+
+
+/* Make horizontal gallery navigation unmistakable at a glance. */
+.gallery-hint {
+  max-width:32ch;
+  padding-left:.75rem;
+  border-left:2px solid #A83250;
+  color:#29242E;
+  font-size:.74rem;
+  font-weight:600;
+  line-height:1.5;
+}
+.gallery-hint span {
+  display:inline-block;
+  margin-left:.16rem;
+  color:#A83250;
+  animation:galleryCueNudge 1.8s ease-in-out infinite;
+}
+@keyframes galleryCueNudge {
+  0%,100% { transform:translateX(0); }
+  50% { transform:translateX(4px); }
+}
+@media (max-width:767px) {
+  .gallery-hint { max-width:23ch; font-size:.72rem; }
+}
+@media (prefers-reduced-motion:reduce) { .gallery-hint span { animation:none; } }
