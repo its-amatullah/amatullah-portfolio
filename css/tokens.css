@@ -7,21 +7,22 @@
 :root {
 
   /* ── Colours ─────────────────────────────────────────────── */
-  --color-bg:              #0E0E0C;
-  --color-surface:         #1C1B18;
-  --color-surface-raise:   #252420;
-  --color-border:          #2C2B27;
+  --color-bg: #F7F4F8;
+  --color-surface: #FAF8F5;
+  --color-surface-raise: #EAE3EF;
+  --color-border: #D8C9DF;
 
-  --color-accent:     #A78BFA;
+  --color-accent: #A83250;
+  --color-accent-border: rgba(168,50,80,.32);
   --color-accent-dim: rgba(168,50,80,.09);
-  --color-accent-soft:   #C084FC;
+  --color-accent-soft: #D8C9DF;
   --color-accent-soft-dim: rgba(216,201,223,.24);
 
-  --color-text-primary:    #EDE8DF;
-  --color-text-secondary:  #8A8478;
-  --color-text-muted:      #545148;
-  --color-white:           #FFFFFF;
-  --color-error:           #FF6B6B;
+  --color-text-primary: #29242E;
+  --color-text-secondary: #514653;
+  --color-text-muted: #766D79;
+  --color-white: #FAF8F5;
+  --color-error: #A83250;
 
   /* ── Typography — families ───────────────────────────────── */
   --font-heading: 'Space Grotesk', sans-serif;
