@@ -2594,3 +2594,18 @@ p { color:#514653; }
 @media (prefers-reduced-motion:reduce) {
   #home .hero__spot::before { animation:none; }
 }
+
+
+/* Pull the ink drawing into the headline and keep the small greeting crisp. */
+@media (min-width:768px) {
+  #home .hero__spot { right:7%; }
+  #home .hero__portrait-tilt { justify-content:flex-start; }
+  #home .hero__name-line:first-child .hero__word { letter-spacing:-.04em; }
+}
+@media (min-width:768px) and (max-width:1023px) {
+  #home .hero__spot { right:4%; }
+}
+@media (max-width:767px) {
+  #home .hero__name-line:first-child .hero__word { letter-spacing:-.04em; }
+  #home .hero__portrait-tilt { justify-content:center; }
+}
