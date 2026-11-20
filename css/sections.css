@@ -1743,6 +1743,9 @@
 .featured-projects .project-card:nth-child(3) { min-height:clamp(330px,34vw,460px); }
 .project-card__cover {
   position:relative;
+  display:block;
+  flex:none;
+  width:100%;
   min-width:0;
   min-height:0;
   aspect-ratio:16/10;
