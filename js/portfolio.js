@@ -465,7 +465,7 @@
 
       var cue = document.createElement('span');
       cue.className = 'locker-door__cue';
-      cue.textContent = 'Open locker ↗';
+      cue.textContent = 'Open locker ->';
 
       face.appendChild(plate);
       face.appendChild(label);
@@ -515,21 +515,21 @@
 
       var details = document.createElement('p');
       details.className = 'locker-interior__details';
-      details.textContent = project.role + ' · ' + project.tools.join(' · ');
+      details.textContent = project.role + '  /  ' + project.tools.join('  /  ');
 
       var actions = document.createElement('div');
       actions.className = 'locker-interior__actions';
       var caseLink = document.createElement('a');
       caseLink.className = 'locker-interior__link';
       caseLink.href = project.casePage;
-      caseLink.textContent = 'View Case Study ↗';
+      caseLink.textContent = 'View Case Study ->';
       actions.appendChild(caseLink);
 
       (PROJECT_LINKS[project.id] || []).forEach(function (preview, previewIndex) {
         var previewLink = document.createElement('a');
         previewLink.className = 'locker-interior__preview';
         previewLink.href = preview.href;
-        previewLink.textContent = preview.label + ' ↗';
+        previewLink.textContent = preview.label + ' ->';
         if (preview.href.indexOf('http://') === 0 || preview.href.indexOf('https://') === 0) {
           previewLink.target = '_blank';
           previewLink.rel = 'noopener';
@@ -682,7 +682,7 @@
     document.getElementById('modal-title').textContent    = project.title;
     document.getElementById('modal-year').textContent     = project.year;
     document.getElementById('modal-role').textContent     = project.role;
-    document.getElementById('modal-tools').textContent    = project.tools.join(' · ');
+    document.getElementById('modal-tools').textContent    = project.tools.join('  /  ');
     var catEl = document.getElementById('modal-category');
     catEl.className   = 'tag tag--' + project.category;
     catEl.textContent = project.category.charAt(0).toUpperCase() + project.category.slice(1);
@@ -729,7 +729,7 @@
         anchor.href = link.href;
         anchor.target = '_blank';
         anchor.rel = 'noopener';
-        anchor.textContent = link.label + ' ↗';
+        anchor.textContent = link.label + ' ->';
         linksEl.appendChild(anchor);
       });
     }
