@@ -1790,10 +1790,12 @@
 
 @media (min-width:768px) and (max-width:1023px) {
   #home .hero__split { min-height:620px; }
-  #home .hero__spot { right:4%; width:53%; }
+  #home .hero__spot { right:0; width:45%; }
+  #home .hero__portrait-tilt { align-items:flex-start; justify-content:flex-start; }
+  #home .hero__spot-mascot { height:clamp(360px,52vw,470px); max-height:470px; }
   #home .hero__name { top:22%; font-size:clamp(4.9rem,9.5vw,6.6rem); }
   #home .hero__quote { top:61%; left:5%; max-width:29ch; }
-  #home .hero__actions { top:78%; left:5%; }
+  #home .hero__actions { top:78%; left:5%; max-width:44%; }
   #home .hero__info li { padding-inline:.75rem; }
   .about__grid { grid-template-columns:minmax(0,1fr) minmax(260px,.72fr); gap:2rem; }
   .about__skills { grid-template-columns:repeat(2,minmax(0,1fr)); }
