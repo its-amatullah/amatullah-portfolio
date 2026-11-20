@@ -1457,10 +1457,12 @@
 }
 #home .hero__hello-word {
   display:block;
+  justify-self:end;
+  text-align:right;
   color:var(--color-text-primary);
   font:400 clamp(5rem,11.2vw,10rem)/.76 Georgia,"Times New Roman",serif;
   letter-spacing:-.075em;
-  transform-origin:center;
+  transform-origin:right center;
   animation:heroWordReveal 850ms cubic-bezier(.2,.75,.25,1) both;
 }
 #home .hero__hello-number { grid-column:1/-1; justify-self:end; padding:.5rem 0 .55rem; color:var(--color-text-muted); font-size:.53rem; }
@@ -1519,11 +1521,11 @@
   position:relative;
   z-index:2;
   display:grid;
-  justify-items:center;
+  justify-items:start;
   width:100%;
   max-width:none;
   margin:-.05em 0 0;
-  text-align:center;
+  text-align:left;
 }
 #home .hero__name-intro {
   display:block;
