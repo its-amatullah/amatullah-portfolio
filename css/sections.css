@@ -1806,24 +1806,30 @@
 .project-star__label {
   position:absolute;
   top:50%;
-  left:calc(100% + .25rem);
+  left:calc(100% + .4rem);
   display:grid;
-  gap:.2rem;
+  gap:.18rem;
   min-width:max-content;
-  padding:.5rem .65rem;
-  border:1px solid rgba(41,36,46,.16);
+  padding:.34rem .48rem;
+  border-left:2px solid rgba(168,50,80,.55);
   color:var(--color-text-primary);
-  background:rgba(250,248,245,.97);
-  box-shadow:0 5px 16px rgba(41,36,46,.08);
-  opacity:0;
-  transform:translate(5px,-50%);
-  transition:opacity 180ms ease,transform 180ms ease;
+  background:rgba(250,248,245,.88);
+  opacity:1;
+  transform:translateY(-50%);
+  transition:color 180ms ease,border-color 180ms ease;
   pointer-events:none;
 }
-.project-star--west .project-star__label { left:auto; right:calc(100% + .25rem); transform:translate(-5px,-50%); }
+.project-star--west .project-star__label { left:auto; right:calc(100% + .4rem); text-align:right; }
+.project-star__label strong { font:600 .78rem/1.2 var(--font-heading); }
+.project-star__label small {
+  color:var(--color-text-muted);
+  font:.5rem/1.2 var(--font-mono);
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
 .project-star:hover .project-star__label,.project-star:focus-visible .project-star__label,.project-star[aria-expanded="true"] .project-star__label {
-  opacity:1;
-  transform:translate(0,-50%);
+  color:var(--color-accent);
+  border-color:var(--color-accent);
 }
 .project-star__label strong { font:600 .78rem/1.2 var(--font-heading); }
 .project-star__label small { color:var(--color-accent); font:.53rem/1.2 var(--font-mono); letter-spacing:.07em; text-transform:uppercase; }
@@ -1909,8 +1915,9 @@
   .constellation { grid-template-columns:1fr; gap:.25rem; padding:.8rem .25rem; }
   .constellation__heading { grid-template-columns:2rem 1fr; }
   .constellation__map { height:150px; }
-  .project-star__label { padding:.4rem .5rem; }
-  .project-star__label strong { font-size:.7rem; }
+  .project-star__label { padding:.28rem .36rem; }
+  .project-star__label strong { font-size:.68rem; }
+  .project-star__label small { font-size:.46rem; }
   .project-detail { grid-template-columns:80px minmax(0,1fr) auto; gap:.65rem; }
   .project-detail.is-visible { max-height:300px; padding:.8rem; }
   .project-detail__image { height:68px; }
