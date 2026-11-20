@@ -1814,7 +1814,9 @@
   border-left:2px solid rgba(168,50,80,.55);
   color:var(--color-text-primary);
   background:rgba(250,248,245,.88);
-  opacity:1;
+  opacity:1 !important;
+  visibility:visible !important;
+  z-index:3;
   transform:translateY(-50%);
   transition:color 180ms ease,border-color 180ms ease;
   pointer-events:none;
