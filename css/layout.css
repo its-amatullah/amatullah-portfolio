@@ -29,7 +29,7 @@
   font-size: var(--text-xs);
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-accent-lime);
+  color: var(--color-accent);
   margin-bottom: var(--space-6);
 }
 
@@ -38,7 +38,7 @@
   display: block;
   width: 24px;
   height: 1px;
-  background-color: var(--color-accent-lime);
+  background-color: var(--color-accent);
 }
 
 .section-title {
