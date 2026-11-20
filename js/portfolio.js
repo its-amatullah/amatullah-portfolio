@@ -225,6 +225,45 @@
   /* ──────────────────────────────────────────────────────────
      HERO ANIMATION
   ────────────────────────────────────────────────────────── */
+  function initSpotlight() {
+    var hero = document.getElementById('home');
+    var art = hero && hero.querySelector('.hero__spotlight-art');
+    if (!hero || !art || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var frame = 0;
+    var pending = null;
+    function revealAt(x, y) {
+      pending = [x, y];
+      if (frame) return;
+      frame = window.requestAnimationFrame(function () {
+        frame = 0;
+        if (!pending) return;
+        art.style.setProperty('--spot-x', pending[0] + 'px');
+        art.style.setProperty('--spot-y', pending[1] + 'px');
+        hero.classList.add('spotlight-on');
+        pending = null;
+      });
+    }
+
+    hero.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var bounds = hero.getBoundingClientRect();
+      revealAt(e.clientX - bounds.left, e.clientY - bounds.top);
+    }, { passive: true });
+    hero.addEventListener('pointerleave', function (e) {
+      if (e.pointerType === 'mouse') hero.classList.remove('spotlight-on');
+    });
+
+    var touchTimer = 0;
+    hero.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'touch' || e.target.closest('a, button')) return;
+      var bounds = hero.getBoundingClientRect();
+      revealAt(e.clientX - bounds.left, e.clientY - bounds.top);
+      window.clearTimeout(touchTimer);
+      touchTimer = window.setTimeout(function () { hero.classList.remove('spotlight-on'); }, 1500);
+    }, { passive: true });
+  }
+
   function initHeroAnimation() {
     var bar    = document.querySelector('.hero__bar');
     var role   = document.querySelector('.hero__role');
@@ -475,6 +514,99 @@
         card.style.display = 'none';
       }
     });
+
+    var grid = document.getElementById('project-grid');
+    if (grid) grid.scrollTo({ left: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    updateGalleryProgress();
+  }
+
+  function updateGalleryProgress() {
+    var grid = document.getElementById('project-grid');
+    var progress = document.querySelector('.gallery-progress');
+    if (!grid || !progress) return;
+    var maxScroll = grid.scrollWidth - grid.clientWidth;
+    var amount = maxScroll > 0 ? Math.min(1, Math.max(0, grid.scrollLeft / maxScroll)) : 1;
+    progress.style.setProperty('--gallery-progress', amount);
+    progress.setAttribute('aria-valuenow', String(Math.round(amount * 100)));
+  }
+
+  function initProjectGallery(grid) {
+    var previous = document.querySelector('[data-gallery-prev]');
+    var next = document.querySelector('[data-gallery-next]');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function scrollGallery(direction) {
+      var firstCard = grid.querySelector('.project-card:not([style*="display: none"])');
+      if (!firstCard) return;
+      var gap = parseFloat(window.getComputedStyle(grid).columnGap) || 24;
+      var step = firstCard.getBoundingClientRect().width + gap;
+      grid.scrollBy({ left: direction * step, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    }
+
+    if (previous) previous.addEventListener('click', function () { scrollGallery(-1); });
+    if (next) next.addEventListener('click', function () { scrollGallery(1); });
+
+    var progressFrame = 0;
+    grid.addEventListener('scroll', function () {
+      if (progressFrame) return;
+      progressFrame = window.requestAnimationFrame(function () {
+        progressFrame = 0;
+        updateGalleryProgress();
+      });
+    }, { passive: true });
+    window.addEventListener('resize', updateGalleryProgress, { passive: true });
+
+    grid.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      var current = document.activeElement.closest('.project-card');
+      if (!current) return;
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.project-card')).filter(function (card) {
+        return card.dataset.hidden !== 'true';
+      });
+      var index = cards.indexOf(current);
+      var target = cards[index + (e.key === 'ArrowRight' ? 1 : -1)];
+      if (target) {
+        e.preventDefault();
+        target.focus();
+        target.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      }
+    });
+
+    var drag = null;
+    var suppressClick = false;
+    grid.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    grid.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || !e.isPrimary || e.button !== 0 || e.target.closest('a, button')) return;
+      drag = { pointerId: e.pointerId, x: e.clientX, scrollLeft: grid.scrollLeft, moved: false };
+      grid.classList.add('is-dragging');
+    });
+    document.addEventListener('pointermove', function (e) {
+      if (!drag || e.pointerId !== drag.pointerId) return;
+      var delta = e.clientX - drag.x;
+      if (!drag.moved && Math.abs(delta) < 5) return;
+      drag.moved = true;
+      grid.scrollLeft = drag.scrollLeft - delta;
+    });
+    function endDrag(e) {
+      if (!drag || (e && e.pointerId !== drag.pointerId)) return;
+      if (drag.moved) {
+        suppressClick = true;
+        window.setTimeout(function () { suppressClick = false; }, 350);
+      }
+      drag = null;
+      grid.classList.remove('is-dragging');
+    }
+    document.addEventListener('pointerup', endDrag);
+    document.addEventListener('pointercancel', endDrag);
+
+    window.requestAnimationFrame(updateGalleryProgress);
+    return {
+      consumeClick: function () {
+        if (!suppressClick) return false;
+        suppressClick = false;
+        return true;
+      },
+    };
   }
 
   function openModal(projectId, triggerEl) {
@@ -615,10 +747,16 @@
     renderFilterBar();
     renderProjects();
 
-    // Static project cards should open their case studies in this portfolio.
+    // Keep every existing project card connected to its original case-study modal.
     var grid = document.getElementById('project-grid');
+    var gallery = grid ? initProjectGallery(grid) : null;
     if (grid) {
       grid.addEventListener('click', function (e) {
+        if (gallery && gallery.consumeClick()) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          return;
+        }
         var card = e.target.closest('.project-card');
         if (!card) return;
         openModal(card.dataset.id, card);
@@ -828,6 +966,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     initNav();
     initScrollSpy();
+    initSpotlight();
     initHeroAnimation();
     renderAbout();
     initScrollReveals();
