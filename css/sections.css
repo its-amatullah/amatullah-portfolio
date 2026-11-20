@@ -1522,15 +1522,6 @@
   font-size:.52rem;
   writing-mode:vertical-rl;
 }
-#home .hero__portrait-mark {
-  position:absolute;
-  z-index:2;
-  right:8%;
-  bottom:17%;
-  color:var(--color-accent);
-  font-size:1.4rem;
-  animation:heroMarkTurn 16s linear infinite;
-}
 #home .hero__name {
   position:relative;
   z-index:2;
@@ -1628,7 +1619,6 @@
   from { opacity:0; transform:translateY(18px); }
   to { opacity:1; transform:translateY(0); }
 }
-@keyframes heroMarkTurn { to { transform:rotate(360deg); } }
 @keyframes heroPaperDrift {
   0%,100% { transform:rotate(-2deg) translateY(0); }
   50% { transform:rotate(1deg) translateY(-5px); }
@@ -1999,7 +1989,7 @@
   .gallery-hint { font-size:.72rem; }
 }
 @media (prefers-reduced-motion:reduce) {
-  #home .hero__spot::before,#home .hero__portrait-tilt,#home .hero__hello-word,#home .hero__portrait-mark { animation:none !important; }
+  #home .hero__spot::before,#home .hero__portrait-tilt,#home .hero__hello-word { animation:none !important; }
   .project-card,.project-card__img,.process-step,.filter-btn,.gallery-control,.gallery-hint span { transition:none !important; animation:none !important; }
   .process-step:hover { padding-left:0; }
 }
