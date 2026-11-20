@@ -1854,6 +1854,31 @@
   gap:.32rem .55rem;
   margin-top:.45rem;
 }
+.locker-interior__primary {
+  display:inline-flex;
+  flex:0 0 100%;
+  align-items:center;
+  justify-content:flex-start;
+  min-height:1.9rem;
+  max-width:100%;
+  padding:.34rem .45rem;
+  border:1px solid var(--color-accent);
+  color:#FAF8F5;
+  background:var(--color-accent);
+  font:700 .54rem/1.25 var(--font-mono);
+  letter-spacing:.015em;
+  text-align:left;
+  text-decoration:none;
+  transition:transform 180ms ease,background-color 180ms ease,box-shadow 180ms ease;
+}
+.locker-interior__primary:hover {
+  transform:translateY(-1px);
+  box-shadow:0 3px 10px rgba(41,36,46,.16);
+}
+.locker-interior__primary:focus-visible {
+  outline:2px solid var(--color-text-primary);
+  outline-offset:2px;
+}
 .locker-interior__link {
   color:var(--color-accent);
   font:700 .61rem var(--font-mono);
@@ -2054,6 +2079,7 @@
   .locker-interior__desc { margin:.2rem 0; font-size:.6rem; line-height:1.35; }
   .locker-interior__details { font-size:.46rem; }
   .locker-interior__actions { gap:.3rem .45rem; margin-top:.35rem; }
+  .locker-interior__primary { min-height:1.8rem; padding:.3rem .38rem; font-size:.48rem; }
   .locker-interior__link,.locker-interior__preview { font-size:.49rem; }
   .locker-interior__close { font-size:.46rem; }
 }
@@ -2066,6 +2092,7 @@
   .locker-interior__title { font-size:1rem; }
   .locker-interior__desc { font-size:.68rem; }
   .locker-interior__details { font-size:.49rem; }
+  .locker-interior__primary { font-size:.52rem; }
   .locker-interior__link,.locker-interior__preview { font-size:.54rem; }
   .locker-interior__close { font-size:.5rem; }
 }
