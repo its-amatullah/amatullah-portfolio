@@ -2230,3 +2230,15 @@ p { color:#514653; }
   .gallery-hint { max-width:23ch; font-size:.72rem; }
 }
 @media (prefers-reduced-motion:reduce) { .gallery-hint span { animation:none; } }
+
+
+@media (max-width:767px) {
+  .gallery-tools {
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:.6rem;
+    align-items:start;
+  }
+  .gallery-hint { width:100%; max-width:none; }
+  .gallery-controls { justify-self:end; }
+}
