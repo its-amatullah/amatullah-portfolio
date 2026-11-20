@@ -36,3 +36,12 @@
 .anim-fade-up    { animation: fadeUp  var(--dur-slow) var(--ease-out-expo) both; }
 .anim-fade-in    { animation: fadeIn  var(--dur-normal) var(--ease-standard) both; }
 .anim-scale-in   { animation: scaleIn var(--dur-slow)  var(--ease-out-expo) both; }
+
+@keyframes heroPaperDrift {
+  0%,100% { transform:rotate(2deg) translateY(0); }
+  50% { transform:rotate(3deg) translateY(-5px); }
+}
+@keyframes galleryCueNudge {
+  0%,100% { transform:translateX(0); }
+  50% { transform:translateX(4px); }
+}
