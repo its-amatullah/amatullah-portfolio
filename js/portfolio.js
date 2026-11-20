@@ -443,7 +443,7 @@
 
       var map = document.createElement('div');
       map.className = 'constellation__map';
-      map.setAttribute('role', 'list');
+      map.setAttribute('role', 'group');
       map.setAttribute('aria-label', group.label + ' constellation');
 
       var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -472,7 +472,6 @@
         star.style.setProperty('--twinkle-delay', ((index % 4) * -0.8) + 's');
         star.dataset.category = project.category;
         star.dataset.id = project.id;
-        star.setAttribute('role', 'listitem');
         star.setAttribute('aria-label', 'Open project details for ' + project.title);
         star.setAttribute('aria-expanded', 'false');
 
@@ -522,6 +521,12 @@
     if (!panel || !project) return;
     document.querySelectorAll('.project-star[aria-expanded="true"]').forEach(function (star) {
       star.setAttribute('aria-expanded', 'false');
+    });
+    document.querySelectorAll('#project-grid .project-detail').forEach(function (otherPanel) {
+      if (otherPanel !== panel) {
+        otherPanel.classList.remove('is-visible');
+        otherPanel.setAttribute('aria-hidden', 'true');
+      }
     });
     trigger.setAttribute('aria-expanded', 'true');
     panel.classList.remove('is-visible');
