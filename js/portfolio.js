@@ -466,7 +466,7 @@
         var point = group.points[index % group.points.length];
         var star = document.createElement('button');
         star.type = 'button';
-        star.className = 'project-star';
+        star.className = 'project-star' + (point[0] >= 66 ? ' project-star--west' : '');
         star.style.setProperty('--star-x', point[0] + '%');
         star.style.setProperty('--star-y', point[1] + '%');
         star.style.setProperty('--twinkle-delay', ((index % 4) * -0.8) + 's');
@@ -497,15 +497,15 @@
       count.textContent = String(projects.length).padStart(2, '0') + ' PROJECTS';
       heading.replaceChild(count, heading.lastChild);
       section.appendChild(map);
+      var detail = document.createElement('article');
+      detail.className = 'project-detail';
+      detail.id = 'project-detail-' + group.id;
+      detail.setAttribute('aria-live', 'polite');
+      detail.setAttribute('aria-hidden', 'true');
+      section.appendChild(detail);
       grid.appendChild(section);
     });
 
-    var detail = document.createElement('article');
-    detail.className = 'project-detail';
-    detail.id = 'project-detail';
-    detail.setAttribute('aria-live', 'polite');
-    detail.setAttribute('aria-hidden', 'true');
-    grid.appendChild(detail);
     refreshLockerCount();
   }
 
@@ -518,7 +518,7 @@
   }
 
   function showProjectDetail(project, trigger) {
-    var panel = document.getElementById('project-detail');
+    var panel = trigger.closest('.constellation').querySelector('.project-detail');
     if (!panel || !project) return;
     document.querySelectorAll('.project-star[aria-expanded="true"]').forEach(function (star) {
       star.setAttribute('aria-expanded', 'false');
@@ -690,11 +690,10 @@
         star.setAttribute('aria-expanded', 'false');
       });
     });
-    var panel = document.getElementById('project-detail');
-    if (panel) {
+    document.querySelectorAll('#project-grid .project-detail').forEach(function (panel) {
       panel.classList.remove('is-visible');
       panel.setAttribute('aria-hidden', 'true');
-    }
+    });
     refreshLockerCount();
   }
 
@@ -878,8 +877,8 @@
 
     grid.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
-      var panel = document.getElementById('project-detail');
-      if (panel && panel.classList.contains('is-visible')) {
+      var panel = grid.querySelector('.project-detail.is-visible');
+      if (panel) {
         panel.classList.remove('is-visible');
         panel.setAttribute('aria-hidden', 'true');
         var star = grid.querySelector('.project-star[aria-expanded="true"]');
