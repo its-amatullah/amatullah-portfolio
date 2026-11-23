@@ -3,6 +3,33 @@
    ============================================================ */
 
 /* ── Hero ────────────────────────────────────────────────────── */
+/* The Design Gallery case-study utility row */
+.cs-hero__topline {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--space-6);
+  margin-bottom:var(--space-12);
+}
+
+.cs-hero__topline .cs-hero__back,
+.cs-hero__topline .cs-hero__label {
+  margin:0;
+}
+
+@media (max-width:520px) {
+  .cs-hero__topline {
+    flex-wrap:wrap;
+    row-gap:var(--space-4);
+  }
+
+  .cs-hero__topline .cs-hero__label {
+    margin-left:auto;
+    text-align:right;
+  }
+}
+
+
 .cs-hero {
   padding-top: 7rem;
   padding-bottom: var(--space-20);
