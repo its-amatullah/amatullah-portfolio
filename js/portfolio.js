@@ -218,10 +218,11 @@
       ctaLabel: 'Explore Full Prototype ->',
       href: 'https://its-amatullah.github.io/Design-gallery/designs/App%20activity%20dashboard/v11-uniqueschools.html',
     }],
-    'shop-rebuild': [
-      { label: 'Redesigned Flow (V2)', ctaLabel: 'Explore Redesigned Flow (V2) ->', href: 'https://its-amatullah.github.io/Design-gallery/designs/Shop%20rebuild/shop-payment-flow%282%29.html' },
-      { label: 'Original Flow (V1)', href: 'https://its-amatullah.github.io/Design-gallery/designs/Shop%20rebuild/shop-rebuild.html' },
-    ],
+    'shop-rebuild': [{
+      label: 'Redesigned Flow',
+      ctaLabel: 'Explore Redesigned Flow ->',
+      href: 'https://its-amatullah.github.io/Design-gallery/designs/Shop%20rebuild/shop-payment-flow%282%29.html',
+    }],
     'student-profile': [
       { label: 'Main Student Profile', ctaLabel: 'Explore Main Prototype ->', href: 'https://its-amatullah.github.io/Design-gallery/designs/Student%20Profile/SFCmain.html' },
       { label: 'Forms View', href: 'https://its-amatullah.github.io/Design-gallery/designs/Student%20Profile/SFC%20forms%20.html' },
