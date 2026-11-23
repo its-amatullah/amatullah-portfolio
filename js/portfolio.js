@@ -13,11 +13,11 @@
     name:         'Amatullah Andamanwala',
     nameShort:    'Amatullah',
     tagline:      'Turning research into clear, intuitive and purposeful digital experiences.',
-    bioPull:      'Turning complexity into clarity.',
+    bioPull:      '',
     bio: [
-      'Making digital experiences more intuitive, purposeful and human.',
-      'Currently designing education products at Unique Schools, pairing user insight with strong visual systems to solve real problems. I move from research and wireframes to polished high-fidelity interfaces and live HTML prototypes, using modern design tools and AI-assisted workflows.',
-      'Collaborative, detail-oriented, and driven by the goal of making technology feel simple and human.',
+      'Currently designing educational products for a SaaS platform, combining user insights, thoughtful interactions and creative problem-solving to address real-world challenges.',
+      'I work across the design process, from research and wireframing to polished interfaces and interactive prototypes, while leveraging modern design tools and AI-assisted workflows to explore ideas and bring them to life.',
+      'Curious by nature, collaborative in approach and thoughtful in execution. Always exploring better ways to turn ideas into meaningful experiences.',
     ],
     availability: 'Open to new adventures in UI/UX design',
     location:     'Pune, India',
@@ -905,10 +905,12 @@
     var bioEl = document.getElementById('about-bio');
     if (!bioEl) return;
 
-    var pull = document.createElement('p');
-    pull.className   = 'about__bio-pull reveal';
-    pull.textContent = DESIGNER.bioPull;
-    bioEl.appendChild(pull);
+    if (DESIGNER.bioPull) {
+      var pull = document.createElement('p');
+      pull.className   = 'about__bio-pull reveal';
+      pull.textContent = DESIGNER.bioPull;
+      bioEl.appendChild(pull);
+    }
 
     DESIGNER.bio.forEach(function (para) {
       var p = document.createElement('p');
