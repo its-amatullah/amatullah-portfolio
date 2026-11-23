@@ -2042,10 +2042,14 @@
 }
 
 .project-detail {
+  grid-column:1 / -1;
   display:grid;
-  grid-template-columns:130px minmax(0,1fr) auto;
+  grid-template-columns:minmax(100px,150px) minmax(0,1fr) auto;
   align-items:center;
   gap:1rem 1.3rem;
+  width:100%;
+  min-width:0;
+  box-sizing:border-box;
   max-height:0;
   margin:0;
   padding:0 clamp(.8rem,2vw,1.5rem);
@@ -2058,7 +2062,7 @@
   pointer-events:none;
 }
 .project-detail.is-visible {
-  max-height:260px;
+  max-height:520px;
   margin:.6rem 0 .25rem;
   padding:1rem clamp(.8rem,2vw,1.5rem);
   border-width:1px;
@@ -2073,6 +2077,9 @@
   object-fit:contain;
   background:#EAE3EF;
 }
+.project-detail__copy { min-width:0; }
+.project-detail__description,
+.project-detail__tools { overflow-wrap:anywhere; }
 .project-detail__meta {
   margin:0 0 .35rem;
   color:var(--color-accent);
@@ -2127,7 +2134,7 @@
   .project-star__label strong { font-size:.68rem; }
   .project-star__label small { font-size:.46rem; }
   .project-detail { grid-template-columns:80px minmax(0,1fr) auto; gap:.65rem; }
-  .project-detail.is-visible { max-height:300px; padding:.8rem; }
+  .project-detail.is-visible { max-height:600px; padding:.8rem; }
   .project-detail__image { height:68px; }
   .project-detail__description { font-size:.72rem; }
   .project-detail__actions { gap:.35rem .55rem; }
@@ -2139,7 +2146,7 @@
   .constellation__map { height:132px; }
   .project-detail { grid-template-columns:64px minmax(0,1fr); }
   .project-detail__close { grid-column:1 / -1; justify-self:end; }
-  .project-detail.is-visible { max-height:340px; }
+  .project-detail.is-visible { max-height:680px; }
 }
 @media (prefers-reduced-motion:reduce) {
   .project-star__core { animation:none; }
