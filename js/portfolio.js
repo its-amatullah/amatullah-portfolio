@@ -462,6 +462,17 @@
       map.appendChild(svg);
 
       var projects = PROJECTS.filter(function (project) { return project.category === group.id; });
+      if (group.id === 'professional') {
+        var professionalOrder = {
+          'design-gallery': 0,
+          'shop-rebuild': 1,
+          'student-profile': 2,
+          'app-dashboard': 3,
+        };
+        projects.sort(function (a, b) {
+          return professionalOrder[a.id] - professionalOrder[b.id];
+        });
+      }
       projects.forEach(function (project, index) {
         var point = group.points[index % group.points.length];
         var star = document.createElement('button');
@@ -501,6 +512,7 @@
       detail.id = 'project-detail-' + group.id;
       detail.setAttribute('aria-live', 'polite');
       detail.setAttribute('aria-hidden', 'true');
+      detail.inert = true;
       section.appendChild(detail);
       grid.appendChild(section);
     });
@@ -526,11 +538,13 @@
       if (otherPanel !== panel) {
         otherPanel.classList.remove('is-visible');
         otherPanel.setAttribute('aria-hidden', 'true');
+        otherPanel.inert = true;
       }
     });
     trigger.setAttribute('aria-expanded', 'true');
     panel.classList.remove('is-visible');
     panel.setAttribute('aria-hidden', 'false');
+    panel.inert = false;
     panel.replaceChildren();
 
     var image = document.createElement('img');
@@ -872,6 +886,7 @@
         var panel = close.closest('.project-detail');
         panel.classList.remove('is-visible');
         panel.setAttribute('aria-hidden', 'true');
+        panel.inert = true;
         grid.querySelectorAll('.project-star[aria-expanded="true"]').forEach(function (star) {
           star.setAttribute('aria-expanded', 'false');
           star.focus({ preventScroll: true });
@@ -892,6 +907,7 @@
       if (panel) {
         panel.classList.remove('is-visible');
         panel.setAttribute('aria-hidden', 'true');
+        panel.inert = true;
         var star = grid.querySelector('.project-star[aria-expanded="true"]');
         if (star) { star.setAttribute('aria-expanded', 'false'); star.focus({ preventScroll: true }); }
       }
