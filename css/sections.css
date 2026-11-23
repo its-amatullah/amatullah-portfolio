@@ -2187,6 +2187,70 @@
 #process .section-header.process__header { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(16rem,.85fr); align-items:end; gap:var(--space-8); margin-bottom:var(--space-10); }
 #process .process__steps { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:stretch; gap:var(--space-5); }
 
+.contact__actions {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.75rem;
+  margin-top:var(--space-8);
+}
+
+.contact__cta {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.55rem;
+  min-height:46px;
+  padding:.75rem 1rem;
+  border:1px solid rgba(216,201,223,.35);
+  border-radius:var(--radius-full);
+  color:var(--color-accent-soft);
+  background:rgba(250,248,245,.035);
+  font:600 .72rem/1.2 var(--font-mono);
+  text-decoration:none;
+  transition:
+    transform 180ms var(--ease-out-expo),
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.contact__cta:hover {
+  transform:translateY(-2px);
+  border-color:var(--color-accent-soft);
+  color:var(--color-surface);
+  background:rgba(216,201,223,.12);
+  box-shadow:0 8px 20px rgba(0,0,0,.14);
+}
+
+.contact__cta--primary {
+  border-color:var(--color-accent);
+  color:var(--color-surface);
+  background:var(--color-accent);
+}
+
+.contact__cta--primary:hover {
+  border-color:var(--color-accent-soft);
+  color:var(--color-text-primary);
+  background:var(--color-accent-soft);
+}
+
+.contact__cta:focus-visible {
+  outline:2px solid var(--color-accent-soft);
+  outline-offset:3px;
+}
+
+@media (max-width:480px) {
+  .contact__actions { gap:.55rem; }
+  .contact__cta { min-height:44px; padding:.7rem .85rem; font-size:.66rem; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .contact__cta { transition:none; }
+  .contact__cta:hover { transform:none; }
+}
+
 #contact,.contact { color:var(--color-surface); background:var(--color-text-primary); border:0; }
 #contact h2,#contact .contact__title { color:var(--color-surface); }
 #contact .section-number { color:var(--color-accent-soft); opacity:.12; }
