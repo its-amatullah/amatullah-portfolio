@@ -687,7 +687,6 @@
 
 .about__tools {
   margin-top: var(--space-4);
-  overflow-x: auto;
 }
 
 .about__tool-table {
@@ -700,10 +699,10 @@
 
 .about__tool-table th,
 .about__tool-table td {
-  padding: var(--space-3) var(--space-2);
+  padding: var(--space-4) var(--space-3);
   border-bottom: 1px solid var(--color-border);
   text-align: left;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .about__tool-table thead th {
@@ -715,14 +714,77 @@
 }
 
 .about__tool-table tbody th {
-  width: 42%;
+  width: 1%;
+  padding-right: clamp(1rem, 3vw, 2rem);
   color: var(--color-text-primary);
   font-weight: 500;
+  white-space: nowrap;
+}
+
+.about__tool-table tbody td {
+  min-width: 0;
+}
+
+.about__tool-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3) clamp(.75rem, 2vw, 1.4rem);
+}
+
+.about__tool {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.about__tool-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 1.65rem;
+  width: 1.65rem;
+  height: 1.65rem;
+  border: 1px solid rgba(168,50,80,.18);
+  border-radius: .45rem;
+  background: rgba(168,50,80,.07);
+  color: var(--color-accent);
+  font: 600 .58rem/1 var(--font-mono);
+  letter-spacing: -.04em;
 }
 
 .about__tool-table tbody tr:last-child th,
 .about__tool-table tbody tr:last-child td {
   border-bottom: 0;
+}
+
+@media (max-width: 480px) {
+  .about__tool-table th,
+  .about__tool-table td {
+    padding: var(--space-3) .35rem;
+  }
+
+  .about__tool-table tbody th {
+    padding-right: .65rem;
+    font-size: .68rem;
+  }
+
+  .about__tool-list {
+    gap: var(--space-2) .7rem;
+  }
+
+  .about__tool {
+    gap: .35rem;
+    font-size: .75rem;
+  }
+
+  .about__tool-icon {
+    flex-basis: 1.45rem;
+    width: 1.45rem;
+    height: 1.45rem;
+    font-size: .52rem;
+  }
 }
 
 .about__photo-frame {
