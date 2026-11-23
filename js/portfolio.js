@@ -420,8 +420,8 @@
     var grid = document.getElementById('project-grid');
     if (!grid) return;
     var categories = [
-      { id: 'professional', label: 'Professional', number: '01', points: [[10,58],[34,26],[61,68],[88,38]], edges: [[0,1],[1,2],[2,3],[0,2]] },
-      { id: 'academic', label: 'Academic', number: '02', points: [[9,40],[31,73],[57,28],[85,61]], edges: [[0,1],[1,2],[2,3],[0,2]] },
+      { id: 'professional', label: 'Professional', number: '01', points: [[10,58],[34,26],[61,68],[88,38]], edges: [[0,1],[1,2],[2,3]] },
+      { id: 'academic', label: 'Academic', number: '02', points: [[9,40],[31,73],[57,28],[85,61]], edges: [[0,1],[1,2],[2,3]] },
       { id: 'creative', label: 'Creative', number: '03', points: [[23,35],[73,66]], edges: [[0,1]] }
     ];
 
