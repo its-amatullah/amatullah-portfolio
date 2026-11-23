@@ -216,20 +216,20 @@
     'app-dashboard': [{
       label: 'App Activity Dashboard',
       ctaLabel: 'Explore Full Prototype ->',
-      href: 'https://amatullah-a.github.io/Design-gallery/designs/App%20activity%20dashboard/v11-uniqueschools.html',
+      href: 'https://its-amatullah.github.io/Design-gallery/designs/App%20activity%20dashboard/v11-uniqueschools.html',
     }],
     'shop-rebuild': [
-      { label: 'Redesigned Flow (V2)', ctaLabel: 'Explore Redesigned Flow (V2) ->', href: 'https://amatullah-a.github.io/Design-gallery/designs/Shop%20rebuild/shop-payment-flow%282%29.html' },
-      { label: 'Original Flow (V1)', href: 'https://amatullah-a.github.io/Design-gallery/designs/Shop%20rebuild/shop-rebuild.html' },
+      { label: 'Redesigned Flow (V2)', ctaLabel: 'Explore Redesigned Flow (V2) ->', href: 'https://its-amatullah.github.io/Design-gallery/designs/Shop%20rebuild/shop-payment-flow%282%29.html' },
+      { label: 'Original Flow (V1)', href: 'https://its-amatullah.github.io/Design-gallery/designs/Shop%20rebuild/shop-rebuild.html' },
     ],
     'student-profile': [
-      { label: 'Main Student Profile', ctaLabel: 'Explore Main Prototype ->', href: 'https://amatullah-a.github.io/Design-gallery/designs/Student%20Profile/SFCmain.html' },
-      { label: 'Forms View', href: 'https://amatullah-a.github.io/Design-gallery/designs/Student%20Profile/SFC%20forms%20.html' },
+      { label: 'Main Student Profile', ctaLabel: 'Explore Main Prototype ->', href: 'https://its-amatullah.github.io/Design-gallery/designs/Student%20Profile/SFCmain.html' },
+      { label: 'Forms View', href: 'https://its-amatullah.github.io/Design-gallery/designs/Student%20Profile/SFC%20forms%20.html' },
     ],
     'design-gallery': [{
       label: 'Visit live Design Gallery',
       ctaLabel: 'Explore Full Gallery ->',
-      href: 'https://amatullah-a.github.io/Design-gallery/',
+      href: 'https://its-amatullah.github.io/Design-gallery/',
     }],
   };
 
