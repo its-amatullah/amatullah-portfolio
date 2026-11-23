@@ -1773,6 +1773,25 @@
   background:transparent;
   cursor:pointer;
   transform:translate(-50%,-50%);
+  transition:opacity 220ms ease;
+}
+.project-star::before {
+  content:"";
+  position:absolute;
+  inset:.48rem;
+  border:1px solid rgba(168,50,80,.5);
+  border-radius:50%;
+  opacity:0;
+  transform:scale(.55);
+  pointer-events:none;
+}
+.constellation__map:has(.project-star:hover,.project-star:focus-visible,.project-star[aria-expanded="true"]) .project-star:not(:hover,:focus-visible,[aria-expanded="true"]) {
+  opacity:.48;
+}
+.constellation__map:has(.project-star:hover,.project-star:focus-visible,.project-star[aria-expanded="true"]) .constellation__lines line {
+  stroke:rgba(168,50,80,.48);
+  stroke-width:.7;
+  transition:stroke 260ms ease,stroke-width 260ms ease;
 }
 .project-star__core {
   position:relative;
@@ -1798,9 +1817,16 @@
   opacity:.55;
 }
 .project-star__core::after { transform:translate(-50%,-50%) rotate(90deg); }
+.project-star:hover::before,.project-star:focus-visible::before,.project-star[aria-expanded="true"]::before {
+  animation:starRadar 900ms cubic-bezier(.15,.65,.35,1) infinite;
+}
 .project-star:hover .project-star__core,.project-star:focus-visible .project-star__core,.project-star[aria-expanded="true"] .project-star__core {
   transform:scale(1.4);
   box-shadow:0 0 0 7px rgba(168,50,80,.1),0 0 24px rgba(168,50,80,.52);
+}
+@keyframes starRadar {
+  0% { opacity:.65; transform:scale(.65); }
+  100% { opacity:0; transform:scale(2.6); }
 }
 .project-star:focus-visible { outline:2px solid var(--color-accent); outline-offset:3px; }
 .project-star__label {
@@ -1832,9 +1858,23 @@
 .project-star:hover .project-star__label,.project-star:focus-visible .project-star__label,.project-star[aria-expanded="true"] .project-star__label {
   color:var(--color-accent);
   border-color:var(--color-accent);
+  background:rgba(250,248,245,.98);
+  box-shadow:0 8px 24px rgba(41,36,46,.12);
+  transform:translateY(calc(-50% - 3px));
 }
 .project-star__label strong { font:600 .78rem/1.2 var(--font-heading); }
 .project-star__label small { color:var(--color-accent); font:.53rem/1.2 var(--font-mono); letter-spacing:.07em; text-transform:uppercase; }
+@media (prefers-reduced-motion: reduce) {
+  .project-star,.project-star__core,.project-star__label,.constellation__lines line {
+    transition:none !important;
+  }
+  .project-star:hover::before,.project-star:focus-visible::before,.project-star[aria-expanded="true"]::before {
+    animation:none;
+    opacity:.35;
+    transform:scale(1.5);
+  }
+}
+
 .project-detail {
   display:grid;
   grid-template-columns:130px minmax(0,1fr) auto;
