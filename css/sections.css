@@ -2174,9 +2174,10 @@
 .about__skills .tag { color:var(--color-text-secondary); padding:.65rem 0; border:0; border-top:1px solid var(--color-border); border-radius:0; background:transparent; font:.66rem var(--font-mono); }
 .about__skills .tag:hover { color:var(--color-accent); border-color:var(--color-accent); }
 .about__tools { color:var(--color-text-secondary); }
-.about__photo-frame { position:sticky; top:7rem; min-height:0; overflow:hidden; border:0; border-radius:0; background:#E8E0ED; }
-.about__photo-wrap { background:#E8E0ED; }
-.about__photo { display:block; width:100%; height:auto; object-fit:contain; filter:none; mix-blend-mode:normal; }
+.about__photo-frame { position:sticky; top:7rem; min-height:0; overflow:visible; border:0; border-radius:0; background:transparent; isolation:isolate; }
+.about__photo-frame::after { content:""; position:absolute; z-index:0; inset:5% 3% 4% 1%; background:#E8E0ED; clip-path:polygon(16% 3%,76% 0,100% 18%,95% 78%,68% 100%,12% 94%,0 32%); transform:rotate(-3deg); pointer-events:none; }
+.about__photo-wrap { position:relative; z-index:1; overflow:visible; border:0; border-radius:0; background:transparent; }
+.about__photo { position:relative; z-index:1; display:block; width:100%; height:auto; object-fit:contain; filter:none; mix-blend-mode:normal; }
 .about__photo-frame::before { color:var(--color-accent); font-family:var(--font-mono); }
 
 #process { color:var(--color-text-primary); background:var(--color-surface-raise); }
