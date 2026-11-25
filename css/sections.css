@@ -1922,6 +1922,21 @@
   transform:scale(.55);
   pointer-events:none;
 }
+.project-star::after {
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:50%;
+  top:50%;
+  width:3.2rem;
+  height:3.2rem;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(217,167,197,.36) 0%,rgba(185,167,217,.2) 34%,rgba(185,167,217,.07) 55%,transparent 73%);
+  opacity:.8;
+  transform:translate(-50%,-50%);
+  animation:constellationHalo 3.8s ease-in-out var(--twinkle-delay) infinite;
+  pointer-events:none;
+}
 .constellation__map:has(.project-star:hover,.project-star:focus-visible,.project-star[aria-expanded="true"]) .project-star:not(:hover,:focus-visible,[aria-expanded="true"]) {
   opacity:.48;
 }
@@ -1932,13 +1947,14 @@
 }
 .project-star__core {
   position:relative;
+  z-index:1;
   display:block;
-  width:.78rem;
-  height:.78rem;
-  border:1px solid rgba(217,167,197,.46);
+  width:.9rem;
+  height:.9rem;
+  border:1px solid rgba(248,220,239,.84);
   border-radius:50%;
-  background:var(--color-accent);
-  box-shadow:0 0 0 3px rgba(185,167,217,.08),0 0 11px rgba(217,167,197,.2);
+  background:#F3D8E8;
+  box-shadow:0 0 0 3px rgba(185,167,217,.14),0 0 9px 3px rgba(217,167,197,.55),0 0 23px 8px rgba(185,167,217,.3);
   animation:constellationTwinkle 3.8s ease-in-out var(--twinkle-delay) infinite;
   transition:transform 220ms ease,box-shadow 220ms ease;
 }
@@ -1958,8 +1974,12 @@
   animation:starRadar 900ms cubic-bezier(.15,.65,.35,1) infinite;
 }
 .project-star:hover .project-star__core,.project-star:focus-visible .project-star__core,.project-star[aria-expanded="true"] .project-star__core {
-  transform:scale(1.4);
-  box-shadow:0 0 0 6px rgba(185,167,217,.1),0 0 22px rgba(217,167,197,.38);
+  transform:scale(1.3);
+  box-shadow:0 0 0 5px rgba(185,167,217,.2),0 0 14px 5px rgba(217,167,197,.72),0 0 32px 12px rgba(185,167,217,.48);
+}
+@keyframes constellationHalo {
+  0%,100% { opacity:.62; transform:translate(-50%,-50%) scale(.88); }
+  50% { opacity:1; transform:translate(-50%,-50%) scale(1.12); }
 }
 @keyframes starRadar {
   0% { opacity:.65; transform:scale(.65); }
@@ -1968,6 +1988,7 @@
 .project-star:focus-visible { outline:2px solid var(--color-accent); outline-offset:3px; }
 .project-star__label {
   position:absolute;
+  z-index:2;
   top:50%;
   left:calc(100% + .4rem);
   display:grid;
@@ -2127,7 +2148,7 @@
   .project-detail.is-visible { max-height:460px; }
 }
 @media (prefers-reduced-motion:reduce) {
-  .project-star__core { animation:none; }
+  .project-star__core,.project-star::after { animation:none; }
   .project-star__label,.project-detail,.project-detail__prototype { transition:none; }
 }
 #about { color:var(--color-text-primary); background:var(--color-bg); }
