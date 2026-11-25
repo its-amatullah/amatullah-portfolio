@@ -7,22 +7,23 @@
 :root {
 
   /* ── Colours ─────────────────────────────────────────────── */
-  --color-bg: #F7F4F8;
-  --color-surface: #FAF8F5;
-  --color-surface-raise: #EAE3EF;
-  --color-border: #D8C9DF;
+  --color-bg: #111019;
+  --color-surface: #191721;
+  --color-surface-raise: #211E2B;
+  --color-border: #373142;
 
-  --color-accent: #A83250;
-  --color-accent-border: rgba(168,50,80,.32);
-  --color-accent-dim: rgba(168,50,80,.09);
-  --color-accent-soft: #D8C9DF;
-  --color-accent-soft-dim: rgba(216,201,223,.24);
+  --color-accent: #D9A7C5;
+  --color-accent-border: rgba(217,167,197,.38);
+  --color-accent-dim: rgba(217,167,197,.12);
+  --color-accent-soft: #B9A7D9;
+  --color-accent-soft-dim: rgba(185,167,217,.18);
+  --color-accent-lime: var(--color-accent);
 
-  --color-text-primary: #29242E;
-  --color-text-secondary: #514653;
-  --color-text-muted: #766D79;
-  --color-white: #FAF8F5;
-  --color-error: #A83250;
+  --color-text-primary: #F7F1F7;
+  --color-text-secondary: #C3B9C9;
+  --color-text-muted: #A49AAA;
+  --color-white: #F7F1F7;
+  --color-error: #F08DA9;
 
   /* ── Typography — families ───────────────────────────────── */
   --font-heading: 'Space Grotesk', sans-serif;
@@ -73,11 +74,11 @@
   --radius-full: 9999px;
 
   /* ── Shadows ─────────────────────────────────────────────── */
-  --shadow-sm: 0 2px 8px rgba(41,36,46,.06);
-  --shadow-md: 0 8px 24px rgba(41,36,46,.08);
-  --shadow-lg: 0 18px 50px rgba(41,36,46,.12);
-  --shadow-accent: 0 8px 24px rgba(168,50,80,.14);
-  --shadow-soft: 0 0 32px rgba(216,201,223,.28);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.2);
+  --shadow-md: 0 8px 24px rgba(0,0,0,.26);
+  --shadow-lg: 0 18px 50px rgba(0,0,0,.34);
+  --shadow-accent: 0 8px 24px rgba(217,167,197,.18);
+  --shadow-soft: 0 0 32px rgba(185,167,217,.16);
 
   /* ── Motion ──────────────────────────────────────────────── */
   --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);

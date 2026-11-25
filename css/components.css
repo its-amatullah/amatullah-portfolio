@@ -87,8 +87,8 @@
   border-color: var(--color-accent-border);
   color: var(--color-accent);
 }
-.tag--academic     { border-color: rgba(168,50,80,0.3); color: var(--color-accent-soft); }
-.tag--creative     { border-color: var(--color-accent-border);  color: #A83250; }
+.tag--academic     { border-color: var(--color-accent-border); color: var(--color-accent-soft); }
+.tag--creative     { border-color: var(--color-accent-border); color: var(--color-accent); }
 
 /* ── Divider line with label ─────────────────────────────────── */
 .divider {
@@ -117,11 +117,11 @@
   transition: background-color 300ms var(--ease-standard), padding 200ms var(--ease-standard), border-color 300ms var(--ease-standard);
 }
 .nav.is-scrolled {
-  background: rgba(247,244,248,.96);
+  background: rgba(17,16,25,.96);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   padding-block: .5rem;
-  border-bottom: 1px solid rgba(41,36,46,.14);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .nav__inner {
@@ -130,7 +130,7 @@
   justify-content: space-between;
   gap: var(--space-8);
   padding-block: .2rem;
-  border-bottom: 1px solid rgba(41,36,46,.16);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .nav__logo {
@@ -138,12 +138,12 @@
   font-size: var(--text-sm);
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: #29242E;
+  color: var(--color-text-primary);
   text-decoration: none;
   flex-shrink: 0;
   transition: opacity var(--dur-fast);
 }
-.nav__logo span { color: rgba(168,50,80,0.95); }
+.nav__logo span { color: var(--color-accent); }
 .nav__logo:hover { opacity: 0.75; }
 
 .nav__links {
@@ -161,7 +161,7 @@
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #766D79;
+  color: var(--color-text-secondary);
   text-decoration: none;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
@@ -170,7 +170,7 @@
     background 150ms var(--ease-standard);
 }
 .nav__link:hover {
-  color: #29242E;
+  color: var(--color-text-primary);
   background: rgba(250,248,245,0.08);
 }
 /* Pink pill for active section */
