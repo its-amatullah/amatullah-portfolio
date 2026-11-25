@@ -1619,7 +1619,7 @@
 #home .hero__spot::before {
   content:"";
   position:absolute;
-  inset:-5% -4% -20%;
+  inset:-5% -4% 1%;
   z-index:0;
   background:#E8E0ED;
   border:1px solid rgba(232,224,237,.72);
@@ -1660,7 +1660,7 @@
   justify-items:start;
   width:100%;
   max-width:none;
-  margin:-.05em 0 0;
+  margin:.8rem 0 0;
   text-align:left;
 }
 #home .hero__name-intro {
@@ -2376,10 +2376,10 @@
   #home .hero__hello-word { font-size:clamp(4.35rem,19vw,6.6rem); }
   #home .hero__hello-number { font-size:.46rem; }
   #home .hero__spot { width:100%; min-height:0; margin:0; }
-  #home .hero__spot::before { inset:-3% 1% -14%; }
+  #home .hero__spot::before { inset:-3% 1% 1%; }
   #home .hero__spot-mascot { height:100%; max-height:min(74vw,370px); }
   #home .hero__portrait-mark { right:7%; bottom:15%; }
-  #home .hero__name { margin:.05em 0 0; }
+  #home .hero__name { margin:.7rem 0 0; }
   #home .hero__name-intro { margin-bottom:.2rem; font-size:1.25rem; }
   #home .hero__name-full { font-size:clamp(2.4rem,10vw,3.6rem); letter-spacing:-.065em; }
   #home .hero__center-foot { padding-top:.6rem; font-size:.46rem; }
