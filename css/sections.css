@@ -2044,7 +2044,7 @@
 .project-detail {
   grid-column:1 / -1;
   display:grid;
-  grid-template-columns:minmax(100px,150px) minmax(0,1fr) auto;
+  grid-template-columns:minmax(100px,128px) minmax(0,1fr) auto;
   align-items:center;
   gap:1rem 1.3rem;
   width:100%;
@@ -2062,7 +2062,7 @@
   pointer-events:none;
 }
 .project-detail.is-visible {
-  max-height:520px;
+  max-height:320px;
   margin:.6rem 0 .25rem;
   padding:1rem clamp(.8rem,2vw,1.5rem);
   border-width:1px;
@@ -2081,9 +2081,14 @@
 .project-detail__description,
 .project-detail__tools { overflow-wrap:anywhere; }
 .project-detail__meta {
-  margin:0 0 .35rem;
+  display:inline-flex;
+  width:max-content;
+  margin:0 0 .4rem;
+  padding:.22rem .42rem;
+  border:1px solid rgba(168,50,80,.25);
   color:var(--color-accent);
-  font:.57rem/1.4 var(--font-mono);
+  background:rgba(227,165,178,.14);
+  font:.56rem/1.4 var(--font-mono);
   letter-spacing:.07em;
   text-transform:uppercase;
 }
@@ -2146,7 +2151,7 @@
   .constellation__map { height:132px; }
   .project-detail { grid-template-columns:64px minmax(0,1fr); }
   .project-detail__close { grid-column:1 / -1; justify-self:end; }
-  .project-detail.is-visible { max-height:680px; }
+  .project-detail.is-visible { max-height:460px; }
 }
 @media (prefers-reduced-motion:reduce) {
   .project-star__core { animation:none; }
