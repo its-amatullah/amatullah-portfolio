@@ -7,23 +7,23 @@
 :root {
 
   /* ── Colours ─────────────────────────────────────────────── */
-  --color-bg: #111019;
-  --color-surface: #191721;
-  --color-surface-raise: #211E2B;
-  --color-border: #373142;
+  --color-bg: #17181A;
+  --color-surface: #1E2123;
+  --color-surface-raise: #262A2D;
+  --color-border: #3B4144;
 
-  --color-accent: #D9A7C5;
-  --color-accent-border: rgba(217,167,197,.38);
-  --color-accent-dim: rgba(217,167,197,.12);
-  --color-accent-soft: #B9A7D9;
-  --color-accent-soft-dim: rgba(185,167,217,.18);
+  --color-accent: #FF7458;
+  --color-accent-border: rgba(255,116,88,.4);
+  --color-accent-dim: rgba(255,116,88,.12);
+  --color-accent-soft: #E5E1D9;
+  --color-accent-soft-dim: rgba(229,225,217,.12);
   --color-accent-lime: var(--color-accent);
 
-  --color-text-primary: #F7F1F7;
-  --color-text-secondary: #C3B9C9;
-  --color-text-muted: #A49AAA;
-  --color-white: #F7F1F7;
-  --color-error: #F08DA9;
+  --color-text-primary: #F3F0E9;
+  --color-text-secondary: #C7C4BC;
+  --color-text-muted: #9A9B96;
+  --color-white: #F6F3EB;
+  --color-error: #FF8B70;
 
   /* ── Typography — families ───────────────────────────────── */
   --font-heading: 'Space Grotesk', sans-serif;
@@ -77,8 +77,8 @@
   --shadow-sm: 0 2px 8px rgba(0,0,0,.2);
   --shadow-md: 0 8px 24px rgba(0,0,0,.26);
   --shadow-lg: 0 18px 50px rgba(0,0,0,.34);
-  --shadow-accent: 0 8px 24px rgba(217,167,197,.18);
-  --shadow-soft: 0 0 32px rgba(185,167,217,.16);
+  --shadow-accent: 0 8px 24px rgba(255,116,88,.18);
+  --shadow-soft: 0 0 32px rgba(229,225,217,.08);
 
   /* ── Motion ──────────────────────────────────────────────── */
   --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
