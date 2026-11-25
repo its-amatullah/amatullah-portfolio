@@ -558,7 +558,7 @@
     copy.className = 'project-detail__copy';
     var meta = document.createElement('p');
     meta.className = 'project-detail__meta';
-    meta.textContent = project.category + ' / ' + project.year + ' / ' + project.role;
+    meta.textContent = project.category.charAt(0).toUpperCase() + project.category.slice(1);
     var title = document.createElement('h4');
     title.textContent = project.title;
     var desc = document.createElement('p');
