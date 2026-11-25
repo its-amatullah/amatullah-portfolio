@@ -1619,7 +1619,7 @@
 #home .hero__spot::before {
   content:"";
   position:absolute;
-  inset:3% 7% 0%;
+  inset:-5% -4% -20%;
   z-index:0;
   background:#E8E0ED;
   border:1px solid rgba(232,224,237,.72);
@@ -1891,9 +1891,10 @@
   overflow:visible;
 }
 .constellation__lines line {
-  stroke:rgba(185,167,217,.28);
-  stroke-width:.38;
+  stroke:rgba(217,167,197,.5);
+  stroke-width:.62;
   vector-effect:non-scaling-stroke;
+  transition:stroke 260ms ease,stroke-width 260ms ease;
 }
 .project-star {
   position:absolute;
@@ -1948,9 +1949,8 @@
   animation:none;
 }
 .constellation__map:has(.project-star:hover,.project-star:focus-visible,.project-star[aria-expanded="true"]) .constellation__lines line {
-  stroke:rgba(217,167,197,.46);
-  stroke-width:.55;
-  transition:stroke 260ms ease,stroke-width 260ms ease;
+  stroke:rgba(217,167,197,.78);
+  stroke-width:.85;
 }
 .project-star__core {
   position:relative;
@@ -2376,7 +2376,7 @@
   #home .hero__hello-word { font-size:clamp(4.35rem,19vw,6.6rem); }
   #home .hero__hello-number { font-size:.46rem; }
   #home .hero__spot { width:100%; min-height:0; margin:0; }
-  #home .hero__spot::before { inset:4% 8% 2%; }
+  #home .hero__spot::before { inset:-3% 1% -14%; }
   #home .hero__spot-mascot { height:100%; max-height:min(74vw,370px); }
   #home .hero__portrait-mark { right:7%; bottom:15%; }
   #home .hero__name { margin:.05em 0 0; }
