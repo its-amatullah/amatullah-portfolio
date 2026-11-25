@@ -298,27 +298,13 @@
   display: block;
   width: 100%;
   height: auto;
-  /* Lift the original black line art into a clean, pale line on dark surfaces. */
-  filter: invert(1) grayscale(1) brightness(1.15) contrast(1.12);
-  mix-blend-mode: screen;
-  /* 3-D shadow stack — close hard + far soft = emboss depth */
-  filter:
-    invert(1) grayscale(1) brightness(1.15) contrast(1.12)
-    drop-shadow(0 2px 4px rgba(217,167,197,.24))
-    drop-shadow(0 12px 32px rgba(185,167,217,.12));
+  filter: none;
+  mix-blend-mode: normal;
   transform: translateZ(0);
-  transition: filter 350ms var(--ease-out-expo);
-}
-/* Hover: brighten shadows — reinforces the lit feel */
-.hero__portrait-tilt:hover .hero__spot-mascot {
-  filter:
-    invert(1) grayscale(1) brightness(1.2) contrast(1.12)
-    drop-shadow(0 3px 8px rgba(217,167,197,.3))
-    drop-shadow(0 16px 36px rgba(185,167,217,.16));
+  transition: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .hero__spot-mascot { transition: none; }
-  .hero__portrait-tilt:hover .hero__spot-mascot { filter: invert(1) grayscale(1) brightness(1.15) contrast(1.12); }
 }
 
 /* Caption */
@@ -832,8 +818,10 @@
 
 .about__photo {
   width: 100%; height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+  filter: none;
+  mix-blend-mode: normal;
 }
 
 .about__photo-placeholder {
@@ -1633,8 +1621,8 @@
   position:absolute;
   inset:10% 17% 8%;
   z-index:0;
-  background:var(--color-surface-raise);
-  border:1px solid rgba(185,167,217,.22);
+  background:#E8E0ED;
+  border:1px solid rgba(232,224,237,.72);
   clip-path:polygon(50% 0,91% 15%,100% 51%,82% 91%,45% 100%,8% 82%,0 31%);
   transform:rotate(-2deg);
   animation:heroPaperDrift 11s ease-in-out infinite;
@@ -1660,8 +1648,8 @@
   max-height:clamp(340px,43vh,485px);
   object-fit:contain;
   object-position:center bottom;
-  filter:invert(1) grayscale(1) brightness(1.15) contrast(1.12);
-  mix-blend-mode:screen;
+  filter:none;
+  mix-blend-mode:normal;
   opacity:1;
 }
 #home .hero__portrait-glow { display:none; }
@@ -2165,9 +2153,9 @@
 .about__skills .tag { color:var(--color-text-secondary); padding:.65rem 0; border:0; border-top:1px solid var(--color-border); border-radius:0; background:transparent; font:.66rem var(--font-mono); }
 .about__skills .tag:hover { color:var(--color-accent); border-color:var(--color-accent); }
 .about__tools { color:var(--color-text-secondary); }
-.about__photo-frame { position:sticky; top:7rem; min-height:0; overflow:hidden; border:0; border-radius:0; background:var(--color-surface-raise); }
-.about__photo-wrap { background:var(--color-surface-raise); }
-.about__photo { display:block; width:100%; height:auto; object-fit:contain; filter:invert(1) grayscale(1) brightness(1.15) contrast(1.12); mix-blend-mode:screen; }
+.about__photo-frame { position:sticky; top:7rem; min-height:0; overflow:hidden; border:0; border-radius:0; background:#E8E0ED; }
+.about__photo-wrap { background:#E8E0ED; }
+.about__photo { display:block; width:100%; height:auto; object-fit:contain; filter:none; mix-blend-mode:normal; }
 .about__photo-frame::before { color:var(--color-accent); font-family:var(--font-mono); }
 
 #process { color:var(--color-text-primary); background:var(--color-surface-raise); }
