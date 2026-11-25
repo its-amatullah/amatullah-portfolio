@@ -1493,11 +1493,11 @@
 #home .hero__bg { pointer-events:none; }
 #home .hero__orb,#home .hero__shapes { display:none; }
 #home .hero__grid-lines {
-  opacity:.16;
-  background-size:96px 96px;
+  opacity:.24;
+  background-size:72px 72px;
   background-image:
-    linear-gradient(rgba(217,206,229,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(217,206,229,.035) 1px,transparent 1px);
+    linear-gradient(rgba(217,206,229,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(217,206,229,.045) 1px,transparent 1px);
   mask-image:linear-gradient(90deg,transparent 12%,#000 100%);
 }
 #home .hero__shell { position:relative; z-index:1; gap:0; padding-top:0; }
@@ -1796,20 +1796,23 @@
   padding:clamp(1rem,2.4vw,2rem);
   overflow:hidden;
   border:1px solid var(--color-border);
-  background:
-    radial-gradient(ellipse at 15% 8%,rgba(185,167,217,.09),transparent 46%),
-    radial-gradient(ellipse at 82% 65%,rgba(217,167,197,.045),transparent 50%),
-    var(--color-bg);
+  background-color:#14131B;
+  background-image:
+    linear-gradient(rgba(185,167,217,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(185,167,217,.035) 1px,transparent 1px);
+  background-size:48px 48px;
 }
 .constellation-stage::before {
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
-  opacity:.35;
-  background-image:radial-gradient(rgba(217,206,229,.3) .65px,transparent .65px);
-  background-size:22px 22px;
-  mask-image:linear-gradient(90deg,#000,transparent 90%);
+  opacity:.45;
+  background-image:
+    linear-gradient(90deg,transparent 0 15px,rgba(217,206,229,.1) 15px 16px,transparent 16px 100%),
+    linear-gradient(transparent 0 15px,rgba(217,206,229,.1) 15px 16px,transparent 16px 100%);
+  background-size:48px 48px;
+  mask-image:linear-gradient(90deg,#000,transparent 96%);
 }
 .constellation-stage__header {
   position:relative;
@@ -1970,13 +1973,15 @@
   position:absolute;
   left:50%;
   top:50%;
-  width:1px;
+  width:1.45rem;
   height:1.45rem;
-  background:linear-gradient(transparent,rgba(217,167,197,.42),transparent);
+  border:1px solid rgba(217,167,197,.32);
+  border-radius:50%;
+  background:transparent;
   transform:translate(-50%,-50%);
-  opacity:.55;
+  opacity:.62;
 }
-.project-star__core::after { transform:translate(-50%,-50%) rotate(90deg); }
+.project-star__core::after { display:none; }
 .project-star:hover::before,.project-star:focus-visible::before,.project-star[aria-expanded="true"]::before {
   animation:starRadar 900ms cubic-bezier(.15,.65,.35,1) infinite;
 }
