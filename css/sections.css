@@ -2443,3 +2443,72 @@
   .locker-grid { perspective:none; }
   .process-step:hover { padding-left:0; }
 }
+
+/* Mobile constellation: convert the map into clear, full-width touch targets. */
+@media (max-width:767px) {
+  .constellation__map {
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    align-content:start;
+    gap:.45rem;
+    height:auto;
+    min-height:0;
+    padding:.75rem 0 .15rem;
+  }
+  .constellation__lines { display:none; }
+  .project-star,
+  .project-star.project-star--west {
+    position:relative;
+    inset:auto;
+    left:auto;
+    top:auto;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:.8rem;
+    width:100%;
+    min-height:3.5rem;
+    height:auto;
+    padding:.65rem .8rem;
+    border:1px solid rgba(229,225,217,.16);
+    border-radius:0;
+    background:rgba(30,33,35,.72);
+    text-align:left;
+    transform:none;
+  }
+  .project-star::before,
+  .project-star::after { display:none; }
+  .project-star__core {
+    flex:0 0 auto;
+    width:.72rem;
+    height:.72rem;
+    box-shadow:0 0 0 3px rgba(229,225,217,.12),0 0 10px 3px rgba(255,116,88,.52),0 0 20px 6px rgba(229,225,217,.2);
+  }
+  .project-star__label,
+  .project-star--west .project-star__label {
+    position:static;
+    display:flex;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:.25rem .65rem;
+    min-width:0;
+    padding:0;
+    border:0;
+    color:var(--color-text-primary);
+    background:transparent;
+    box-shadow:none;
+    text-align:left;
+    transform:none !important;
+    pointer-events:none;
+  }
+  .project-star__label strong { font-size:.94rem; }
+  .project-star__label small { font-size:.55rem; }
+  .project-star:hover,
+  .project-star:focus-visible,
+  .project-star[aria-expanded="true"] {
+    border-color:rgba(255,116,88,.55);
+    background:rgba(38,42,45,.96);
+    transform:none;
+  }
+  .project-star:focus-visible { outline-offset:2px; }
+}
