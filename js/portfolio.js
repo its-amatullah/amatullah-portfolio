@@ -530,8 +530,14 @@
   }
 
   function showProjectDetail(project, trigger) {
-    var panel = trigger.closest('.constellation').querySelector('.project-detail');
+    var constellation = trigger.closest('.constellation');
+    var panel = constellation.querySelector('.project-detail');
     if (!panel || !project) return;
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      trigger.insertAdjacentElement('afterend', panel);
+    } else {
+      constellation.appendChild(panel);
+    }
     document.querySelectorAll('.project-star[aria-expanded="true"]').forEach(function (star) {
       star.setAttribute('aria-expanded', 'false');
     });
